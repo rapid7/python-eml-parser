@@ -52,12 +52,30 @@ class TestEmailParser(TestCase):
         self.assertEqual(email.recipients, ["chakan2@hotmail.com"])
         self.assertEqual(email.sender, "chakan2@hotmail.com")
         self.assertTrue("level 3" in email.body)
+        self.assertEqual(email.indicators.md5, "a35d0f590b9e2aa1a6afa68880836777")
+        self.assertEqual(
+            email.indicators.sha1, "2b725fe68564fb791c5a33f451c3fbf589e1d2e8"
+        )
+        self.assertEqual(
+            email.indicators.sha256,
+            "226a485db0230d4bc95c892f29b7257fee1aefb9ed273ec4cc4abe134a6b8a6b",
+        )
 
         attached_email = email.attached_emails[0]
         self.assertEqual(attached_email.subject, "Level 2 subject")
         self.assertEqual(attached_email.sender, "chakan2@hotmail.com")
         self.assertEqual(attached_email.recipients, ["chakan2@hotmail.com"])
         self.assertTrue("Level 2 body" in attached_email.body)
+        self.assertEqual(
+            attached_email.indicators.md5, "224662a660009095b8eb905a9c0d6964"
+        )
+        self.assertEqual(
+            attached_email.indicators.sha1, "8da1890238848f6b8f1c776b0699babb0925f256"
+        )
+        self.assertEqual(
+            attached_email.indicators.sha256,
+            "1950205c6953757c7edc8afa12cf26dc87d5e888a49828c997b404fe5fb51b3b",
+        )
 
         attached_email_of_attached_email = attached_email.attached_emails[0]
         self.assertEqual(attached_email_of_attached_email.subject, "Pic attached")
@@ -66,6 +84,16 @@ class TestEmailParser(TestCase):
         self.assertEqual(attached_file.content[:5], "iVBOR")
         self.assertEqual(attached_file.content_type, "image/png")
         self.assertEqual(attached_file.name, "olleg.png")
+        self.assertEqual(
+            attached_file.indicators.md5, "539cefc749ed1d78e3c821307f7c1b0a"
+        )
+        self.assertEqual(
+            attached_file.indicators.sha1, "9a95c01f15c461708733dac2b3fbe10901801582"
+        )
+        self.assertEqual(
+            attached_file.indicators.sha256,
+            "ac92883cdc6cda0735f9c3f968e6103f8dd93f705cc077dce70924eda523a916",
+        )
 
     def test_parse_from_raw2(self):
         raw_email = read_file_to_string(GET_RAW_ATTACHMENT_PAYLOAD2)
@@ -76,12 +104,31 @@ class TestEmailParser(TestCase):
 
         self.assertEqual(email.account, TEST_MAILBOX_ID)
         self.assertEqual(email.subject, "Attachment")
+        self.assertTrue("Attachment Body" in email.body)
+        self.assertEqual(email.indicators.md5, "267cc9490cec0c3229795e5eb7ef2a25")
+        self.assertEqual(
+            email.indicators.sha1, "e62d99edae16e70bfcf9bd041c08afd183271c56"
+        )
+        self.assertEqual(
+            email.indicators.sha256,
+            "aae84980564cc107ea5ef7c3ea393fb18d678fea5956b7b5005f8ae7664bf78c",
+        )
         self.assertEqual(len(email.attached_emails), 1)
         self.assertEqual(len(email.attached_files), 0)
 
         self.assertTrue("Attachment Body" in email.body)
         attached_email = email.attached_emails[0]
         self.assertTrue("Test Message Attachment Body" in attached_email.body)
+        self.assertEqual(
+            attached_email.indicators.md5, "d8fbc36661e49768c7db3160afdeaf70"
+        )
+        self.assertEqual(
+            attached_email.indicators.sha1, "bfccda3b5ade42569e05753fa1ad1f05c4ce2095"
+        )
+        self.assertEqual(
+            attached_email.indicators.sha256,
+            "b6ef02bc495b3710bd822a789e2b916c610b6fc78aab1f5a82bb2676fd6ad664",
+        )
 
         self.assertEqual(email.date_received, "Tue, 6 Aug 2019 19:19:40 +0000")
         self.assertEqual(len(email.headers), 75)
@@ -113,6 +160,14 @@ class TestEmailParser(TestCase):
         expected_content = "VGhpcyBpcyBhIHRlc3QgYXR0YWNobWVudA0KDQpJdCBoYXMgc29tZSB0ZXh0IGluIGl0LiANCg0KYWFkcm9pZC5uZXQNCg=="
         self.assertEqual(attachment.content, expected_content)
         self.assertEqual(attachment.name, "test_attachment.txt")
+        self.assertEqual(attachment.indicators.md5, "593aa3b46e3902094303b7ef1349d9ff")
+        self.assertEqual(
+            attachment.indicators.sha1, "d1181c07e87d73803bf5786b37e8f03a176290a2"
+        )
+        self.assertEqual(
+            attachment.indicators.sha256,
+            "c08eb82e5383760cad3a4b4863dfb871b4c4252eba039c64a90ffc818907de27",
+        )
 
     def test_parse_from_raw4(self):
         raw_email = read_file_to_string(GET_RAW_ATTACHMENT_PAYLOAD4)
@@ -137,6 +192,14 @@ Nothing here, just this text</div>
 </html>
 """
         self.assertEqual(email.body, expected_body)
+        self.assertEqual(email.indicators.md5, "c537b7db873e8e2cd6b965be6afdd063")
+        self.assertEqual(
+            email.indicators.sha1, "b1f5dd056c0930042fa5549b4c5c8aa6ecb70e3a"
+        )
+        self.assertEqual(
+            email.indicators.sha256,
+            "50b779af79f6493165c0b8de3e56c08e0cc3eec3c50e2f9f2ddfe80247b8e886",
+        )
         self.assertEqual(email.date_received, "Thu, 8 Aug 2019 21:19:37 +0000")
         self.assertEqual(len(email.headers), 76)
         self.assertEqual(email.is_read, False)
@@ -166,6 +229,14 @@ Nothing here, just this text</div>
             ],
         )
         self.assertEqual(email.sender, "incidentresponse@acuitybrands.com")
+        self.assertEqual(email.indicators.md5, "ada46f89f4b41661eba9a2ab1d9d9a73")
+        self.assertEqual(
+            email.indicators.sha1, "135a144cd2e71563dcbb96b2ca9cbfea66174f47"
+        )
+        self.assertEqual(
+            email.indicators.sha256,
+            "99a60f4d08ad652b7de94333528073c6c277420ae27d3cee4cfcd2aa641bf8cd",
+        )
 
     def test_parse_google_link_garbled(self):
         raw_email = read_file_to_string(GET_GOOGLE_SURVEY)
@@ -206,14 +277,23 @@ Nothing here, just this text</div>
         self.assertEqual(email.recipients, ["joey_mcadams@rapid7.com"])
         self.assertEqual(email.sender, "jschipp@komanddev.onmicrosoft.com")
 
-        self.assertEqual(len(email.attached_emails), 2)
-        self.assertEqual(len(email.attached_files), 2)
-
         email1 = email.attached_emails[0]
         email2 = email.attached_emails[1]
 
         self.assertTrue(email1.subject, "Pic and eml attached")
         self.assertTrue(email2.subject, "Test Email")
+
+        attached_file = email.attached_files[0]
+        self.assertEqual(
+            attached_file.indicators.md5, "2fca7949ad1004cefe685b81c3889e1c"
+        )
+        self.assertEqual(
+            attached_file.indicators.sha1, "b7e20bc9d4eb40adb1c4f103821bd461deab9d3f"
+        )
+        self.assertEqual(
+            attached_file.indicators.sha256,
+            "8477aeb65fe7985cc82bc8f231ebfc519b8178d1050a9cee7f1b450e6c370240",
+        )
 
     def test_single_recipient(self):
         email_parser = EmailParser()
