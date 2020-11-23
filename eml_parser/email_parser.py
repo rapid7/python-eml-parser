@@ -17,7 +17,7 @@ class EmailParser(object):
     """
     Handles all the parsing for an email.
     Acts as an abstraction layer to normalize emails into a ICONEmail that is consistent across email plugins
-    and usable by Komand.
+    and usable by InsightConnect.
     """
 
     def make_email_from_raw(
