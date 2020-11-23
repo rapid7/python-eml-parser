@@ -2,7 +2,7 @@ from unittest import TestCase
 from eml_parser.icon_email import IconEmail
 from eml_parser.icon_file import IconFile
 from eml_parser.email_parser import EmailParser
-from eml_parser.exceptions import ValidationException
+from eml_parser.exceptions import EmailParserException
 from email import message_from_string
 import logging
 import datetime
@@ -174,7 +174,7 @@ class TestIconEmail(TestCase):
 
         bad_test_object = dict(int_list=[1, 2, 3])
 
-        with self.assertRaises(ValidationException):
+        with self.assertRaises(EmailParserException):
             icon_email.json_handler(bad_test_object)
 
         class GarbageObject:

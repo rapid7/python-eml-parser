@@ -2,7 +2,7 @@ import base64
 import datetime
 import json
 
-from eml_parser.exceptions import ValidationException
+from eml_parser.exceptions import EmailParserException
 from eml_parser.helper import clean
 
 
@@ -49,7 +49,7 @@ class IconEmail(object):
             return dict_obj
 
         except Exception as e:
-            raise ValidationException(e)
+            raise EmailParserException(e)
 
     def make_serializable(self) -> dict:
         """

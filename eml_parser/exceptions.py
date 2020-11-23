@@ -1,4 +1,4 @@
-class ValidationException(Exception):
+class EmailParserException(Exception):
     """
     An exception which indicates that a email parser has failed
     """
