@@ -23,7 +23,6 @@ setup(
         "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
         "Natural Language :: English",
-        "Topic :: Software Development :: Build Tools",
     ],
     license="MIT",
 )
