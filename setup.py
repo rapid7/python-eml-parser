@@ -8,7 +8,7 @@ with open("README.md", "r") as fh:
 setup(
     name="python_eml_parser",
     version="1.0.0",
-    description="Validator tooling for InsightConnect integrations",
+    description="Rapid7 InsightConnect email parser for email plugins",
     long_description=long_description,
     long_description_content_type="text/markdown",
     author="Rapid7 Integrations Alliance",
@@ -23,7 +23,6 @@ setup(
         "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
         "Natural Language :: English",
-        "Topic :: Software Development :: Build Tools",
     ],
     license="MIT",
 )

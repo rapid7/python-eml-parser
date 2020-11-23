@@ -2,8 +2,8 @@ import base64
 import datetime
 import json
 
-from komand import helper
-from komand.exceptions import PluginException
+from eml_parser.exceptions import EmailParserException
+from eml_parser.helper import clean
 from eml_parser.indicators import Indicators
 
 
@@ -36,8 +36,7 @@ class IconEmail(object):
         This is used by the make serialization class to help convert odd attachments to JSON.
 
         :param obj: Object - Anything json.dumps can't handle will be passed as this
-        :return:
-        A serializable dictionary
+        :return: A serializable dictionary
         """
         try:
             if isinstance(obj, bytes):
@@ -54,7 +53,7 @@ class IconEmail(object):
             return dict_obj
 
         except Exception as e:
-            raise PluginException(preset=PluginException.Preset.INVALID_JSON, data=e)
+            raise EmailParserException(e)
 
     def make_serializable(self) -> dict:
         """
@@ -67,7 +66,7 @@ class IconEmail(object):
         )
         message_json = json.loads(message_json, strict=False)
 
-        message_json_clean = helper.clean(message_json)
+        message_json_clean = clean(message_json)
         return message_json_clean
 
     def flatten(self):
