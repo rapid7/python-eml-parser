@@ -1,8 +1,8 @@
-from komand.exceptions import PluginException
 from unittest import TestCase
 from eml_parser.icon_email import IconEmail
 from eml_parser.icon_file import IconFile
 from eml_parser.email_parser import EmailParser
+from eml_parser.exceptions import ValidationException
 from email import message_from_string
 import logging
 import datetime
@@ -147,9 +147,8 @@ class TestIconEmail(TestCase):
         email_with_nested_attachments_text = read_file_to_string(
             f"{CURRENT_DIR}/payloads/2 level deep email attached.eml"
         )
-        email_parser = EmailParser()
+        email_parser = EmailParser(self.logger)
         icon_email = email_parser.make_email_from_raw(
-            self.logger,
             message_from_string(email_with_nested_attachments_text),
             "fake_account",
         )
@@ -175,7 +174,7 @@ class TestIconEmail(TestCase):
 
         bad_test_object = dict(int_list=[1, 2, 3])
 
-        with self.assertRaises(PluginException):
+        with self.assertRaises(ValidationException):
             icon_email.json_handler(bad_test_object)
 
         class GarbageObject:
@@ -193,9 +192,8 @@ class TestIconEmail(TestCase):
         email_with_nested_attachments_text = read_file_to_string(
             f"{CURRENT_DIR}/payloads/hash_crash.eml"
         )
-        email_parser = EmailParser()
+        email_parser = EmailParser(self.logger)
         icon_email = email_parser.make_email_from_raw(
-            self.logger,
             message_from_string(email_with_nested_attachments_text),
             "fake_account",
         )

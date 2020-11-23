@@ -36,9 +36,9 @@ class TestEmailParser(TestCase):
 
     def test_parse_from_raw(self):
         raw_email = read_file_to_string(GET_RAW_ATTACHMENT_PAYLOAD)
-        email_parser = EmailParser()
+        email_parser = EmailParser(self.log)
         email = email_parser.make_email_from_raw(
-            self.log, message_from_string(raw_email), TEST_MAILBOX_ID
+            message_from_string(raw_email), TEST_MAILBOX_ID
         )
 
         self.assertEqual(email.account, TEST_MAILBOX_ID)
@@ -69,9 +69,9 @@ class TestEmailParser(TestCase):
 
     def test_parse_from_raw2(self):
         raw_email = read_file_to_string(GET_RAW_ATTACHMENT_PAYLOAD2)
-        email_parser = EmailParser()
+        email_parser = EmailParser(self.log)
         email = email_parser.make_email_from_raw(
-            self.log, message_from_string(raw_email), TEST_MAILBOX_ID
+            message_from_string(raw_email), TEST_MAILBOX_ID
         )
 
         self.assertEqual(email.account, TEST_MAILBOX_ID)
@@ -91,9 +91,9 @@ class TestEmailParser(TestCase):
 
     def test_parse_from_raw3(self):
         raw_email = read_file_to_string(GET_RAW_ATTACHMENT_PAYLOAD3)
-        email_parser = EmailParser()
+        email_parser = EmailParser(self.log)
         email = email_parser.make_email_from_raw(
-            self.log, message_from_string(raw_email), TEST_MAILBOX_ID
+            message_from_string(raw_email), TEST_MAILBOX_ID
         )
 
         self.assertEqual(email.account, TEST_MAILBOX_ID)
@@ -116,9 +116,9 @@ class TestEmailParser(TestCase):
 
     def test_parse_from_raw4(self):
         raw_email = read_file_to_string(GET_RAW_ATTACHMENT_PAYLOAD4)
-        email_parser = EmailParser()
+        email_parser = EmailParser(self.log)
         email = email_parser.make_email_from_raw(
-            self.log, message_from_string(raw_email), TEST_MAILBOX_ID
+            message_from_string(raw_email), TEST_MAILBOX_ID
         )
 
         self.assertEqual(email.account, TEST_MAILBOX_ID)
@@ -145,9 +145,9 @@ Nothing here, just this text</div>
 
     def test_parse_from_raw_jared(self):
         raw_email = read_file_to_string(GET_PAYLOAD_FROM_JARED)
-        email_parser = EmailParser()
+        email_parser = EmailParser(self.log)
         email = email_parser.make_email_from_raw(
-            self.log, message_from_string(raw_email), TEST_MAILBOX_ID
+            message_from_string(raw_email), TEST_MAILBOX_ID
         )
 
         self.assertEqual(email.account, TEST_MAILBOX_ID)
@@ -169,9 +169,9 @@ Nothing here, just this text</div>
 
     def test_parse_google_link_garbled(self):
         raw_email = read_file_to_string(GET_GOOGLE_SURVEY)
-        email_parser = EmailParser()
+        email_parser = EmailParser(self.log)
         email = email_parser.make_email_from_raw(
-            self.log, message_from_string(raw_email), TEST_MAILBOX_ID
+            message_from_string(raw_email), TEST_MAILBOX_ID
         )
 
         self.assertTrue(
@@ -181,18 +181,18 @@ Nothing here, just this text</div>
 
     def test_parse_raw_with_unicode(self):
         raw_email = read_file_to_string(GET_UNICODE_EML)
-        email_parser = EmailParser()
+        email_parser = EmailParser(self.log)
         email = email_parser.make_email_from_raw(
-            self.log, message_from_string(raw_email), TEST_MAILBOX_ID
+            message_from_string(raw_email), TEST_MAILBOX_ID
         )
 
         self.assertEqual(email.subject, "Grüße von Stefan Appel")
 
     def test_parse_double_attached_with_images(self):
         raw_email = read_file_to_string(GET_DOUBLE_ATTACHED_WITH_IMAGES)
-        email_parser = EmailParser()
+        email_parser = EmailParser(self.log)
         email = email_parser.make_email_from_raw(
-            self.log, message_from_string(raw_email), TEST_MAILBOX_ID
+            message_from_string(raw_email), TEST_MAILBOX_ID
         )
 
         self.assertEqual(email.account, TEST_MAILBOX_ID)
@@ -216,45 +216,45 @@ Nothing here, just this text</div>
         self.assertTrue(email2.subject, "Test Email")
 
     def test_single_recipient(self):
-        email_parser = EmailParser()
+        email_parser = EmailParser(self.log)
         msg = {"To": "bob@hotmail.com"}
-        rcpt = email_parser.get_recipients(self.log, msg)
+        rcpt = email_parser.get_recipients(msg)
         self.assertEqual(rcpt, ["bob@hotmail.com"])
 
     def test_no_recipients(self):
-        email_parser = EmailParser()
+        email_parser = EmailParser(self.log)
         msg = {"To": ""}
-        rcpt = email_parser.get_recipients(self.log, msg)
+        rcpt = email_parser.get_recipients(msg)
         self.assertEqual(rcpt, [])
 
     def test_multiple_recipients(self):
-        email_parser = EmailParser()
+        email_parser = EmailParser(self.log)
         msg = {
             "To": "<someguy@microsoft.com> bob smith, <someotherguy@gmail.com> robert the bruce"
         }
-        rcpt = email_parser.get_recipients(self.log, msg)
+        rcpt = email_parser.get_recipients(msg)
         self.assertEqual(rcpt, ["someguy@microsoft.com", "someotherguy@gmail.com"])
 
     def test_multiple_recipients_delivered_to(self):
-        email_parser = EmailParser()
+        email_parser = EmailParser(self.log)
         msg = {
             "Delivered-To": "<someguy@microsoft.com> bob smith, <someotherguy@gmail.com> robert the bruce"
         }
-        rcpt = email_parser.get_recipients(self.log, msg)
+        rcpt = email_parser.get_recipients(msg)
         self.assertEqual(rcpt, ["someguy@microsoft.com", "someotherguy@gmail.com"])
 
     def test_recipients_not_available(self):
-        email_parser = EmailParser()
+        email_parser = EmailParser(self.log)
         msg = {}
-        rcpt = email_parser.get_recipients(self.log, msg)
+        rcpt = email_parser.get_recipients(msg)
         self.assertEqual(rcpt, [])
 
     def test_decode_body(self):
         basic_email_text = read_file_to_string(GET_BASIC_EMAIL)
         test_email = message_from_string(basic_email_text)
 
-        email_parser = EmailParser()
-        actual_body = email_parser.decode_body(self.log, test_email)
+        email_parser = EmailParser(self.log)
+        actual_body = email_parser.decode_body(test_email)
 
         self.assertEqual(actual_body, "Test\n")
 
@@ -263,8 +263,8 @@ Nothing here, just this text</div>
         test_email = message_from_string(basic_email_text)
         test_email._payload = 'u"é'
 
-        email_parser = EmailParser()
-        actual_body = email_parser.decode_body(self.log, test_email)
+        email_parser = EmailParser(self.log)
+        actual_body = email_parser.decode_body(test_email)
 
         self.assertEqual(actual_body, 'u"')
 
@@ -272,15 +272,13 @@ Nothing here, just this text</div>
         raw_text = read_file_to_string(GET_DOUBLE_ATTACHED_WITH_IMAGES)
         test_email = message_from_string(raw_text)
 
-        email_parser = EmailParser()
+        email_parser = EmailParser(self.log)
         test_email._payload[0]._payload[0]._payload = (
             test_email._payload[0]
             ._payload[0]
             ._payload.replace("chakan2@hotmail.com", 'u"é')
         )
-        actual_body = email_parser.decode_body(
-            self.log, test_email._payload[0]._payload[0]
-        )
+        actual_body = email_parser.decode_body(test_email._payload[0]._payload[0])
 
         expected_body = """________________________________From: Jon Schipp <jschipp@komanddev.onmicrosoft.com>Sent: Tuesday, August 13, 2019 3:56 PMTo: Jon Schipp <jschipp@komanddev.onmicrosoft.com>Subject: Joey Test________________________________From: Joey McAdams <u">Sent: Tuesday, August 13, 2019 10:55 AMTo: Jon Schipp <jschipp@komanddev.onmicrosoft.com>Subject: Fw: Short Test Email________________________________From: Joey McAdamsSent: Tuesday, August 13, 2019 9:30 AMTo: jschipp@komanddev.onmicrosoft.com <jschipp@komanddev.onmicrosoft.com>Subject: Short Test Email"""
         self.assertEqual(expected_body, actual_body)
@@ -289,18 +287,18 @@ Nothing here, just this text</div>
         raw_text = read_file_to_string(GET_DOUBLE_ATTACHED_WITH_IMAGES)
         test_email = message_from_string(raw_text)
 
-        email_parser = EmailParser()
+        email_parser = EmailParser(self.log)
         test_email._payload[0]._payload[1]._payload = '<html>FOO u"é BAR</html>'
-        actual_body = email_parser.decode_body(self.log, test_email._payload[0])
+        actual_body = email_parser.decode_body(test_email._payload[0])
 
         expected_body = '<html>FOO u"é BAR</html>'
         self.assertEqual(expected_body, actual_body)
 
     def test_parse_attached_eml(self):
         raw_email = read_file_to_string(GET_EML_WITH_EML_ATTACHED)
-        email_parser = EmailParser()
+        email_parser = EmailParser(self.log)
         email = email_parser.make_email_from_raw(
-            self.log, message_from_string(raw_email), TEST_MAILBOX_ID
+            message_from_string(raw_email), TEST_MAILBOX_ID
         )
 
         self.assertEqual(len(email.attached_emails), 6)
@@ -308,9 +306,9 @@ Nothing here, just this text</div>
 
     def test_decode_quoted_printable(self):
         raw_email = read_file_to_string(f"{CURRENT_DIR}/payloads/quoted_printable.eml")
-        email_parser = EmailParser()
+        email_parser = EmailParser(self.log)
         email = email_parser.make_email_from_raw(
-            self.log, message_from_string(raw_email), TEST_MAILBOX_ID
+            message_from_string(raw_email), TEST_MAILBOX_ID
         )
 
         expected = '<a href="http://aadroid.net" title="http://protect-us.mimecast.com/s/414KCXDXZofXVRNRZT6ai-n?domain=aadroid.net">http://aadroid.net</a><o:p></o:p></p>'

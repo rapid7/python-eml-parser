@@ -20,9 +20,10 @@ class EmailParser(object):
     and usable by InsightConnect.
     """
 
-    def make_email_from_raw(
-        self, logger: Logger, email_message: message, mailbox_id: str
-    ) -> IconEmail:
+    def __init__(self, logger: Logger):
+        self.logger = logger
+
+    def make_email_from_raw(self, email_message: message, mailbox_id: str) -> IconEmail:
         """
         This starts the rabbit hole of death. This is the gateway to converting a raw email string
         into an IconEmail
@@ -33,10 +34,10 @@ class EmailParser(object):
         :return: IconEmail
         """
 
-        return self.format_result(logger, email_message, mailbox_id)
+        return self.format_result(email_message, mailbox_id)
 
     # This builds an IconEmail from a python email object
-    def format_result(self, logger: Logger, msg: message, mailbox_id: str) -> IconEmail:
+    def format_result(self, msg: message, mailbox_id: str) -> IconEmail:
         """
         This will take a python email and convert it to an IconEmail
 
@@ -54,15 +55,15 @@ class EmailParser(object):
             make_header(decode_header(msg["Subject"]))
         )  # This will decode mime words
         result.is_read = False
-        result.recipients = self.get_recipients(logger, msg)
-        result.body = self.get_body(logger, msg)
+        result.recipients = self.get_recipients(msg)
+        result.body = self.get_body(msg)
         result.headers = self.get_headers(msg)
 
         (
             result.attached_files,
             result.attached_emails,
             orphan_text_list,
-        ) = self.attachments(msg, logger, mailbox_id)
+        ) = self.attachments(msg, mailbox_id)
 
         if orphan_text_list:
             for orphan in orphan_text_list:
@@ -90,23 +91,20 @@ class EmailParser(object):
             header_list.append({"name": str(h[0]), "value": str(h[1])})
         return header_list
 
-    def get_body(self, logger, msg):
+    def get_body(self, msg):
         """
         Get the body from a raw message
-        :param logger: logger
         :param msg: raw message
         :return: body as String
         """
-        bdy = self.decode_body(logger, msg)
+        bdy = self.decode_body(msg)
         bdy = remove_microsoft_newlines(bdy)
         return bdy
 
-    @staticmethod
-    def get_recipients(logger: Logger, msg: message) -> list:
+    def get_recipients(self, msg: message) -> list:
         """
         Get the recipients from a raw message
 
-        :param logger: logger
         :param msg: email.message object to extract information from
         :return: List of recipients
         """
@@ -118,13 +116,13 @@ class EmailParser(object):
             recipients = msg["Delivered-To"]
 
         if not recipients:
-            logger.info("No To address.")
+            self.logger.info("No To address.")
             return []
 
         recipients = get_emails_as_list(recipients)
         return recipients
 
-    def decode_body(self, logger: Logger, msg: message) -> str:
+    def decode_body(self, msg: message) -> str:
         """
         Get the body of an email.
 
@@ -140,7 +138,7 @@ class EmailParser(object):
             # being the most faithful to the original message
             # http://blog.magiksys.net/parsing-email-using-python-content
             if "multipart/alternative" == message_content_type.lower():
-                body = self.prep_multipart_alt_body(logger, msg)
+                body = self.prep_multipart_alt_body(msg)
                 return body
             else:
                 for part in msg.walk():
@@ -148,28 +146,30 @@ class EmailParser(object):
                     content_disposition = str(part.get("Content-Disposition"))
 
                     if "multipart/alternative" == content_type.lower():
-                        body = self.prep_multipart_alt_body(logger, part)
+                        body = self.prep_multipart_alt_body(part)
                         return body
 
                     elif (
                         content_type == "text/plain"
                         and "attachment" not in content_disposition.lower()
                     ):
-                        body = self.prep_body(logger, part)
+                        body = self.prep_body(part)
                         return body
 
                     elif (
                         content_type == "text/html"
                         and "attachment" not in content_disposition.lower()
                     ):
-                        body = self.prep_body(logger, part)
+                        body = self.prep_body(part)
                         return body
 
         else:  # NOT MULTIPART MESSAGE
             try:
                 return msg.get_payload(decode=True).decode("utf-8")
             except Exception:
-                logger.debug("Decode failed, attempting to remove offending characters")
+                self.logger.debug(
+                    "Decode failed, attempting to remove offending characters"
+                )
                 return (
                     UnicodeDammit.detwingle(msg.get_payload(decode=True))
                     .decode("utf-8", errors="ignore")
@@ -177,11 +177,10 @@ class EmailParser(object):
                 )
 
     @staticmethod
-    def prep_multipart_alt_body(log, msg):
+    def prep_multipart_alt_body(msg):
         """
         Takes a multipart/alternative part, extracts the payload, and decodes it if necissary.
 
-        :param log: logger
         :param msg: multipart/alternative message
         :return: body (string)
         """
@@ -212,13 +211,11 @@ class EmailParser(object):
         remove_microsoft_newlines(body)
         return body
 
-    @staticmethod
-    def prep_body(log, part):
+    def prep_body(self, part):
         """
         This method takes a part, retrieves the payload, and preps that payload by decoding it and removing unnecessary
         newlines.
 
-        :param log: logger
         :param part: html or text message
         :return: body (string)
         """
@@ -227,8 +224,8 @@ class EmailParser(object):
                 part.get_payload(decode=True).decode("utf-8").replace("\n", "")
             )  # decode
         except Exception as ex:
-            log.debug(ex)
-            log.debug(
+            self.logger.debug(ex)
+            self.logger.debug(
                 "Failed to parse email as UTF-8, attempting to detwingle first before retrying parse"
             )
             body = (
@@ -239,12 +236,11 @@ class EmailParser(object):
         remove_microsoft_newlines(body)
         return body
 
-    def attachments(self, mail, logger, mailbox_id):
+    def attachments(self, mail, mailbox_id):
         """
         Decode attachments from the raw message
 
         :param mail: Raw message to decode
-        :param logger: logger
         :param mailbox_id: Mailbox ID that this message was received from
         :return:
         file_attachments - List of IconFiles
@@ -264,7 +260,7 @@ class EmailParser(object):
             count += 1
 
             content_type = part.get_content_maintype()
-            logger.info(f"Content main type: {content_type}")
+            self.logger.info(f"Content main type: {content_type}")
 
             if not content_type or content_type == "multipart":
                 continue
@@ -275,16 +271,16 @@ class EmailParser(object):
 
             if part.get_content_maintype() == "message":
                 if part.is_multipart():
-                    logger.info("Parsing attached multipart email")
+                    self.logger.info("Parsing attached multipart email")
                     content = part.get_payload()
                     # EMAILCEPTION
                     for message in content:
-                        new_message = self.format_result(logger, message, mailbox_id)
+                        new_message = self.format_result(message, mailbox_id)
                         email_attachments.append(new_message)
                 else:
-                    logger.info("Parsing attached email")
+                    self.logger.info("Parsing attached email")
                     content = part.get_payload()
-                    new_email = self.make_email_from_raw(logger, content, mailbox_id)
+                    new_email = self.make_email_from_raw(content, mailbox_id)
                     email_attachments.append(new_email)
                 continue
 
@@ -308,7 +304,7 @@ class EmailParser(object):
 
             # If we still don't have a file name, skip this part
             if not filename:
-                logger.info(
+                self.logger.info(
                     "Could not find filename of attachment, ignoring attachment."
                 )
                 continue
@@ -320,7 +316,7 @@ class EmailParser(object):
             # If not a string
             if not isinstance(content, str):
                 content = part.as_string()
-                logger.debug("Content not string")
+                self.logger.debug("Content not string")
 
             content = content.replace("\r\n", "")
 
@@ -341,12 +337,12 @@ class EmailParser(object):
             if icon_file.name.endswith(".eml"):
                 try:
                     converted_file = self.convert_icon_file_to_email(
-                        logger, icon_file, mailbox_id
+                        icon_file, mailbox_id
                     )
                     email_attachments.append(converted_file)
                     continue
                 except Exception:  # Conversion failed, attach it as a file.
-                    logger.info(
+                    self.logger.info(
                         f"Conversion of {icon_file.name} failed, attaching as file"
                     )
 
@@ -358,9 +354,7 @@ class EmailParser(object):
 
         return file_attachments, email_attachments, orphaned_text
 
-    def convert_icon_file_to_email(
-        self, logger: Logger, icon_file: IconFile, mailbox_id: str
-    ):
+    def convert_icon_file_to_email(self, icon_file: IconFile, mailbox_id: str):
         """
         This will take an icon file and try to convert it's contents to a IconEmail
 
@@ -370,10 +364,12 @@ class EmailParser(object):
         :return: IconEmail
         """
 
-        logger.info(f"{icon_file.name} appears to be an .eml. Attempting to convert")
+        self.logger.info(
+            f"{icon_file.name} appears to be an .eml. Attempting to convert"
+        )
         decoded_bytes = b64decode(icon_file.content)
         converted_email = self.make_email_from_raw(
-            logger, email.message_from_string(decoded_bytes.decode()), mailbox_id
+            email.message_from_string(decoded_bytes.decode()), mailbox_id
         )
-        logger.info(f"Conversion of {icon_file.name} succeeded")
+        self.logger.info(f"Conversion of {icon_file.name} succeeded")
         return converted_email

@@ -2,7 +2,7 @@ import eml_parser.email_cleaner as EmailCleaner
 from unittest import TestCase
 
 
-class test_email_cleaner(TestCase):
+class TestEmailCleaner(TestCase):
     def setUp(self) -> None:
         pass
 
