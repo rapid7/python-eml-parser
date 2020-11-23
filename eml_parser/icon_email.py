@@ -34,8 +34,7 @@ class IconEmail(object):
         This is used by the make serialization class to help convert odd attachments to JSON.
 
         :param obj: Object - Anything json.dumps can't handle will be passed as this
-        :return:
-        A serializable dictionary
+        :return: A serializable dictionary
         """
         try:
             if isinstance(obj, bytes):
