@@ -1,7 +1,7 @@
 import hashlib
 import json
 
-import komand.helper as helper
+import eml_parser.helper as helper
 
 
 class Indicators(object):

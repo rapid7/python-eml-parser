@@ -1,6 +1,6 @@
 import json
 
-import komand.helper as helper
+import eml_parser.helper as helper
 from eml_parser.indicators import Indicators
 
 
