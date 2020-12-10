@@ -33,6 +33,7 @@ class TestIconEmail(TestCase):
         self.assertEqual(email.is_read, None)
         self.assertEqual(email.sender, None)
         self.assertEqual(email.subject, None)
+        self.assertEqual(email.indicators, None)
 
     def test_create_email(self):
         params = {
@@ -58,6 +59,14 @@ class TestIconEmail(TestCase):
         self.assertEqual(email.date_received, "Today")
         self.assertEqual(email.headers, [{"header1": "value1"}])
         self.assertEqual(email.has_attachments, False)
+        self.assertEqual(email.indicators.md5, "97214f63224bc1e9cc4da377aadce7c7")
+        self.assertEqual(
+            email.indicators.sha1, "482cb0cfcbed6740a2bcb659c9ccc22a4d27b369"
+        )
+        self.assertEqual(
+            email.indicators.sha256,
+            "2263d8dd95ccfe1ad45d732c6eaaf59b3345e6647331605cb15aae52002dff75",
+        )
         self.assertEqual(email.attached_files, [])
         self.assertEqual(email.attached_emails, [])
         self.assertEqual(email.flattened_attached_emails, [])
@@ -170,7 +179,19 @@ class TestIconEmail(TestCase):
         self.assertEqual(actual, "c29tZV9ieXRlcw==")
 
         actual = icon_email.json_handler(IconFile())
-        self.assertEqual(actual, {"name": "", "content": "", "content_type": ""})
+        self.assertEqual(
+            actual,
+            {
+                "name": "",
+                "content": "",
+                "content_type": "",
+                "indicators": {
+                    "md5": "d41d8cd98f00b204e9800998ecf8427e",
+                    "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+                    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                },
+            },
+        )
 
         bad_test_object = dict(int_list=[1, 2, 3])
 
