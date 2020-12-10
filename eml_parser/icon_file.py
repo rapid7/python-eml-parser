@@ -1,18 +1,22 @@
 import json
 
-import komand.helper as helper
+import eml_parser.helper as helper
+from eml_parser.indicators import Indicators
 
 
 class IconFile(object):
-    def __init__(self, file_name="", content_type="", content=""):
+    def __init__(self, file_name: str = "", content_type: str = "", content: str = ""):
         self.name = file_name
         self.content = content
         self.content_type = content_type
+        self.indicators = Indicators(content)
 
     # May not need this
     def make_serializable(self) -> dict:
         """Converts the File to a JSON-serializable, cleaned dict"""
-        message_json = json.dumps(self.__dict__, sort_keys=True, indent=4)
+        message_json = json.dumps(
+            self, default=lambda o: o.__dict__, sort_keys=True, indent=4
+        )
         message_json = json.loads(message_json, strict=False)
 
         message_json_clean = helper.clean(message_json)

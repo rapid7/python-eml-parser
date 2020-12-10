@@ -11,6 +11,7 @@ from eml_parser.email_cleaner import get_emails_as_list, get_emails_as_string
 from eml_parser.icon_email import IconEmail
 from eml_parser.icon_file import IconFile
 from eml_parser.microsoft_newline_cleaner import remove_microsoft_newlines
+from eml_parser.indicators import Indicators
 
 
 class EmailParser(object):
@@ -58,6 +59,7 @@ class EmailParser(object):
         result.recipients = self.get_recipients(msg)
         result.body = self.get_body(msg)
         result.headers = self.get_headers(msg)
+        result.indicators = Indicators(result.body)
 
         (
             result.attached_files,

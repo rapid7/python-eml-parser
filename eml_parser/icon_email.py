@@ -4,6 +4,7 @@ import json
 
 from eml_parser.exceptions import EmailParserException
 from eml_parser.helper import clean
+from eml_parser.indicators import Indicators
 
 
 class IconEmail(object):
@@ -19,6 +20,7 @@ class IconEmail(object):
         self.sender = kwargs.get("sender", None)
         self.subject = kwargs.get("subject", None)
         self.body = kwargs.get("body", None)
+        self.indicators = Indicators(self.body) if self.body else None
         self.categories = kwargs.get("categories", None)
         self.date_received = kwargs.get("date_received", None)
         self.headers = kwargs.get("headers", None)
@@ -45,6 +47,8 @@ class IconEmail(object):
             for key in list(dict_obj.keys()):
                 if isinstance(dict_obj.get(key), datetime.datetime):
                     dict_obj[key] = dict_obj.get(key).isoformat()
+                if isinstance(dict_obj.get(key), Indicators):
+                    dict_obj[key] = dict_obj.get(key).make_serializable()
 
             return dict_obj
 
