@@ -1,6 +1,6 @@
 {
-    "@example.com": "https://example.com.com/v1.0/$metadata#users('jschipp%example.com.com')/mailFolders",
-    "@example.com": "https://example.com.com/v1.0/5c824599-dc8c-4d31-96fb-3b886d4f8f10/users/user@example.com/mailFolders?$skip=10",
+    "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#users('jschipp%40komanddev.onmicrosoft.com')/mailFolders",
+    "@odata.nextLink": "https://graph.microsoft.com/v1.0/5c824599-dc8c-4d31-96fb-3b886d4f8f10/users/jschipp@komanddev.onmicrosoft.com/mailFolders?$skip=10",
     "value": [
         {
             "id": "AAMkADI3Mzc1ZTg3LTIzYWEtNDNmNi1hZDQ5LTBiMjAzYzA3ZThhYwAuAAAAAAAxDvrPc8q6SqGLTJ9iB-SGAQC8UQDN7ObVSLWQuxHJ-dDTAAD7IBHHAAA=",

