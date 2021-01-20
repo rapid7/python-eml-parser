@@ -96,7 +96,7 @@ class TestIconEmail(TestCase):
 
         # This is a LOT of work to make a complex mocked object
         # At this point, before flattening...all sub emails and files should be
-        # IconFiles and IconEmails respectively...thus this mass of garbage
+        # IconFiles and IconEmails respectively...thus this mass of loopiness
         for i, attached_file in enumerate(icon_email.attached_files):
             new_file = IconFile(**attached_file)
             icon_email.attached_files[i] = new_file
