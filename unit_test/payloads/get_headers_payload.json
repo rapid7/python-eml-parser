@@ -1,5 +1,5 @@
 {
-    "@example.com": "https://example.com.com/v1.0/$metadata#users('jschipp%example.com.com')/messages(internetMessageHeaders)/$entity",
+    "@example.com": "https://example.com.com/v1.0/$metadata#users('test_user%example.com.com')/messages(internetMessageHeaders)/$entity",
     "@example.com": "W/\"CQAAABYAAAC8UQDN7ObVSLWQuxHJ/dDTAAE33Pax\"",
     "id": "AAMkADI3Mzc1ZTg3LTIzYWEtNDNmNi1hZDQ5LTBiMjAzYzA3ZThhYwBGAAAAAAAxDvrPc8q6SqGLTJ9iB-SGBwC8UQDN7ObVSLWQuxHJ-dDTAAAAAAEMAAC8UQDN7ObVSLWQuxHJ-dDTAAE4BRp5AAA=",
     "internetMessageHeaders": [

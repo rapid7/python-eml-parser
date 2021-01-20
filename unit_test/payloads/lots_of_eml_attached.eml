@@ -68,7 +68,7 @@ Received: from example.com12.example.com.com
  ([fe80::f45d:5fdd:7668:47a8]) by example.com12.example.com.com
  ([fe80::f45d:5fdd:7668:47a8%6]) with mapi id 15.20.2157.022; Fri, 16 Aug 2019
  16:22:20 +0000
-From: Jon Schipp <user@example.com>
+From: Example User <user@example.com>
 To: "user@example.com" <user@example.com>
 Subject: Fw: something haness 
 Thread-Topic: something haness 

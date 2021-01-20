@@ -1,5 +1,5 @@
 {
-    "@example.com": "https://example.com.com/v1.0/$metadata#users('jschipp%example.com.com')/mailFolders",
+    "@example.com": "https://example.com.com/v1.0/$metadata#users('test_user%example.com.com')/mailFolders",
     "@example.com": "https://example.com.com/v1.0/5c824599-dc8c-4d31-96fb-3b886d4f8f10/users/user@example.com/mailFolders?$skip=10",
     "value": [
         {
@@ -68,7 +68,7 @@
         },
         {
             "id": "AAMkADI3Mzc1ZTg3LTIzYWEtNDNmNi1hZDQ5LTBiMjAzYzA3ZThhYwAuAAAAAAAxDvrPc8q6SqGLTJ9iB-SGAQC8UQDN7ObVSLWQuxHJ-dDTAAAUtfMmAAA=",
-            "displayName": "Mike-Test",
+            "displayName": "User-Test",
             "parentFolderId": "AQMkADI3Mzc1ZTg3LTIzYWEALTQzZjYtYWQ0OS0wYjIwM2MwN2U4YWMALgAAAzEO_s9zyrpKoYtMn2IH9IYBALxRAM3s5tVItZC7Ecn90NMAAAIBCAAAAA==",
             "childFolderCount": 0,
             "unreadItemCount": 2,

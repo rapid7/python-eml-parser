@@ -58,8 +58,8 @@ Received: from example.com20.example.com.com
  ([fe80::4de1:ae2d:34c4:6147]) by example.com20.example.com.com
  ([fe80::4de1:ae2d:34c4:6147%9]) with mapi id 15.20.2157.015; Thu, 8 Aug 2019
  20:16:38 +0000
-From: Joey McAdams <user@example.com>
-To: Joey McAdams <user@example.com>
+From: Example User <user@example.com>
+To: Example User <user@example.com>
 Subject: Text Attachment
 Thread-Topic: Text Attachment
 Thread-Index: AQHVTiYoiVRoTTCzc06tXwyqh2UM9w==

@@ -136,7 +136,7 @@ class TestIconEmail(TestCase):
         self.assertEqual(len(icon_email.attached_emails), 2)
         self.assertEqual(len(icon_email.attached_files), 1)
 
-        self.assertEqual(icon_email.attached_files[0].name, "olleg.png")
+        self.assertEqual(icon_email.attached_files[0].name, "example.com")
 
         self.assertEqual(icon_email.attached_emails[0].subject, "Level 2 subject")
         self.assertEqual(icon_email.attached_emails[1].subject, "Pic attached")
@@ -150,7 +150,7 @@ class TestIconEmail(TestCase):
         self.assertEqual(attached_email1.subject, "Pic attached")
 
         attached_file0 = icon_email.flattened_attached_files[0]
-        self.assertEqual(attached_file0.name, "olleg.png")
+        self.assertEqual(attached_file0.name, "example.com")
 
     def test_flatten_real_data(self):
         email_with_nested_attachments_text = read_file_to_string(

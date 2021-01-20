@@ -1,5 +1,5 @@
 {
-    "@example.com": "https://example.com.com/v1.0/$metadata#users('jschipp%example.com.com')/messages",
+    "@example.com": "https://example.com.com/v1.0/$metadata#users('test_user%example.com.com')/messages",
     "@example.com": "https://example.com.com/v1.0/5c824599-dc8c-4d31-96fb-3b886d4f8f10/users/user@example.com/messages?$orderby=receivedDateTime+DESC&$skip=12",
     "value": [
          {
@@ -30,20 +30,20 @@
             },
             "sender": {
                 "emailAddress": {
-                    "name": "Joey McAdams",
+                    "name": "Example User",
                     "address": "user@example.com"
                 }
             },
             "from": {
                 "emailAddress": {
-                    "name": "Joey McAdams",
+                    "name": "Example User",
                     "address": "user@example.com"
                 }
             },
             "toRecipients": [
                 {
                     "emailAddress": {
-                        "name": "Jon Schipp",
+                        "name": "Example User",
                         "address": "user@example.com"
                     }
                 }

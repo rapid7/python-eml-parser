@@ -58,8 +58,8 @@ Received: from example.com20.example.com.com
  ([fe80::4de1:ae2d:34c4:6147]) by example.com20.example.com.com
  ([fe80::4de1:ae2d:34c4:6147%9]) with mapi id 15.20.2136.018; Tue, 6 Aug 2019
  19:19:40 +0000
-From: Joey McAdams <user@example.com>
-To: Joey McAdams <user@example.com>
+From: Example User <user@example.com>
+To: Example User <user@example.com>
 Subject: Attachment
 Thread-Topic: Attachment
 Thread-Index: AQHVTIvQsoEVCX7R20iFEqq4X+83iA==
@@ -229,8 +229,8 @@ Received: from example.com20.example.com.com
  ([fe80::4de1:ae2d:34c4:6147]) by example.com20.example.com.com
  ([fe80::4de1:ae2d:34c4:6147%9]) with mapi id 15.20.2136.018; Tue, 6 Aug 2019
  19:18:20 +0000
-From: Joey McAdams <user@example.com>
-To: Joey McAdams <user@example.com>
+From: Example User <user@example.com>
+To: Example User <user@example.com>
 Subject: Test Message Attachment Subject
 Thread-Topic: Test Message Attachment Subject
 Thread-Index: AQHVTIuUgvRSRNwsr0WrvPbE/ijPs6bufjpL

@@ -45,8 +45,8 @@ Received: from example.com20.example.com.com
  ([fe80::4de1:ae2d:34c4:6147]) by example.com20.example.com.com
  ([fe80::4de1:ae2d:34c4:6147%9]) with mapi id 15.20.2157.015; Thu, 8 Aug 2019
  17:29:14 +0000
-From: Joey McAdams <user@example.com>
-To: Joey McAdams <user@example.com>
+From: Example User <user@example.com>
+To: Example User <user@example.com>
 Subject: level 3
 Thread-Topic: level 3
 Thread-Index: AQHVTg7JWT6GAkWByUuIa1+Rxk/30Q==
@@ -208,8 +208,8 @@ Received: from example.com20.example.com.com
  ([fe80::4de1:ae2d:34c4:6147]) by example.com20.example.com.com
  ([fe80::4de1:ae2d:34c4:6147%9]) with mapi id 15.20.2157.015; Thu, 8 Aug 2019
  17:28:43 +0000
-From: Joey McAdams <user@example.com>
-To: Joey McAdams <user@example.com>
+From: Example User <user@example.com>
+To: Example User <user@example.com>
 Subject: Level 2 subject
 Thread-Topic: Level 2 subject
 Thread-Index: AQHVTg62IMjb3by5QEGeHYHY/dkKKA==
@@ -366,8 +366,8 @@ Received: from example.com20.example.com.com
  ([fe80::4de1:ae2d:34c4:6147]) by example.com20.example.com.com
  ([fe80::4de1:ae2d:34c4:6147%9]) with mapi id 15.20.2157.015; Thu, 8 Aug 2019
  17:27:49 +0000
-From: Joey McAdams <user@example.com>
-To: Joey McAdams <user@example.com>
+From: Example User <user@example.com>
+To: Example User <user@example.com>
 Subject: Pic attached
 Thread-Topic: Pic attached
 Thread-Index: AQHVTg52NJfP5EwSFU+ypXvNM2O6vw==

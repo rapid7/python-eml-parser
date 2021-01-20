@@ -14,7 +14,7 @@ GET_RAW_ATTACHMENT_PAYLOAD4 = f"{CURRENT_DIR}/payloads/basic_email_attachment.tx
 GET_DOUBLE_ATTACHED_WITH_IMAGES = (
     f"{CURRENT_DIR}/payloads/double_attached_with_images.txt"
 )
-GET_PAYLOAD_FROM_JARED = f"{CURRENT_DIR}/payloads/payload_from_jared.txt"
+GET_PAYLOAD_EVIL_EMAIL = f"{CURRENT_DIR}/payloads/evil_email.txt"
 GET_BASIC_EMAIL = f"{CURRENT_DIR}/payloads/basic_email.txt"
 GET_EML_WITH_EML_ATTACHED = f"{CURRENT_DIR}/payloads/lots_of_eml_attached.eml"
 GET_ENCODED_EML = f"{CURRENT_DIR}/payloads/encoded_ms_eml.txt"
@@ -49,8 +49,8 @@ class TestEmailParser(TestCase):
         self.assertEqual(email.date_received, "Thu, 8 Aug 2019 17:29:14 +0000")
         self.assertEqual(len(email.headers), 73)
         self.assertEqual(email.is_read, False)
-        self.assertEqual(email.recipients, ["chakan2@hotmail.com"])
-        self.assertEqual(email.sender, "chakan2@hotmail.com")
+        self.assertEqual(email.recipients, ["user@example.com"])
+        self.assertEqual(email.sender, "user@example.com")
         self.assertTrue("level 3" in email.body)
         self.assertEqual(email.indicators.md5, "a35d0f590b9e2aa1a6afa68880836777")
         self.assertEqual(
@@ -63,8 +63,8 @@ class TestEmailParser(TestCase):
 
         attached_email = email.attached_emails[0]
         self.assertEqual(attached_email.subject, "Level 2 subject")
-        self.assertEqual(attached_email.sender, "chakan2@hotmail.com")
-        self.assertEqual(attached_email.recipients, ["chakan2@hotmail.com"])
+        self.assertEqual(attached_email.sender, "user@example.com")
+        self.assertEqual(attached_email.recipients, ["user@example.com"])
         self.assertTrue("Level 2 body" in attached_email.body)
         self.assertEqual(
             attached_email.indicators.md5, "224662a660009095b8eb905a9c0d6964"
@@ -83,7 +83,7 @@ class TestEmailParser(TestCase):
         attached_file = email.attached_files[0]
         self.assertEqual(attached_file.content[:5], "iVBOR")
         self.assertEqual(attached_file.content_type, "image/png")
-        self.assertEqual(attached_file.name, "olleg.png")
+        self.assertEqual(attached_file.name, "example.com")
         self.assertEqual(
             attached_file.indicators.md5, "539cefc749ed1d78e3c821307f7c1b0a"
         )
@@ -133,8 +133,8 @@ class TestEmailParser(TestCase):
         self.assertEqual(email.date_received, "Tue, 6 Aug 2019 19:19:40 +0000")
         self.assertEqual(len(email.headers), 75)
         self.assertEqual(email.is_read, False)
-        self.assertEqual(email.recipients, ["chakan2@hotmail.com"])
-        self.assertEqual(email.sender, "chakan2@hotmail.com")
+        self.assertEqual(email.recipients, ["user@example.com"])
+        self.assertEqual(email.sender, "user@example.com")
 
     def test_parse_from_raw3(self):
         raw_email = read_file_to_string(GET_RAW_ATTACHMENT_PAYLOAD3)
@@ -152,14 +152,14 @@ class TestEmailParser(TestCase):
         self.assertEqual(email.date_received, "Thu, 8 Aug 2019 20:16:38 +0000")
         self.assertEqual(len(email.headers), 76)
         self.assertEqual(email.is_read, False)
-        self.assertEqual(email.recipients, ["chakan2@hotmail.com"])
-        self.assertEqual(email.sender, "chakan2@hotmail.com")
+        self.assertEqual(email.recipients, ["user@example.com"])
+        self.assertEqual(email.sender, "user@example.com")
 
         attachment = email.attached_files[0]
         self.assertEqual(attachment.content_type, "text/plain")
         expected_content = "VGhpcyBpcyBhIHRlc3QgYXR0YWNobWVudA0KDQpJdCBoYXMgc29tZSB0ZXh0IGluIGl0LiANCg0KYWFkcm9pZC5uZXQNCg=="
         self.assertEqual(attachment.content, expected_content)
-        self.assertEqual(attachment.name, "test_attachment.txt")
+        self.assertEqual(attachment.name, "test_example.com")
         self.assertEqual(attachment.indicators.md5, "593aa3b46e3902094303b7ef1349d9ff")
         self.assertEqual(
             attachment.indicators.sha1, "d1181c07e87d73803bf5786b37e8f03a176290a2"
@@ -203,11 +203,11 @@ Nothing here, just this text</div>
         self.assertEqual(email.date_received, "Thu, 8 Aug 2019 21:19:37 +0000")
         self.assertEqual(len(email.headers), 76)
         self.assertEqual(email.is_read, False)
-        self.assertEqual(email.recipients, ["chakan2@hotmail.com"])
-        self.assertEqual(email.sender, "chakan2@hotmail.com")
+        self.assertEqual(email.recipients, ["user@example.com"])
+        self.assertEqual(email.sender, "user@example.com")
 
-    def test_parse_from_raw_jared(self):
-        raw_email = read_file_to_string(GET_PAYLOAD_FROM_JARED)
+    def test_parse_from_raw_evil_email(self):
+        raw_email = read_file_to_string(GET_PAYLOAD_EVIL_EMAIL)
         email_parser = EmailParser(self.log)
         email = email_parser.make_email_from_raw(
             message_from_string(raw_email), TEST_MAILBOX_ID
@@ -224,18 +224,18 @@ Nothing here, just this text</div>
         self.assertEqual(
             email.recipients,
             [
-                "d444e537.acuitybrandsinc.onmicrosoft.com@amer.teams.ms",
-                "d444e537.acuitybrandsinc.onmicrosoft.com@amer.teams.ms",
+                "user@example.com",
+                "user@example.com",
             ],
         )
-        self.assertEqual(email.sender, "incidentresponse@acuitybrands.com")
-        self.assertEqual(email.indicators.md5, "ada46f89f4b41661eba9a2ab1d9d9a73")
+        self.assertEqual(email.sender, "user@example.com")
+        self.assertEqual(email.indicators.md5, "79ddb7b267df775fc97e7814225578c1")
         self.assertEqual(
-            email.indicators.sha1, "135a144cd2e71563dcbb96b2ca9cbfea66174f47"
+            email.indicators.sha1, "ccad96d1e38a6e073a7cbb2939809cdb7a394681"
         )
         self.assertEqual(
             email.indicators.sha256,
-            "99a60f4d08ad652b7de94333528073c6c277420ae27d3cee4cfcd2aa641bf8cd",
+            "09143b2be1363b0b7e681e2dd4706446d1389fbece41c1ddfa5b2f7cbd006d15",
         )
 
     def test_parse_google_link_garbled(self):
@@ -246,7 +246,7 @@ Nothing here, just this text</div>
         )
 
         self.assertTrue(
-            '<a href="http://aadroid.net/" rel="nofollow" target="_blank">'
+            '<a href="http://aexample.com/" rel="nofollow" target="_blank">'
             in email.body
         )
 
@@ -267,15 +267,15 @@ Nothing here, just this text</div>
         )
 
         self.assertEqual(email.account, TEST_MAILBOX_ID)
-        self.assertEqual(email.subject, "Fw: Joey Test")
+        self.assertEqual(email.subject, "Fw: User Test")
         self.assertEqual(len(email.attached_emails), 2)
         self.assertEqual(len(email.attached_files), 2)
 
         self.assertEqual(email.date_received, "Tue, 13 Aug 2019 20:05:12 +0000")
         self.assertEqual(len(email.headers), 53)
         self.assertEqual(email.is_read, False)
-        self.assertEqual(email.recipients, ["joey_mcadams@rapid7.com"])
-        self.assertEqual(email.sender, "jschipp@komanddev.onmicrosoft.com")
+        self.assertEqual(email.recipients, ["user@example.com"])
+        self.assertEqual(email.sender, "user@example.com")
 
         email1 = email.attached_emails[0]
         email2 = email.attached_emails[1]
@@ -356,11 +356,11 @@ Nothing here, just this text</div>
         test_email._payload[0]._payload[0]._payload = (
             test_email._payload[0]
             ._payload[0]
-            ._payload.replace("chakan2@hotmail.com", 'u"é')
+            ._payload.replace("user@example.com", 'u"é')
         )
         actual_body = email_parser.decode_body(test_email._payload[0]._payload[0])
 
-        expected_body = """________________________________From: Jon Schipp <jschipp@komanddev.onmicrosoft.com>Sent: Tuesday, August 13, 2019 3:56 PMTo: Jon Schipp <jschipp@komanddev.onmicrosoft.com>Subject: Joey Test________________________________From: Joey McAdams <u">Sent: Tuesday, August 13, 2019 10:55 AMTo: Jon Schipp <jschipp@komanddev.onmicrosoft.com>Subject: Fw: Short Test Email________________________________From: Joey McAdamsSent: Tuesday, August 13, 2019 9:30 AMTo: jschipp@komanddev.onmicrosoft.com <jschipp@komanddev.onmicrosoft.com>Subject: Short Test Email"""
+        expected_body = """________________________________From: Example User <u">Sent: Tuesday, August 13, 2019 3:56 PMTo: Example User <u">Subject: User Test________________________________From: Example User <u">Sent: Tuesday, August 13, 2019 10:55 AMTo: Example User <u">Subject: Fw: Short Test Email________________________________From: Example UserSent: Tuesday, August 13, 2019 9:30 AMTo: u" <u">Subject: Short Test Email"""
         self.assertEqual(expected_body, actual_body)
 
     def test_decode_multipart_body_html_unicode(self):
@@ -381,8 +381,8 @@ Nothing here, just this text</div>
             message_from_string(raw_email), TEST_MAILBOX_ID
         )
 
-        self.assertEqual(len(email.attached_emails), 6)
-        self.assertEqual(len(email.attached_files), 0)
+        self.assertEqual(len(email.attached_emails), 4)
+        self.assertEqual(len(email.attached_files), 2)
 
     def test_decode_quoted_printable(self):
         raw_email = read_file_to_string(f"{CURRENT_DIR}/payloads/quoted_printable.eml")
@@ -391,5 +391,5 @@ Nothing here, just this text</div>
             message_from_string(raw_email), TEST_MAILBOX_ID
         )
 
-        expected = '<a href="http://aadroid.net" title="http://protect-us.mimecast.com/s/414KCXDXZofXVRNRZT6ai-n?domain=aadroid.net">http://aadroid.net</a><o:p></o:p></p>'
+        expected = '<p class="MsoNormal"><a href="http://example.com" title="http://proteexample.com.com/s/414KCXDXZofXVRNRZT6ai-n?domain=example.com">http://aexample.com</a><o:p></o:p></p>'
         self.assertTrue(expected in email.body)
