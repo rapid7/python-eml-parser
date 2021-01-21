@@ -10,9 +10,6 @@ some weird results like example@example.example.com
 That's OK. It shouldn't break the structure of the email you'd like to test. 
 """
 
-
-
-
 _regex_email = re.compile(r"[\w\.-]+@[\w\.-]+\.\w+")
 _regex_domain = re.compile(r"[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9]\.[a-zA-Z]{2,}")
 _regex_ip = re.compile(r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}")

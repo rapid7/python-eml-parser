@@ -30,7 +30,7 @@ ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=example.com; s=ar
          2ga+rv7vvjev+WSYP48Zc63LzpQAXgEc0CEMgyyTh5mUR2zFOly1iUEoWTGGEmEaIeeF
          dTAg==
 ARC-Authentication-Results: i=2; mx.example.com;
-       dkim=pass header.i=@example.com.com header.s=selector1-komanddev-onmicrosoft-com header.b=QrDN9zQZ;
+       dkim=pass header.i=@example.com.com header.s=selector1-exampleorg-onmicrosoft-com header.b=QrDN9zQZ;
        arc=pass (i=1 spf=pass spfdomain=example.com.com dkim=pass dkdomain=example.com.com dmarc=pass fromdomain=example.com.com);
        spf=pass (example.com: domain of user@example.com designates 198.162.1.1 as permitted sender) example.com=user@example.com
 Return-Path: <user@example.com>
@@ -41,7 +41,7 @@ Received: from example.com.example.com.com (example.com.example.com.com. [198.16
         Fri, 16 Aug 2019 09:22:23 -0700 (PDT)
 Received-SPF: pass (example.com: domain of user@example.com designates 198.162.1.1 as permitted sender) client-ip=198.162.1.1;
 Authentication-Results: mx.example.com;
-       dkim=pass header.i=@example.com.com header.s=selector1-komanddev-onmicrosoft-com header.b=QrDN9zQZ;
+       dkim=pass header.i=@example.com.com header.s=selector1-exampleorg-onmicrosoft-com header.b=QrDN9zQZ;
        arc=pass (i=1 spf=pass spfdomain=example.com.com dkim=pass dkdomain=example.com.com dmarc=pass fromdomain=example.com.com);
        spf=pass (example.com: domain of user@example.com designates 198.162.1.1 as permitted sender) example.com=user@example.com
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=example.com; cv=none;
@@ -56,7 +56,7 @@ ARC-Authentication-Results: i=1; mx.example.com 1; spf=pass
  example.com=example.com.com; dkim=pass
  header.d=example.com.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=example.com.com; s=selector1-komanddev-onmicrosoft-com;
+ d=example.com.com; s=selector1-exampleorg-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
  bh=7F7hkKIpPSr6j1E4pXpkh9mM5gXQENVX6+Cex5aES+A=;
  b=QrDN9zQZPoA3tNZGCZuMVSTk8f0wsWUxavicv/qdNmfk5vrf8i8/GFWg4aydAqUZADocgcH/BdCqisoKoZhWM+pyhXxSWHa8eKo9mwHlDXbDk7vpKN3qjOTefZtnZrMKIkvYr74JJLgVFN/Hjwf6NGMpmhJ1pR4+5KEDlWtFaco=
