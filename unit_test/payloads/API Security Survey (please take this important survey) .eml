@@ -43,7 +43,7 @@ X-YMail-OSG: example.comexample.com.mbi_example.com5PbPXC4
  je6ToVRF2UTUE_mQ-
 Received: from example.com.example.com1.example.com by example.com.example.com1.example.com with HTTP; Thu, 18 Jul 2019 12:24:38 +0000
 Date: Thu, 18 Jul 2019 12:24:36 +0000 (UTC)
-From: sydney Coffaro <user@example.com>
+From: Example User <user@example.com>
 To: "user@example.com" <user@example.com>
 Message-ID: <user@example.com>
 Subject: API Security Survey (please take this important survey)"
@@ -91,7 +91,7 @@ X-Microsoft-Antispam-Message-Info:
 MIME-Version: 1.0
 
 ------=_Part_3763761_1096964018.1563452676187
-Content-Type: multipart/alternative; 
+Content-Type: multipart/alternative;
 	boundary="----=_Part_3763760_1743927376.1563452676053"
 
 ------=_Part_3763760_1743927376.1563452676053
