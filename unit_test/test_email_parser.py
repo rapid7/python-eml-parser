@@ -229,13 +229,13 @@ Nothing here, just this text</div>
             ],
         )
         self.assertEqual(email.sender, "user@example.com")
-        self.assertEqual(email.indicators.md5, "79ddb7b267df775fc97e7814225578c1")
+        self.assertEqual(email.indicators.md5, "1f224c7839c3f7d825864f322a6bb57a")
         self.assertEqual(
-            email.indicators.sha1, "ccad96d1e38a6e073a7cbb2939809cdb7a394681"
+            email.indicators.sha1, "83dfe966303673168c344c286bb16d2801d1919f"
         )
         self.assertEqual(
             email.indicators.sha256,
-            "09143b2be1363b0b7e681e2dd4706446d1389fbece41c1ddfa5b2f7cbd006d15",
+            "251ac384891e16088f0be97cf6a872559fd287f1e163e4b83f6b49b8ad6862b8",
         )
 
     def test_parse_google_link_garbled(self):

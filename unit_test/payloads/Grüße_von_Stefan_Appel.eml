@@ -35,7 +35,7 @@ Received: from example.com.com (198.162.1.1) by
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384) id
  198.162.1.1 via Frontend Transport; Wed, 21 Feb 2018 14:03:55 +0000
 From: "user@example.com" <user@example.com>
-To: Michael Gansert <user@example.com>
+To: Example User <user@example.com>
 Subject: =?utf-8?B?R3LDvMOfZSB2b24gU3RlZmFuIEFwcGVs?=
 Thread-Topic: =?utf-8?B?R3LDvMOfZSB2b24gU3RlZmFuIEFwcGVs?=
 Thread-Index: AQHTqxz62jgiBZcfKUCfj2jAQdJAyQ==

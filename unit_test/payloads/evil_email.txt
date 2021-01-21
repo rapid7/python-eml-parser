@@ -574,7 +574,7 @@ Received: from example.com22.example.com.com
  ([fe80::4d31:b07c:e630:991%4]) with mapi id 15.20.2115.005; Wed, 31 Jul 20=
 19
  19:52:28 +0000
-From: Jerry Manastryskyj <user@example.com>
+From: Example User <user@example.com>
 To: "user@example.com" <user@example.com>
 Subject: MESINC
 Thread-Topic: MESINC
@@ -1052,7 +1052,7 @@ example.com.example.com</font>
 .20.2115.005; Wed, 31 Jul 2019</font>
 <br>
 <font face=3D"Cambria">&nbsp;19:52:28 &#43;0000</font> <br>
-<font face=3D"Cambria">From: Jerry Manastryskyj &lt;user@example.com&gt;</fo=
+<font face=3D"Cambria">From: Example User &lt;user@example.com&gt;</fo=
 nt> <br>
 <font face=3D"Cambria">To: &quot;user@example.com&quot; &lt;mailsu=
 user@example.com&gt;</font>
@@ -1420,7 +1420,7 @@ Received: from example.com22.example.com.com
  ([fe80::4d31:b07c:e630:991]) by example.com22.example.com.com
  ([fe80::4d31:b07c:e630:991%4]) with mapi id 15.20.2115.005; Wed, 31 Jul 2019
  19:52:28 +0000
-From: Jerry Manastryskyj <user@example.com>
+From: Example User <user@example.com>
 To: "user@example.com" <user@example.com>
 Subject: MESINC
 Thread-Topic: MESINC
@@ -2118,7 +2118,7 @@ Content-ID: <user@example.com>
 User-Agent: Microsoft-MacOutlook/10.1a.0.190609
 Date: Wed, 31 Jul 2019 23:39:38 +0400
 Subject: MESINC
-From: Jerry Manastryskyj <user@example.com>
+From: Example User <user@example.com>
 To: <user@example.com>
 Message-ID: <user@example.com>
 Thread-Topic: MESINC
@@ -2141,7 +2141,7 @@ Content-transfer-encoding: quoted-printable
 
 =20
 
-Jerry Manastyrskyj (user@example.com) has sent you a file:=20
+Example User (user@example.com) has sent you a file:=20
 MESINC example.com View=20
 View  File=20
 =20
@@ -2251,8 +2251,8 @@ p></p>
 <tr>
 <td colspan=3D"3" style=3D"padding:0cm 0cm 18.75pt 0cm">
 <p class=3D"MsoNormal" style=3D"line-height:16.5pt"><span style=3D"font-siz=
-e:13.5pt;font-family:Helvetica;color:#002947">Jerry Manastyrskyj (jman@mesi=
-nc.net) has sent you a file:<o:p></o:p></span></p>
+e:13.5pt;font-family:Helvetica;color:#002947">Example User (user@exam=
+ple.com) has sent you a file:<o:p></o:p></span></p>
 </td>
 </tr>
 <tr>
