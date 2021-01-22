@@ -42,5 +42,3 @@ be on your way to contributing!
 ## Changelog
 
 * 1.0.0 - Initial release
-
-PyPi.org link: [https://pypi.org/project/insightconnect-integrations-validators/](https://pypi.org/project/insightconnect-integrations-validators/)
