@@ -1,4 +1,4 @@
-Delivered-To: jmcadams@rapid7.com
+Delivered-To: user@example.com
 Received: by 2002:a4a:d509:0:0:0:0:0 with SMTP id m9csp1030705oos;
         Fri, 16 Aug 2019 09:24:00 -0700 (PDT)
 X-Received: by 2002:a6b:b549:: with SMTP id e70mr11549088iof.95.1565972610311;
@@ -11,14 +11,14 @@ X-Google-Smtp-Source: APXvYqxHQKZc9Wd81/2squ1y58un0spVkdy9/XsB/9EWD2pWA5lfB7cMqC
 X-Received: by 2002:a6b:b549:: with SMTP id e70mr11544102iof.95.1565972543554;
         Fri, 16 Aug 2019 09:22:23 -0700 (PDT)
 ARC-Seal: i=2; a=rsa-sha256; t=1565972543; cv=pass;
-        d=google.com; s=arc-20160816;
+        d=example.com; s=arc-20160816;
         b=BIovMUn38HZx4D/GuCvTxqaiHhnRqB2Hg6WOGCsthbtI2ZN5vKk9WAf58ud/+8Hist
          gmcI6VlKLyAd/R1XthIwiAkanDmi6at0rloeAWmOBleBP0VxfaYnU3sfhy4p441AF5Ui
          uTBN9I7ZGxtKZhL5YNXe2toaVRRmKnRvHrS5Koe/BEXJiDl8ar4Nq42MzMb+8itCTpso
          Smy1avxyu5rLLvc4IccdaebYUQe/vyF1ozWiVwuKu7tZTqbDqJZPrOSr5tifpa9ZHdMN
          KSonxrbTsRZeQ9aj/zjDQsocR/GrWav/vXWd/aoNfLPAayeqAiHxrekgmzDdNXILW6Lh
          H/zg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=example.com; s=arc-20160816;
         h=mime-version:content-language:accept-language:in-reply-to
          :references:message-id:date:thread-index:thread-topic:subject:to
          :from:dkim-signature;
@@ -29,64 +29,64 @@ ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc
          HVAVSsorguoffWK5SB+82d7X4dHlGpAxjalwi+H0eozpEs1jT7adOGoUvoHmIs3RnPhh
          2ga+rv7vvjev+WSYP48Zc63LzpQAXgEc0CEMgyyTh5mUR2zFOly1iUEoWTGGEmEaIeeF
          dTAg==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@komanddev.onmicrosoft.com header.s=selector1-komanddev-onmicrosoft-com header.b=QrDN9zQZ;
-       arc=pass (i=1 spf=pass spfdomain=komanddev.onmicrosoft.com dkim=pass dkdomain=komanddev.onmicrosoft.com dmarc=pass fromdomain=komanddev.onmicrosoft.com);
-       spf=pass (google.com: domain of jschipp@komanddev.onmicrosoft.com designates 40.107.73.135 as permitted sender) smtp.mailfrom=jschipp@komanddev.onmicrosoft.com
-Return-Path: <jschipp@komanddev.onmicrosoft.com>
-Received: from NAM05-DM3-obe.outbound.protection.outlook.com (mail-eopbgr730135.outbound.protection.outlook.com. [40.107.73.135])
-        by mx.google.com with ESMTPS id r6si6771075iom.120.2019.08.16.09.22.23
-        for <jmcadams@rapid7.com>
+ARC-Authentication-Results: i=2; mx.example.com;
+       dkim=pass header.i=@example.com.com header.s=selector1-exampleorg-onmicrosoft-com header.b=QrDN9zQZ;
+       arc=pass (i=1 spf=pass spfdomain=example.com.com dkim=pass dkdomain=example.com.com dmarc=pass fromdomain=example.com.com);
+       spf=pass (example.com: domain of user@example.com designates 198.162.1.1 as permitted sender) example.com=user@example.com
+Return-Path: <user@example.com>
+Received: from example.com.example.com.com (example.com.example.com.com. [198.162.1.1])
+        by mx.example.com with ESMTPS id r6si6771075iom.120.2198.162.1.1.22.23
+        for <user@example.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
         Fri, 16 Aug 2019 09:22:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jschipp@komanddev.onmicrosoft.com designates 40.107.73.135 as permitted sender) client-ip=40.107.73.135;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@komanddev.onmicrosoft.com header.s=selector1-komanddev-onmicrosoft-com header.b=QrDN9zQZ;
-       arc=pass (i=1 spf=pass spfdomain=komanddev.onmicrosoft.com dkim=pass dkdomain=komanddev.onmicrosoft.com dmarc=pass fromdomain=komanddev.onmicrosoft.com);
-       spf=pass (google.com: domain of jschipp@komanddev.onmicrosoft.com designates 40.107.73.135 as permitted sender) smtp.mailfrom=jschipp@komanddev.onmicrosoft.com
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+Received-SPF: pass (example.com: domain of user@example.com designates 198.162.1.1 as permitted sender) client-ip=198.162.1.1;
+Authentication-Results: mx.example.com;
+       dkim=pass header.i=@example.com.com header.s=selector1-exampleorg-onmicrosoft-com header.b=QrDN9zQZ;
+       arc=pass (i=1 spf=pass spfdomain=example.com.com dkim=pass dkdomain=example.com.com dmarc=pass fromdomain=example.com.com);
+       spf=pass (example.com: domain of user@example.com designates 198.162.1.1 as permitted sender) example.com=user@example.com
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=example.com; cv=none;
  b=KNMuDlb2nWozMbNNrRKV8paAm4oZym7rUoqfnMkobIhBwlqwsk8au3gohEToXmYtWeCvihJN4Fwqc8jfWwSydEMea/TbLMK+hBzjcq2n3uSbcCHq3bi+vF1oRaCVSqi91E0JzaUmSbfiX3MwpYvOjh9oJGegLs39MY5GBACXl9rMl1JDErQquiW2qiNQHvsR1CSHSSqZbHyjGRJKBjr1zl8mdZk/y0ksnWubTQou3By4G98fUyioUJxQdloYqoKE8zL7ISxO8My6N0mWPlI0VaxnioA7LtstgCAK+QhcR6q+/KlilF/mUiviHwOMX23Yjqs3LZGi9k3P7YgZIkSaqw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=example.com;
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
  bh=7F7hkKIpPSr6j1E4pXpkh9mM5gXQENVX6+Cex5aES+A=;
  b=Tp8cyI5FYp0ZOqBFFDOT2fw4yPWn8O1RmL+jvu7rA51ZduNfzXqNGXqQH9O+8WDbh6XppfSqAi7xixqhBqwDsXs+odfs/dSn090t8xxlrRHm5s29zaENIq/2PDfTLlzjXJDdV/VZZr/MTsVwSY45XOr3uDfna5JW5f3bX4wfcvhGMWvJI7VW4BbdL60vB3zam9dm2QXlKRJzIfASAlRNJwrdGCwJ/0IiV3uDNHdOLxZXyt9fFFr6J3aCxoRcfO1GcyTFYshZ3mTBr0fZcupQLMGUJbEtfklOlx8Pl9+z/doAu8IznWuH3RIOlQ6yWiyMYp4qvfcatQlqJhdn3kbxUg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=komanddev.onmicrosoft.com; dmarc=pass action=none
- header.from=komanddev.onmicrosoft.com; dkim=pass
- header.d=komanddev.onmicrosoft.com; arc=none
+ARC-Authentication-Results: i=1; mx.example.com 1; spf=pass
+ example.com=example.com.com; dmarc=pass action=none
+ example.com=example.com.com; dkim=pass
+ header.d=example.com.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=komanddev.onmicrosoft.com; s=selector1-komanddev-onmicrosoft-com;
+ d=example.com.com; s=selector1-exampleorg-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
  bh=7F7hkKIpPSr6j1E4pXpkh9mM5gXQENVX6+Cex5aES+A=;
  b=QrDN9zQZPoA3tNZGCZuMVSTk8f0wsWUxavicv/qdNmfk5vrf8i8/GFWg4aydAqUZADocgcH/BdCqisoKoZhWM+pyhXxSWHa8eKo9mwHlDXbDk7vpKN3qjOTefZtnZrMKIkvYr74JJLgVFN/Hjwf6NGMpmhJ1pR4+5KEDlWtFaco=
-Received: from BN7PR12MB2594.namprd12.prod.outlook.com (20.176.176.32) by
- BN7PR12MB2756.namprd12.prod.outlook.com (20.176.176.96) with Microsoft SMTP
+Received: from example.com12.example.com.com (198.162.1.1) by
+ example.com12.example.com.com (198.162.1.1) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.20.2157.18; Fri, 16 Aug 2019 16:22:20 +0000
-Received: from BN7PR12MB2594.namprd12.prod.outlook.com
- ([fe80::f45d:5fdd:7668:47a8]) by BN7PR12MB2594.namprd12.prod.outlook.com
+Received: from example.com12.example.com.com
+ ([fe80::f45d:5fdd:7668:47a8]) by example.com12.example.com.com
  ([fe80::f45d:5fdd:7668:47a8%6]) with mapi id 15.20.2157.022; Fri, 16 Aug 2019
  16:22:20 +0000
-From: Jon Schipp <jschipp@komanddev.onmicrosoft.com>
-To: "jmcadams@rapid7.com" <jmcadams@rapid7.com>
+From: Example User <user@example.com>
+To: "user@example.com" <user@example.com>
 Subject: Fw: something haness 
 Thread-Topic: something haness 
 Thread-Index: AQHVVEiDo07LeN7Y9EmYR/5vRVTmVqb99PZm
 Date: Fri, 16 Aug 2019 16:22:20 +0000
 Message-ID:
- <BN7PR12MB259486D60A342C055B1C3541E0AF0@BN7PR12MB2594.namprd12.prod.outlook.com>
+ <user@example.com>
 References:
- <BN7PR12MB2594A0FC9A58B6EA4BF49C64E0AF0@BN7PR12MB2594.namprd12.prod.outlook.com>
+ <user@example.com>
 In-Reply-To:
- <BN7PR12MB2594A0FC9A58B6EA4BF49C64E0AF0@BN7PR12MB2594.namprd12.prod.outlook.com>
+ <user@example.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: yes
 X-MS-TNEF-Correlator:
 authentication-results: spf=none (sender IP is )
- smtp.mailfrom=jschipp@komanddev.onmicrosoft.com; 
-x-originating-ip: [64.125.235.6]
+ example.com=user@example.com; 
+x-originating-ip: [198.162.1.1]
 x-ms-publictraffictype: Email
 x-ms-office365-filtering-correlation-id: 2c5d2c69-7092-4a76-86de-08d72265e9fd
 x-microsoft-antispam:
@@ -94,12 +94,12 @@ x-microsoft-antispam:
 x-ms-traffictypediagnostic: BN7PR12MB2756:
 x-ms-exchange-purlcount: 15
 x-microsoft-antispam-prvs:
- <BN7PR12MB27562E8981840F8DCD56A1B8E0AF0@BN7PR12MB2756.namprd12.prod.outlook.com>
+ <user@example.com>
 x-ms-oob-tlc-oobclassifiers: OLM:36;
 x-forefront-prvs: 0131D22242
 x-forefront-antispam-report:
- SFV:NSPM;SFS:(10019020)(1496009)(136003)(346002)(376002)(396003)(39830400003)(366004)(189003)(199004)(2906002)(86902001)(229853002)(1730700003)(6116002)(81166006)(6916009)(3846002)(66946007)(52536014)(81156014)(2940100002)(6506007)(99286004)(256004)(486006)(71200400001)(446003)(186003)(4743002)(102836004)(26005)(11346002)(71190400001)(66066001)(508600001)(8676002)(14454004)(6606003)(53546011)(86362001)(6436002)(6456002)(476003)(25786009)(2351001)(19627405001)(74316002)(55016002)(7736002)(5640700003)(99936001)(54896002)(76176011)(33656002)(9686003)(2473003)(8936002)(2501003)(5660300002)(76116006)(91956017)(66556008)(66476007)(66576008)(64872007)(7696005)(316002)(64756008)(66446008)(558084003)(53936002)(7116003)(584694005)(83022003);DIR:OUT;SFP:1102;SCL:1;SRVR:BN7PR12MB2756;H:BN7PR12MB2594.namprd12.prod.outlook.com;FPR:;SPF:None;LANG:en;PTR:InfoNoRecords;MX:1;A:0;
-received-spf: None (protection.outlook.com: komanddev.onmicrosoft.com does not
+ SFV:NSPM;SFS:(10019020)(1496009)(136003)(346002)(376002)(396003)(39830400003)(366004)(189003)(199004)(2906002)(86902001)(229853002)(1730700003)(6116002)(81166006)(6916009)(3846002)(66946007)(52536014)(81156014)(2940100002)(6506007)(99286004)(256004)(486006)(71200400001)(446003)(186003)(4743002)(102836004)(26005)(11346002)(71190400001)(66066001)(508600001)(8676002)(14454004)(6606003)(53546011)(86362001)(6436002)(6456002)(476003)(25786009)(2351001)(19627405001)(74316002)(55016002)(7736002)(5640700003)(99936001)(54896002)(76176011)(33656002)(9686003)(2473003)(8936002)(2501003)(5660300002)(76116006)(91956017)(66556008)(66476007)(66576008)(64872007)(7696005)(316002)(64756008)(66446008)(558084003)(53936002)(7116003)(584694005)(83022003);DIR:OUT;SFP:1102;SCL:1;SRVR:BN7PR12MB2756;H:example.com12.example.com.com;FPR:;SPF:None;LANG:en;PTR:InfoNoRecords;MX:1;A:0;
+received-spf: None (example.com.com: example.com.com does not
  designate permitted sender hosts)
 x-ms-exchange-senderadcheck: 1
 x-microsoft-antispam-message-info:
@@ -108,7 +108,7 @@ x-ms-exchange-transport-forked: True
 Content-Type: multipart/mixed;
 	boundary="_009_BN7PR12MB259486D60A342C055B1C3541E0AF0BN7PR12MB2594namp_"
 MIME-Version: 1.0
-X-OriginatorOrg: komanddev.onmicrosoft.com
+X-OriginatorOrg: example.com.com
 X-MS-Exchange-CrossTenant-Network-Message-Id: 2c5d2c69-7092-4a76-86de-08d72265e9fd
 X-MS-Exchange-CrossTenant-originalarrivaltime: 16 Aug 2019 16:22:20.6823
  (UTC)
@@ -890,9 +890,9 @@ LT1fUGFydF8zNzYzNzYxXzEwOTY5NjQwMTguMTU2MzQ1MjY3NjE4Ny0tDQo=
 
 --_009_BN7PR12MB259486D60A342C055B1C3541E0AF0BN7PR12MB2594namp_
 Content-Type: application/octet-stream;
-	name="Amazon_Login_Versuche_erkannt.eml"
-Content-Description: Amazon_Login_Versuche_erkannt.eml
-Content-Disposition: attachment; filename="Amazon_Login_Versuche_erkannt.eml";
+	name="Amazon_Login_Versuche_example.com"
+Content-Description: Amazon_Login_Versuche_example.com
+Content-Disposition: attachment; filename="Amazon_Login_Versuche_example.com";
 	size=8856; creation-date="Fri, 16 Aug 2019 15:37:33 GMT";
 	modification-date="Fri, 16 Aug 2019 15:37:33 GMT"
 Content-Transfer-Encoding: base64
@@ -20158,10 +20158,10 @@ cGNvbV8tLQo=
 
 --_009_BN7PR12MB259486D60A342C055B1C3541E0AF0BN7PR12MB2594namp_
 Content-Type: application/octet-stream;
-	name="FW  Niewe afspraak voor pakketlevering 2578212.eml"
-Content-Description: FW  Niewe afspraak voor pakketlevering 2578212.eml
+	name="FW  Niewe afspraak voor pakketlevering example.com"
+Content-Description: FW  Niewe afspraak voor pakketlevering example.com
 Content-Disposition: attachment;
-	filename="FW  Niewe afspraak voor pakketlevering 2578212.eml"; size=18995;
+	filename="FW  Niewe afspraak voor pakketlevering example.com"; size=18995;
 	creation-date="Fri, 16 Aug 2019 15:37:47 GMT";
 	modification-date="Fri, 16 Aug 2019 15:37:47 GMT"
 Content-Transfer-Encoding: base64

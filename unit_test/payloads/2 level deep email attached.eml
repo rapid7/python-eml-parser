@@ -1,18 +1,18 @@
-Delivered-To: jmcadams@rapid7.com
+Delivered-To: user@example.com
 Received: by 2002:a4a:d509:0:0:0:0:0 with SMTP id m9csp4215559oos;
         Tue, 20 Aug 2019 10:00:43 -0700 (PDT)
 X-Google-Smtp-Source: APXvYqxHsJqIEg3x0uIkQ3pobNRheczl1DqsX7zpyofYrpnIIqK4STSlOI/7qSlnY4/M01QocDJV
 X-Received: by 2002:a9d:3c1:: with SMTP id f59mr24153186otf.300.1566320443352;
         Tue, 20 Aug 2019 10:00:43 -0700 (PDT)
 ARC-Seal: i=2; a=rsa-sha256; t=1566320443; cv=pass;
-        d=google.com; s=arc-20160816;
+        d=example.com; s=arc-20160816;
         b=N/IP9x8Vj0FaKKbhLAQntgBiTlSIr5AplL3ZXLV0tcbVpFHkgHwioyZ820vYjbFjQ+
          s0JtczlT02gN8BBGTP0B09ZMtrKRjG5LExNa8thC3MKQk3vWVKBR+5DCA4MGalstO32S
          AnxlaQyGS2/VKqzCE+zvZU8SoeLbSprE1OyZr3HESAgm3RWPkKTRst5kDGcX7wB5Euvx
          fuhpfSchPRNZc7J0WvQdGoZvx0Xws7iLPVO0LKS0URVxCn9jU9rOrq6wLjgqopFLnDX0
          XjJVTbEkfUuBHTyUW6i4xFOhzpD5xTywY1JKag/7bdFuK5lPp+AN4KD9xeolOK+dMDeW
          dV2g==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=example.com; s=arc-20160816;
         h=mime-version:content-language:accept-language:in-reply-to
          :references:message-id:date:thread-index:thread-topic:subject:to
          :from:dkim-signature;
@@ -23,76 +23,76 @@ ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc
          7hkVju1/wmwmzWF/qCOE6Q1Fhh9DwTLnu+BhYKAtRgBhWfn7QE8ieN3iIUz6ZN/NQLRu
          BPi0VPXa96xbv8cNry4qGsKCyZP98skFycQPrA9414ljrKjdAMUbD1zcb82JyX2v+mCl
          PyLg==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@komanddev.onmicrosoft.com header.s=selector1-komanddev-onmicrosoft-com header.b=pxEw33FO;
-       arc=pass (i=1 spf=pass spfdomain=komanddev.onmicrosoft.com dkim=pass dkdomain=komanddev.onmicrosoft.com dmarc=pass fromdomain=komanddev.onmicrosoft.com);
-       spf=pass (google.com: domain of jschipp@komanddev.onmicrosoft.com designates 40.107.82.118 as permitted sender) smtp.mailfrom=jschipp@komanddev.onmicrosoft.com
-Return-Path: <jschipp@komanddev.onmicrosoft.com>
-Received: from NAM01-SN1-obe.outbound.protection.outlook.com (mail-eopbgr820118.outbound.protection.outlook.com. [40.107.82.118])
-        by mx.google.com with ESMTPS id c135si7145244oib.144.2019.08.20.10.00.43
-        for <jmcadams@rapid7.com>
+ARC-Authentication-Results: i=2; mx.example.com;
+       dkim=pass header.i=@example.com.com header.s=selector1-exampleorg-onmicrosoft-com header.b=pxEw33FO;
+       arc=pass (i=1 spf=pass spfdomain=example.com.com dkim=pass dkdomain=example.com.com dmarc=pass fromdomain=example.com.com);
+       spf=pass (example.com: domain of user@example.com designates 198.162.1.1 as permitted sender) example.com=user@example.com
+Return-Path: <user@example.com>
+Received: from example.com.example.com.com (example.com.example.com.com. [198.162.1.1])
+        by mx.example.com with ESMTPS id c135si7145244oib.144.2198.162.1.1.00.43
+        for <user@example.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
         Tue, 20 Aug 2019 10:00:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jschipp@komanddev.onmicrosoft.com designates 40.107.82.118 as permitted sender) client-ip=40.107.82.118;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@komanddev.onmicrosoft.com header.s=selector1-komanddev-onmicrosoft-com header.b=pxEw33FO;
-       arc=pass (i=1 spf=pass spfdomain=komanddev.onmicrosoft.com dkim=pass dkdomain=komanddev.onmicrosoft.com dmarc=pass fromdomain=komanddev.onmicrosoft.com);
-       spf=pass (google.com: domain of jschipp@komanddev.onmicrosoft.com designates 40.107.82.118 as permitted sender) smtp.mailfrom=jschipp@komanddev.onmicrosoft.com
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+Received-SPF: pass (example.com: domain of user@example.com designates 198.162.1.1 as permitted sender) client-ip=198.162.1.1;
+Authentication-Results: mx.example.com;
+       dkim=pass header.i=@example.com.com header.s=selector1-exampleorg-onmicrosoft-com header.b=pxEw33FO;
+       arc=pass (i=1 spf=pass spfdomain=example.com.com dkim=pass dkdomain=example.com.com dmarc=pass fromdomain=example.com.com);
+       spf=pass (example.com: domain of user@example.com designates 198.162.1.1 as permitted sender) example.com=user@example.com
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=example.com; cv=none;
  b=nacicR4kQfh0EUuhjx+IaxyDBnZMeji26yIWdn0ZVL3NHHbCgFv784+GpLrxpbSGYZjSxCRmNcTyktOy5yzoRGjvbFwMkGUM+AaQuQ7F9pNnJDZu13x0pm6XIyJrkZuaj/TGUBEgx6QxONw7DA2ylZzFhHXlAl87kvTup9XRxC8F8vctUzzdQOn1hHJdWtBJOfW/MfLysghGdDynt2Bdpeq5kAfVsDEnuwT6BXPIw/5/+5Qfb5gfsglbkwK7pAkgzmH+u16/jGYMKR8dmWyjMi0KYkQjQnOywdumdD4ZmH9M6X3yMkLTiZqatmqr8HYha9E+269yJR+S6lHxGYMShg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=example.com;
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
  bh=LQq7ryHBmmqJzKchPeHbndfv7DGhwPYh+0OsHFp3fJ8=;
  b=PxzzEM5+RqCmsu8d2iDnI42MqLnFs45Pno8Re0KpWY+KEfX2+cw9UvOFhFm5YAnblk89E3N1PrMy18ymBGv4hNMUtHhYb41GkK+SUfVlhD11s9aedUzcaOBN2KttkE2FPTVaTMlCkM5SwhOoxjsvwQFAkekX69ZR9kqPRrEUE7WFfgWgR/UPCbqMx9sY1ia9zzAbh9PPBF8G6QKGMCTGwEdpaIKwY1wahuyULKHsYuMPvllfJ7n3GdC534sQhNoyGWDzpFQaywQ7oq8zmQN7EMl7HN85K6PlNKo8UnMfSoDySF8y0VolDvheXHAS3nh+il7Qt7S9/gu24EZpvGe0GA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=komanddev.onmicrosoft.com; dmarc=pass action=none
- header.from=komanddev.onmicrosoft.com; dkim=pass
- header.d=komanddev.onmicrosoft.com; arc=none
+ARC-Authentication-Results: i=1; mx.example.com 1; spf=pass
+ example.com=example.com.com; dmarc=pass action=none
+ example.com=example.com.com; dkim=pass
+ header.d=example.com.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=komanddev.onmicrosoft.com; s=selector1-komanddev-onmicrosoft-com;
+ d=example.com.com; s=selector1-exampleorg-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
  bh=LQq7ryHBmmqJzKchPeHbndfv7DGhwPYh+0OsHFp3fJ8=;
  b=pxEw33FO1CuUkVg/UfSyTzZJuFftbEGUBiAU5VUvXeN7nInGAFtcjIfKCRioOjWI3x8o4LOMMTes6UjlupO90ABAcSmeA9MabGrCTu6Jvn+OyUUW8Iw/ebKL+ztd78qdua+mmoHSvkcLvy3wsUH0CPW4LW1vwz/BjDxfO2z1izI=
-Received: from DM6PR12MB2603.namprd12.prod.outlook.com (20.176.116.84) by
- DM6PR12MB3644.namprd12.prod.outlook.com (20.178.199.94) with Microsoft SMTP
+Received: from example.com12.example.com.com (198.162.1.1) by
+ example.com12.example.com.com (198.162.1.1) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.20.2178.18; Tue, 20 Aug 2019 17:00:40 +0000
-Received: from DM6PR12MB2603.namprd12.prod.outlook.com
- ([fe80::c90f:5f8:954c:e663]) by DM6PR12MB2603.namprd12.prod.outlook.com
+Received: from example.com12.example.com.com
+ ([fe80::c90f:5f8:954c:e663]) by example.com12.example.com.com
  ([fe80::c90f:5f8:954c:e663%7]) with mapi id 15.20.2178.018; Tue, 20 Aug 2019
  17:00:40 +0000
-From: Jon Schipp <jschipp@komanddev.onmicrosoft.com>
-To: "jmcadams@rapid7.com" <jmcadams@rapid7.com>
+From: Example User <user@example.com>
+To: "user@example.com" <user@example.com>
 Subject: Fw: 2 level deep email attached
 Thread-Topic: 2 level deep email attached
 Thread-Index: AQHVTIv5JTAF+S+FFUW060WLzavZjqcEVJPogAAD408=
 Date: Tue, 20 Aug 2019 17:00:40 +0000
 Message-ID:
- <DM6PR12MB26034E771215A08ED1A9584CE0AB0@DM6PR12MB2603.namprd12.prod.outlook.com>
+ <user@example.com>
 References:
- <BN6PR20MB1380FD33F5000BA739C4CC86F3D50@BN6PR20MB1380.namprd20.prod.outlook.com>,<DM6PR20MB2923F8870B83CEB94207741DF3AB0@DM6PR20MB2923.namprd20.prod.outlook.com>
+ <user@example.com>,<user@example.com>
 In-Reply-To:
- <DM6PR20MB2923F8870B83CEB94207741DF3AB0@DM6PR20MB2923.namprd20.prod.outlook.com>
+ <user@example.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: yes
 X-MS-TNEF-Correlator:
 authentication-results: spf=none (sender IP is )
- smtp.mailfrom=jschipp@komanddev.onmicrosoft.com; 
-x-originating-ip: [64.125.235.6]
+ example.com=user@example.com;
+x-originating-ip: [198.162.1.1]
 x-ms-publictraffictype: Email
 x-ms-office365-filtering-correlation-id: 6f3ccd4e-10a5-4101-d09f-08d7258fee70
 x-microsoft-antispam:
  BCL:0;PCL:0;RULEID:(2390118)(7020095)(4652040)(7021145)(8989299)(4534185)(7022145)(4603075)(4627221)(201702281549075)(8990200)(7048125)(7024125)(7027125)(7023125)(5600148)(711020)(4605104)(1401327)(2017052603328)(49563074)(7193020);SRVR:DM6PR12MB3644;
 x-ms-traffictypediagnostic: DM6PR12MB3644:
 x-microsoft-antispam-prvs:
- <DM6PR12MB36445B3F0953162D8AB200CFE0AB0@DM6PR12MB3644.namprd12.prod.outlook.com>
+ <user@example.com>
 x-ms-oob-tlc-oobclassifiers: OLM:1728;
 x-forefront-prvs: 013568035E
 x-forefront-antispam-report:
- SFV:NSPM;SFS:(10019020)(376002)(366004)(396003)(39830400003)(136003)(346002)(189003)(199004)(76176011)(102836004)(81166006)(66066001)(81156014)(8936002)(1730700003)(476003)(99936001)(6506007)(53546011)(14454004)(7696005)(446003)(5640700003)(2351001)(6116002)(486006)(4744005)(11346002)(256004)(186003)(52536014)(86902001)(71200400001)(2501003)(6456002)(6436002)(3846002)(8676002)(33656002)(5024004)(5660300002)(26005)(6606003)(316002)(53936002)(2473003)(25786009)(74316002)(71190400001)(9686003)(64872007)(229853002)(6916009)(54896002)(508600001)(86362001)(99286004)(66946007)(91956017)(76116006)(7736002)(19627405001)(66616009)(66476007)(64756008)(66446008)(66556008)(2906002)(55016002)(83022003);DIR:OUT;SFP:1102;SCL:1;SRVR:DM6PR12MB3644;H:DM6PR12MB2603.namprd12.prod.outlook.com;FPR:;SPF:None;LANG:en;PTR:InfoNoRecords;MX:1;A:0;
-received-spf: None (protection.outlook.com: komanddev.onmicrosoft.com does not
+ SFV:NSPM;SFS:(10019020)(376002)(366004)(396003)(39830400003)(136003)(346002)(189003)(199004)(76176011)(102836004)(81166006)(66066001)(81156014)(8936002)(1730700003)(476003)(99936001)(6506007)(53546011)(14454004)(7696005)(446003)(5640700003)(2351001)(6116002)(486006)(4744005)(11346002)(256004)(186003)(52536014)(86902001)(71200400001)(2501003)(6456002)(6436002)(3846002)(8676002)(33656002)(5024004)(5660300002)(26005)(6606003)(316002)(53936002)(2473003)(25786009)(74316002)(71190400001)(9686003)(64872007)(229853002)(6916009)(54896002)(508600001)(86362001)(99286004)(66946007)(91956017)(76116006)(7736002)(19627405001)(66616009)(66476007)(64756008)(66446008)(66556008)(2906002)(55016002)(83022003);DIR:OUT;SFP:1102;SCL:1;SRVR:DM6PR12MB3644;H:example.com12.example.com.com;FPR:;SPF:None;LANG:en;PTR:InfoNoRecords;MX:1;A:0;
+received-spf: None (example.com.com: example.com.com does not
  designate permitted sender hosts)
 x-ms-exchange-senderadcheck: 1
 x-microsoft-antispam-message-info:
@@ -101,7 +101,7 @@ x-ms-exchange-transport-forked: True
 Content-Type: multipart/mixed;
 	boundary="_004_DM6PR12MB26034E771215A08ED1A9584CE0AB0DM6PR12MB2603namp_"
 MIME-Version: 1.0
-X-OriginatorOrg: komanddev.onmicrosoft.com
+X-OriginatorOrg: example.com.com
 X-MS-Exchange-CrossTenant-Network-Message-Id: 6f3ccd4e-10a5-4101-d09f-08d7258fee70
 X-MS-Exchange-CrossTenant-originalarrivaltime: 20 Aug 2019 17:00:40.5697
  (UTC)
@@ -123,17 +123,17 @@ Content-Transfer-Encoding: quoted-printable
 
 
 ________________________________
-From: Joey McAdams <chakan2@hotmail.com>
+From: Example User <user@example.com>
 Sent: Tuesday, August 20, 2019 12:46 PM
-To: Jon Schipp <jschipp@komanddev.onmicrosoft.com>
+To: Example User <user@example.com>
 Subject: Fw: 2 level deep email attached
 
 
 
 ________________________________
-From: Joey McAdams <chakan2@hotmail.com>
+From: Example User <user@example.com>
 Sent: Tuesday, August 6, 2019 2:20 PM
-To: Joey McAdams <chakan2@hotmail.com>
+To: Example User <user@example.com>
 Subject: 2 level deep email attached
 
 Some body text here
@@ -159,10 +159,10 @@ n-bottom:0;} --></style>
 <div style=3D"color: rgb(0, 0, 0);">
 <hr style=3D"display:inline-block;width:98%" tabindex=3D"-1">
 <div id=3D"divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, sans-serif" st=
-yle=3D"font-size:11pt" color=3D"#000000"><b>From:</b> Joey McAdams &lt;chak=
-an2@hotmail.com&gt;<br>
+yle=3D"font-size:11pt" color=3D"#000000"><b>From:</b> Example User &lt;chak=
+user@example.com&gt;<br>
 <b>Sent:</b> Tuesday, August 20, 2019 12:46 PM<br>
-<b>To:</b> Jon Schipp &lt;jschipp@komanddev.onmicrosoft.com&gt;<br>
+<b>To:</b> Example User &lt;user@example.com&gt;<br>
 <b>Subject:</b> Fw: 2 level deep email attached</font>
 <div>&nbsp;</div>
 </div>
@@ -179,10 +179,10 @@ or:rgb(0,0,0)">
 <div id=3D"x_appendonsend"></div>
 <hr tabindex=3D"-1" style=3D"display:inline-block; width:98%">
 <div id=3D"x_divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, sans-serif" =
-color=3D"#000000" style=3D"font-size:11pt"><b>From:</b> Joey McAdams &lt;ch=
-akan2@hotmail.com&gt;<br>
+color=3D"#000000" style=3D"font-size:11pt"><b>From:</b> Example User &lt;ch=
+user@example.com&gt;<br>
 <b>Sent:</b> Tuesday, August 6, 2019 2:20 PM<br>
-<b>To:</b> Joey McAdams &lt;chakan2@hotmail.com&gt;<br>
+<b>To:</b> Example User &lt;user@example.com&gt;<br>
 <b>Subject:</b> 2 level deep email attached</font>
 <div>&nbsp;</div>
 </div>
@@ -205,76 +205,76 @@ Content-Type: message/rfc822
 Content-Disposition: attachment;
 	creation-date="Tue, 06 Aug 2019 19:20:15 GMT";
 	modification-date="Tue, 06 Aug 2019 19:20:15 GMT"
-Content-ID: <4F011917FB267E409500418A27FD983D@namprd20.prod.outlook.com>
+Content-ID: <user@example.com>
 
-Received: from HE1EUR02HT004.eop-EUR02.prod.protection.outlook.com
- (2603:10b6:408:80::25) by BN6PR20MB1380.namprd20.prod.outlook.com with HTTPS
- via BN8PR15CA0048.NAMPRD15.PROD.OUTLOOK.COM; Tue, 6 Aug 2019 19:19:47 +0000
-ARC-Seal: i=2; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=pass;
+Received: from example.com-example.com.example.com.com
+ (2603:10b6:408:80::25) by example.com20.example.com.com with HTTPS
+ via example.com15.example.com.COM; Tue, 6 Aug 2019 19:19:47 +0000
+ARC-Seal: i=2; a=rsa-sha256; s=arcselector9901; d=example.com; cv=pass;
  b=Fca3eHsgv8G3d+S2aeImnaNN7Bci/W+JfnOAxQLPAvwqqQzX36N06aCE9lcUScJRzB+5UcN7tBMsWvSfwsSbcyFhdmR79qP2eHje3+mCyj2f+Ds/2c86HUJCN4eO5rUSYKK8WkvYByIac7+0emjf1qx2zYeOAsjXe/PDO1L9whxyomi0T7WtMg8SM/TUf2dT/nXR23PkvjgkstxhB6J9UWpDwf/ucaahxWkPqo6GWC+tgdtm5xhySZNtdj/l+iaIHZ2sylOjOogYNCBkhDv5N/3ESRkpn/E0ycwOK1dpqZHcSXOsruEuksb90T/JNAMDRYJu+olDxFDWoz8ECwrWdQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=example.com;
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
  bh=JTO1zhdnutp+Ae7C+ON6R++F9K4gs4znUS44dv8a8Yc=;
  b=F/VsvQ8bxtxQB/HGs8bnxV+v7ozYhSg0kYYhN/5ep4xadJ2sPvoaWDX4do+LY7vuiNX8GXqHXFJ5TQcrc8XjPT8ggGDGmf8w4dGE1FrFBTVLmWqjH7WHeLHrOYGDp3udbpelXW4GXN4++qpPn032vomyPtaEAvTZ4B6dgVJ6vvWyp4kDjxjfjJofbktD41qf3M/j9LffkY/pbrqIlGHxWz89qMgRQPew3rwxgJ5pJpWKV6XsZ1fyrB1l5cQ44nUimcN896gKU2w/XOaK7hoMogJjUyB4/k2FT8625lvUCfgG15gL864Yup40hPvffJnBWrAQppKGLJf6gdK/vvyfkA==
-ARC-Authentication-Results: i=2; mx.microsoft.com 1;spf=pass (sender ip is
- 40.92.11.32) smtp.rcpttodomain=hotmail.com
- smtp.mailfrom=hotmail.com;dmarc=pass (p=none sp=none pct=100) action=none
- header.from=hotmail.com;dkim=pass (signature was verified)
- header.d=hotmail.com;arc=pass (0 oda=0 ltdi=1)
-Received: from HE1EUR02FT030.eop-EUR02.prod.protection.outlook.com
- (10.152.10.58) by HE1EUR02HT004.eop-EUR02.prod.protection.outlook.com
- (10.152.10.158) with Microsoft SMTP Server (version=TLS1_2,
+ARC-Authentication-Results: i=2; mx.example.com 1;spf=pass (sender ip is
+ 198.162.1.1) example.com=example.com
+ example.com=example.com;dmarc=pass (p=none sp=none pct=100) action=none
+ example.com=example.com;dkim=pass (signature was verified)
+ header.d=example.com;arc=pass (0 oda=0 ltdi=1)
+Received: from example.com-example.com.example.com.com
+ (198.162.1.1) by example.com-example.com.example.com.com
+ (198.162.1.1) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.2136.14; Tue, 6 Aug
  2019 19:19:43 +0000
-Authentication-Results: spf=pass (sender IP is 40.92.11.32)
- smtp.mailfrom=hotmail.com; hotmail.com; dkim=pass (signature was verified)
- header.d=hotmail.com;hotmail.com; dmarc=pass action=none
- header.from=hotmail.com;
-Received-SPF: Pass (protection.outlook.com: domain of hotmail.com designates
- 40.92.11.32 as permitted sender) receiver=protection.outlook.com;
- client-ip=40.92.11.32; helo=NAM04-SN1-obe.outbound.protection.outlook.com;
-Received: from NAM04-SN1-obe.outbound.protection.outlook.com (40.92.11.32) by
- HE1EUR02FT030.mail.protection.outlook.com (10.152.10.165) with Microsoft SMTP
+Authentication-Results: spf=pass (sender IP is 198.162.1.1)
+ example.com=example.com; example.com; dkim=pass (signature was verified)
+ header.d=example.com;example.com; dmarc=pass action=none
+ example.com=example.com;
+Received-SPF: Pass (example.com.com: domain of example.com designates
+ 198.162.1.1 as permitted sender) receiver=example.com.com;
+ client-ip=198.162.1.1; helo=example.com.example.com.com;
+Received: from example.com.example.com.com (198.162.1.1) by
+ example.com.example.com.com (198.162.1.1) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
  15.20.2136.14 via Frontend Transport; Tue, 6 Aug 2019 19:19:42 +0000
 X-IncomingTopHeaderMarker:
  OriginalChecksum:BD28D3D58571770387E89F36F8A4F9622EDADD403FDA57C3E24CEB4570AF0199;UpperCasedChecksum:FDAC250E4BD2688BBDC4DC2810639638AD36A21907B991FC2234662578ACC969;SizeAsReceived:5133;Count:37
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=example.com; cv=none;
  b=d4iQQuDnu57eLvw4Oxga0wiZg19pUE0K84lMdT2wtKbDQlP6Sxn3nSrA5cMOMrDMpU9zTxhN5mG5OYDhQ75d/jlMDfWvBlhGBD4CQbdVAVTLIUl5X/BUEQAyERDPc5dY1nckHQk92pSDG+PpOOunFVndXDeXvXAGN/OmIhW01mUa8L7P8gWh+sO5L7p8BZQKcY3i2Ho0rcaHfn9Cb7rcggPl8t+u+6Urq09bAJ3FvHzjqAv/SzcuSl+1weEnHQYwijPRRXJgFhnbRyxinplSepa+bMzLkfECQPOv9m4mlbSOLdsUzir0xxsAfN9N8QLWRLMOiG0VsseSuslm7u8j5g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=example.com;
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
  bh=JTO1zhdnutp+Ae7C+ON6R++F9K4gs4znUS44dv8a8Yc=;
  b=WBXxMj+PxEcWUt5cSx5BoSm04zaqE/aT+dJPeOHWuWnQruEjaRzqadIKsNCn/s5FbCALQMExtSBKDFj5hiWVJvHojeBZBRrrLCgI46GnbsFgo3qHaO38dqWhnueWrnMrWMgi8YrgM5MXRPyh7LdMB/Ws0vtAYD35rM7/ChD3BBxdVUq8GIXSUnB9mGvBHAAhTTAEphY9xMD1Or1DRX91O1561OrfQBpZjtrkwME0Irpex+y4CgdC0aAFXg2H6H2B+fanRztsjG2iTF74VVMAeyYWf5Or5KWuyAl2dyWbvRaDBcstUql6yKfYwjhP0qEIr2f+/9eNaX55xgIRYb2nDA==
-ARC-Authentication-Results: i=1; mx.microsoft.com
+ARC-Authentication-Results: i=1; mx.example.com
  1;spf=none;dmarc=none;dkim=none;arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=example.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
  bh=JTO1zhdnutp+Ae7C+ON6R++F9K4gs4znUS44dv8a8Yc=;
  b=GizyMKmocCAOVjOUrKvdewy0/OsnG7iRvzDIweRHjMv8AADpKpPb08AWCXwGOr3NI+4vPtagOjmz/hKijqhx7fQtkTQyQ9f8lnozXNTlSdhi2Z+g8ySDss9hJjllXtG9JtKaZYM9WLCc1HTW/ACjWg9y2tqPeH7mlkk9NgqPaimsYSpR/gSl2P0YUh1MaiNdxHYXlV2WNT18qhGXkVqH2cSz/lCqB3YRqAIcR/7HOXCY4V+jmqAj0rcUb14/NZ+5Fyg2Vfch6WQN16Tq3lOYj+kMSSQ+nHUWb0J14Kc5o7uuU0yz/9alq0HSRt69WHG3t3zyRMF5ikHhVqMg4cAo2Q==
-Received: from CO1NAM04FT049.eop-NAM04.prod.protection.outlook.com
- (10.152.90.59) by CO1NAM04HT070.eop-NAM04.prod.protection.outlook.com
- (10.152.91.137) with Microsoft SMTP Server (version=TLS1_2,
+Received: from example.com-example.com.example.com.com
+ (198.162.1.1) by example.com-example.com.example.com.com
+ (198.162.1.1) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.2136.14; Tue, 6 Aug
  2019 19:19:40 +0000
-Received: from BN6PR20MB1380.namprd20.prod.outlook.com (10.152.90.56) by
- CO1NAM04FT049.mail.protection.outlook.com (10.152.91.187) with Microsoft SMTP
+Received: from example.com20.example.com.com (198.162.1.1) by
+ example.com.example.com.com (198.162.1.1) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
  15.20.2136.14 via Frontend Transport; Tue, 6 Aug 2019 19:19:40 +0000
-Received: from BN6PR20MB1380.namprd20.prod.outlook.com
- ([fe80::4de1:ae2d:34c4:6147]) by BN6PR20MB1380.namprd20.prod.outlook.com
+Received: from example.com20.example.com.com
+ ([fe80::4de1:ae2d:34c4:6147]) by example.com20.example.com.com
  ([fe80::4de1:ae2d:34c4:6147%9]) with mapi id 15.20.2136.018; Tue, 6 Aug 2019
  19:19:40 +0000
-From: Joey McAdams <chakan2@hotmail.com>
-To: Joey McAdams <chakan2@hotmail.com>
+From: Example User <user@example.com>
+To: Example User <user@example.com>
 Subject: Attachment
 Thread-Topic: Attachment
 Thread-Index: AQHVTIvQsoEVCX7R20iFEqq4X+83iA==
 Date: Tue, 6 Aug 2019 19:19:40 +0000
 Message-ID:
- <BN6PR20MB1380C6930D4FDE09755C4E3AF3D50@BN6PR20MB1380.namprd20.prod.outlook.com>
+ <user@example.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: yes
@@ -296,7 +296,7 @@ Content-Type: multipart/mixed;
 	boundary="_004_BN6PR20MB1380C6930D4FDE09755C4E3AF3D50BN6PR20MB1380namp_"
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO1NAM04HT070
 X-IncomingHeaderCount: 37
-Return-Path: chakan2@hotmail.com
+Return-Path: user@example.com
 X-MS-Exchange-Organization-ExpirationStartTime: 06 Aug 2019 19:19:43.0337
  (UTC)
 X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
@@ -307,23 +307,23 @@ X-MS-Exchange-Organization-Network-Message-Id:
 X-EOPTenantAttributedMessage: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa:0
 X-MS-Exchange-Organization-MessageDirectionality: Incoming
 X-MS-Exchange-Transport-CrossTenantHeadersStripped:
- HE1EUR02FT030.eop-EUR02.prod.protection.outlook.com
+ example.com-example.com.example.com.com
 X-MS-Exchange-Transport-CrossTenantHeadersPromoted:
- HE1EUR02FT030.eop-EUR02.prod.protection.outlook.com
+ example.com-example.com.example.com.com
 X-Forefront-Antispam-Report: EFV:NLI;
 X-MS-Exchange-Organization-AuthSource:
- HE1EUR02FT030.eop-EUR02.prod.protection.outlook.com
+ example.com-example.com.example.com.com
 X-MS-Exchange-Organization-AuthAs: Anonymous
 X-MS-UserLastLogonTime: 8/6/2019 7:19:41 PM
 X-MS-Office365-Filtering-Correlation-Id: b379395c-e006-4603-5697-08d71aa30911
 X-Microsoft-Antispam:
  BCL:0;PCL:0;RULEID:(2390118)(5000188)(711020)(4605104)(610169)(650170)(651021)(1124261)(8291501072);SRVR:HE1EUR02HT004;
 X-MS-Exchange-EOPDirect: true
-X-Sender-IP: 40.92.11.32
-X-SID-PRA: CHAKAN2@HOTMAIL.COM
+X-Sender-IP: 198.162.1.1
+X-SID-PRA: user@example.com
 X-SID-Result: PASS
 X-MS-Exchange-Organization-PCL: 2
-X-OriginatorOrg: hotmail.com
+X-OriginatorOrg: example.com
 X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Aug 2019 19:19:42.8255
  (UTC)
 X-MS-Exchange-CrossTenant-Network-Message-Id: b379395c-e006-4603-5697-08d71aa30911
@@ -378,78 +378,78 @@ Content-Disposition: attachment;
 	creation-date="Tue, 06 Aug 2019 19:19:35 GMT";
 	modification-date="Tue, 06 Aug 2019 19:19:35 GMT"
 
-Received: from VE1EUR02HT015.eop-EUR02.prod.protection.outlook.com
- (2603:10b6:405:3a::27) by BN6PR20MB1380.namprd20.prod.outlook.com with HTTPS
- via BN6PR06CA0038.NAMPRD06.PROD.OUTLOOK.COM; Tue, 6 Aug 2019 19:18:22 +0000
-ARC-Seal: i=2; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=pass;
+Received: from example.com-example.com.example.com.com
+ (2603:10b6:405:3a::27) by example.com20.example.com.com with HTTPS
+ via example.com06.example.com.COM; Tue, 6 Aug 2019 19:18:22 +0000
+ARC-Seal: i=2; a=rsa-sha256; s=arcselector9901; d=example.com; cv=pass;
  b=JGN8pHVpVOfLowv8WIyVrdZb2QKozjyJjSeKDvcGpSF/VIxRHdtMeaeVhg6ar1xfK83D6ndR2YzEqlmfNNrttPaqUIOqXfAsCYjXTvz0Wmdr6pnr7l/zU6bKg2CHRed3rgw61IzjgYTOuGhjsnVjgp1gVDGjMoNE3IrEvVMqb2NB4s24KabGH5P9aFF2wdaWtTRNqtg0+ai+g3L0/p893cSeQ9Zr3hnhN/NFMXpcF5wXNIA1s/zHrZX90wDYH0Mq1WLIWSUfEnt6hrZ1msrM4aQchWFuUWpcKN9HR9a+eMXJTYeJDNpBwYlhcaJ1dxOibe5ecTREls6hrU+2F2qshA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=example.com;
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
  bh=S6DWRGhzm9nCYHpT6wXsu2RHRxrNgHBZZ4Vmul5NAf0=;
  b=OGZ2HCbLOqDetGO4Zrvqwtg0AdS8GWEAiDoEjGo26H5Ka5tvrK4WSyC1++zgKZq0fRc18V4TSepEBqGkCzfGec3aQm7QEj8/W64yqAJ6nBxLGEh87MDYtD+tN/E4mGauVXEvVo6hYjE2bfkzH5SI608r6V8KtgH7SOv7c8Rv0v5BBHJuvRzivWjX9ntcpkpoSeTxTn6Kj//vw5h98r/xpbfX6/xRUnslpiCXgIbm9X5zpO+OmO0h/ct8szPv1cY9m+vs/wZY8l4IRPPNHJ20xzSSF6XQkl7VBYGxKCqkHE3cPKYlTs1uyB1WQGaH9N9/XjE3jQ1/gsP8xgCqkGiKNA==
-ARC-Authentication-Results: i=2; mx.microsoft.com 1;spf=pass (sender ip is
- 40.92.11.60) smtp.rcpttodomain=hotmail.com
- smtp.mailfrom=hotmail.com;dmarc=pass (p=none sp=none pct=100) action=none
- header.from=hotmail.com;dkim=pass (signature was verified)
- header.d=hotmail.com;arc=pass (0 oda=0 ltdi=1)
-Received: from VE1EUR02FT030.eop-EUR02.prod.protection.outlook.com
- (10.152.12.56) by VE1EUR02HT015.eop-EUR02.prod.protection.outlook.com
- (10.152.13.7) with Microsoft SMTP Server (version=TLS1_2,
+ARC-Authentication-Results: i=2; mx.example.com 1;spf=pass (sender ip is
+ 198.162.1.1) example.com=example.com
+ example.com=example.com;dmarc=pass (p=none sp=none pct=100) action=none
+ example.com=example.com;dkim=pass (signature was verified)
+ header.d=example.com;arc=pass (0 oda=0 ltdi=1)
+Received: from example.com-example.com.example.com.com
+ (198.162.1.1) by example.com-example.com.example.com.com
+ (198.162.1.1) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2136.14; Tue, 6 Aug
  2019 19:18:22 +0000
-Authentication-Results: spf=pass (sender IP is 40.92.11.60)
- smtp.mailfrom=hotmail.com; hotmail.com; dkim=pass (signature was verified)
- header.d=hotmail.com;hotmail.com; dmarc=pass action=none
- header.from=hotmail.com;
-Received-SPF: Pass (protection.outlook.com: domain of hotmail.com designates
- 40.92.11.60 as permitted sender) receiver=protection.outlook.com;
- client-ip=40.92.11.60; helo=NAM04-SN1-obe.outbound.protection.outlook.com;
-Received: from NAM04-SN1-obe.outbound.protection.outlook.com (40.92.11.60) by
- VE1EUR02FT030.mail.protection.outlook.com (10.152.12.127) with Microsoft SMTP
+Authentication-Results: spf=pass (sender IP is 198.162.1.1)
+ example.com=example.com; example.com; dkim=pass (signature was verified)
+ header.d=example.com;example.com; dmarc=pass action=none
+ example.com=example.com;
+Received-SPF: Pass (example.com.com: domain of example.com designates
+ 198.162.1.1 as permitted sender) receiver=example.com.com;
+ client-ip=198.162.1.1; helo=example.com.example.com.com;
+Received: from example.com.example.com.com (198.162.1.1) by
+ example.com.example.com.com (198.162.1.1) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.20.2136.14 via Frontend Transport; Tue, 6 Aug 2019 19:18:21 +0000
 X-IncomingTopHeaderMarker:
  OriginalChecksum:E6E90406FB4A873D1FB29F7AC509AF4A769E743E32ABDA8F446008E4F4C87B1C;UpperCasedChecksum:E24BDD9E495CEF36491B5BE16C436952734945A117135A5209E20F9FCC090989;SizeAsReceived:5439;Count:40
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=example.com; cv=none;
  b=O9kfSg0p2wew6fdXC9DfVEMmiDJr62gKyGXyUojri8xLerTvgYlMM/ib2mGNYqsEW0YRJU7OQkb0EX3vqGEBForN41AEcotyGRs+Rso5XQ8pNvuukv2YrYRe86asWeN2nm1yLtr2UrPCNU4NfpJMuhQ/9nlj/BRWjISjUkp1q53UwW4jSNn+coMaSBBZOWpasF11nsHp4Z4Tq1j4HuUWIxVfhdnFP2l2MrO/Jx6/hQOEH32COY9xNT4IqUICXl0JTMW74WWdHRXUHguQiJpJd0wL0o4gSEjJ9f2KsLDTeWn1Ofe910WqNA8DkXRx0ydg4x++m5Cz7J9L9DowtGcB7A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=example.com;
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
  bh=S6DWRGhzm9nCYHpT6wXsu2RHRxrNgHBZZ4Vmul5NAf0=;
  b=M2t7G0pfTTSKcIMqBwM0iqIq9pETEkwL9Dj2BzM7H1qjpJ8P1wfAxRggHhrKXh9b9hVyTIYzh/yPY++c/7DGRPmEoFr8rMYMm1qIwYgAbt1I7CzrqakthHwF9Piuec1reRsqCgQvelFfR5Fdt3IJvWc/H8M6SLfu++jfEJLw7C6hYqX49uMRQFYY112Qglue3ivZw2/61ePAn8wk35u5Flxl6Gt/4Km+RlthxaNcxAbm+6RypWBTn/pbs9u+u8lIAkvISdwyneh2i/EvOhGpinCS3n5Gmqx4XZeA4PoRyQfHfRSv6TPUjlWHoU70j0Df7BpwxPX+d+zpvluxoUn/Eg==
-ARC-Authentication-Results: i=1; mx.microsoft.com
+ARC-Authentication-Results: i=1; mx.example.com
  1;spf=none;dmarc=none;dkim=none;arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=example.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
  bh=S6DWRGhzm9nCYHpT6wXsu2RHRxrNgHBZZ4Vmul5NAf0=;
  b=gkyiDo497K0Jv7b5QCPSAlYW8VpozCyIkj+ZUeblBwUTfTazj/2j9TDYH9qJaC765Y/6Bb+eKzrQ6Ck9S5aH7DTM7h0lyJl0L0yUJR7UPWZkun7ucj1TLUjXsl5Y1zJGTTdou4TdceiNNyUn4V7+AMtO6LPig0N12gNQezFTCI/atQQkNtuZAVq0o8SffsvWslQeCS27nwgl9UOWVVKCoc5vSdwq41+fNnHvKYzwNFU0lAepLmx23ATxs6mX5Oh68l2ClpTq+I5mMQWfmuw0KSxxqIi5cx2VoTFyo4jJ67vWGo9ZBbDvP8yZMVk4K4r7HTNLCBK7saTMoEfjGIBoRg==
-Received: from CO1NAM04FT049.eop-NAM04.prod.protection.outlook.com
- (10.152.90.51) by CO1NAM04HT061.eop-NAM04.prod.protection.outlook.com
- (10.152.91.13) with Microsoft SMTP Server (version=TLS1_2,
+Received: from example.com-example.com.example.com.com
+ (198.162.1.1) by example.com-example.com.example.com.com
+ (198.162.1.1) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.2136.14; Tue, 6 Aug
  2019 19:18:20 +0000
-Received: from BN6PR20MB1380.namprd20.prod.outlook.com (10.152.90.56) by
- CO1NAM04FT049.mail.protection.outlook.com (10.152.91.187) with Microsoft SMTP
+Received: from example.com20.example.com.com (198.162.1.1) by
+ example.com.example.com.com (198.162.1.1) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
  15.20.2136.14 via Frontend Transport; Tue, 6 Aug 2019 19:18:20 +0000
-Received: from BN6PR20MB1380.namprd20.prod.outlook.com
- ([fe80::4de1:ae2d:34c4:6147]) by BN6PR20MB1380.namprd20.prod.outlook.com
+Received: from example.com20.example.com.com
+ ([fe80::4de1:ae2d:34c4:6147]) by example.com20.example.com.com
  ([fe80::4de1:ae2d:34c4:6147%9]) with mapi id 15.20.2136.018; Tue, 6 Aug 2019
  19:18:20 +0000
-From: Joey McAdams <chakan2@hotmail.com>
-To: Joey McAdams <chakan2@hotmail.com>
+From: Example User <user@example.com>
+To: Example User <user@example.com>
 Subject: Test Message Attachment Subject
 Thread-Topic: Test Message Attachment Subject
 Thread-Index: AQHVTIuUgvRSRNwsr0WrvPbE/ijPs6bufjpL
 Date: Tue, 6 Aug 2019 19:18:20 +0000
 Message-ID:
- <BN6PR20MB1380831D75466EE77DEB8BAEF3D50@BN6PR20MB1380.namprd20.prod.outlook.com>
+ <user@example.com>
 References:
- <BN6PR20MB138072196F262D9F20261AC8F3D50@BN6PR20MB1380.namprd20.prod.outlook.com>
+ <user@example.com>
 In-Reply-To:
- <BN6PR20MB138072196F262D9F20261AC8F3D50@BN6PR20MB1380.namprd20.prod.outlook.com>
+ <user@example.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach:
@@ -472,7 +472,7 @@ Content-Type: multipart/alternative;
 	boundary="_000_BN6PR20MB1380831D75466EE77DEB8BAEF3D50BN6PR20MB1380namp_"
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO1NAM04HT061
 X-IncomingHeaderCount: 40
-Return-Path: chakan2@hotmail.com
+Return-Path: user@example.com
 X-MS-Exchange-Organization-ExpirationStartTime: 06 Aug 2019 19:18:22.1435
  (UTC)
 X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
@@ -483,23 +483,23 @@ X-MS-Exchange-Organization-Network-Message-Id:
 X-EOPTenantAttributedMessage: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa:0
 X-MS-Exchange-Organization-MessageDirectionality: Incoming
 X-MS-Exchange-Transport-CrossTenantHeadersStripped:
- VE1EUR02FT030.eop-EUR02.prod.protection.outlook.com
+ example.com-example.com.example.com.com
 X-MS-Exchange-Transport-CrossTenantHeadersPromoted:
- VE1EUR02FT030.eop-EUR02.prod.protection.outlook.com
+ example.com-example.com.example.com.com
 X-Forefront-Antispam-Report: EFV:NLI;
 X-MS-Exchange-Organization-AuthSource:
- VE1EUR02FT030.eop-EUR02.prod.protection.outlook.com
+ example.com-example.com.example.com.com
 X-MS-Exchange-Organization-AuthAs: Anonymous
 X-MS-UserLastLogonTime: 8/6/2019 7:16:55 PM
 X-MS-Office365-Filtering-Correlation-Id: 3d4d4935-ff6d-49df-78f3-08d71aa2d8da
 X-Microsoft-Antispam:
  BCL:0;PCL:0;RULEID:(2390118)(5000188)(711020)(4605104)(610169)(650170)(651021)(1124261)(8291501072);SRVR:VE1EUR02HT015;
 X-MS-Exchange-EOPDirect: true
-X-Sender-IP: 40.92.11.60
-X-SID-PRA: CHAKAN2@HOTMAIL.COM
+X-Sender-IP: 198.162.1.1
+X-SID-PRA: user@example.com
 X-SID-Result: PASS
 X-MS-Exchange-Organization-PCL: 2
-X-OriginatorOrg: hotmail.com
+X-OriginatorOrg: example.com
 X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Aug 2019 19:18:21.9445
  (UTC)
 X-MS-Exchange-CrossTenant-Network-Message-Id: 3d4d4935-ff6d-49df-78f3-08d71aa2d8da

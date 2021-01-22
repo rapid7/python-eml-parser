@@ -14,6 +14,6 @@ def remove_microsoft_newlines(s: str) -> str:
     try:
         s = quopri.decodestring(s).decode("UTF-8")
     except Exception:
-        pass  # quopri will only work on ASCII characters, it barfs if it hits unicode...in that case just return the string
+        pass  # quopri will only work on ASCII characters, it fails if it hits unicode...in that case just return the string
 
     return s

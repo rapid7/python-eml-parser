@@ -1,87 +1,87 @@
 {
-    "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#users('jschipp%40komanddev.onmicrosoft.com')/messages('AAMkADI3Mzc1ZTg3LTIzYWEtNDNmNi1hZDQ5LTBiMjAzYzA3ZThhYwBGAAAAAAAxDvrPc8q6SqGLTJ9iB-SGBwC8UQDN7ObVSLWQuxHJ-dDTAAAAAAEMAAC8UQDN7ObVSLWQuxHJ-dDTAAE4BRpqAAA%3D')/attachments",
+    "@example.com": "https://example.com.com/v1.0/$metadata#users('test_user%example.com.com')/messages('AAMkADI3Mzc1ZTg3LTIzYWEtNDNmNi1hZDQ5LTBiMjAzYzA3ZThhYwBGAAAAAAAxDvrPc8q6SqGLTJ9iB-SGBwC8UQDN7ObVSLWQuxHJ-dDTAAAAAAEMAAC8UQDN7ObVSLWQuxHJ-dDTAAE4BRpqAAA%3D')/attachments",
     "value": [
         {
-            "@odata.type": "#microsoft.graph.itemAttachment",
+            "@example.com": "#example.com.itemAttachment",
             "id": "this_is_a_fake_id_12345",
             "lastModifiedDateTime": "2019-08-06T19:20:15Z",
             "name": "Attachment",
             "contentType": "message/rfc822",
             "size": 74583,
             "isInline": false,
-            "item@odata.context": "https://graph.microsoft.com/v1.0/$metadata#users('jschipp%40komanddev.onmicrosoft.com')/messages('AAMkADI3Mzc1ZTg3LTIzYWEtNDNmNi1hZDQ5LTBiMjAzYzA3ZThhYwBGAAAAAAAxDvrPc8q6SqGLTJ9iB-SGBwC8UQDN7ObVSLWQuxHJ-dDTAAAAAAEMAAC8UQDN7ObVSLWQuxHJ-dDTAAE4BRpqAAA%3D')/attachments('AAMkADI3Mzc1ZTg3LTIzYWEtNDNmNi1hZDQ5LTBiMjAzYzA3ZThhYwBGAAAAAAAxDvrPc8q6SqGLTJ9iB-SGBwC8UQDN7ObVSLWQuxHJ-dDTAAAAAAEMAAC8UQDN7ObVSLWQuxHJ-dDTAAE4BRpqAAABEgAQAIs8nFX_2wRHvWNkYLt8Lyo%3D')/microsoft.graph.itemAttachment/microsoft.graph.itemAttachment/item/$entity",
+            "user@example.com": "https://example.com.com/v1.0/$metadata#users('test_user%example.com.com')/messages('AAMkADI3Mzc1ZTg3LTIzYWEtNDNmNi1hZDQ5LTBiMjAzYzA3ZThhYwBGAAAAAAAxDvrPc8q6SqGLTJ9iB-SGBwC8UQDN7ObVSLWQuxHJ-dDTAAAAAAEMAAC8UQDN7ObVSLWQuxHJ-dDTAAE4BRpqAAA%3D')/attachments('AAMkADI3Mzc1ZTg3LTIzYWEtNDNmNi1hZDQ5LTBiMjAzYzA3ZThhYwBGAAAAAAAxDvrPc8q6SqGLTJ9iB-SGBwC8UQDN7ObVSLWQuxHJ-dDTAAAAAAEMAAC8UQDN7ObVSLWQuxHJ-dDTAAE4BRpqAAABEgAQAIs8nFX_2wRHvWNkYLt8Lyo%3D')/example.com.itemAttachment/example.com.itemAttachment/item/$entity",
             "item": {
-                "@odata.type": "#microsoft.graph.message",
+                "@example.com": "#example.com.message",
                 "id": "",
                 "createdDateTime": "2019-08-06T19:21:08Z",
                 "lastModifiedDateTime": "2019-08-06T19:21:08Z",
                 "receivedDateTime": "2019-08-06T19:19:47Z",
                 "sentDateTime": "2019-08-06T19:19:40Z",
                 "hasAttachments": true,
-                "internetMessageId": "<BN6PR20MB1380C6930D4FDE09755C4E3AF3D50@BN6PR20MB1380.namprd20.prod.outlook.com>",
+                "internetMessageId": "<user@example.com>",
                 "subject": "Attachment",
                 "bodyPreview": "Attachment Body",
                 "conversationId": "AAQkADI3Mzc1ZTg3LTIzYWEtNDNmNi1hZDQ5LTBiMjAzYzA3ZThhYwAQAJ6ctQNwIP0eorzoYreFKvo=",
                 "isReadReceiptRequested": false,
                 "isRead": true,
                 "isDraft": false,
-                "webLink": "https://outlook.office365.com/owa/?AttachmentItemID=AAMkADI3Mzc1ZTg3LTIzYWEtNDNmNi1hZDQ5LTBiMjAzYzA3ZThhYwBGAAAAAAAxDvrPc8q6SqGLTJ9iB%2FSGBwC8UQDN7ObVSLWQuxHJ%2FdDTAAAAAAEMAAC8UQDN7ObVSLWQuxHJ%2FdDTAAE4BRpqAAABEgAQAIs8nFX%2B2wRHvWNkYLt8Lyo%3D&exvsurl=1&viewmodel=ItemAttachment",
+                "webLink": "https://example.comexample.com/owa/?AttachmentItemID=AAMkADI3Mzc1ZTg3LTIzYWEtNDNmNi1hZDQ5LTBiMjAzYzA3ZThhYwBGAAAAAAAxDvrPc8q6SqGLTJ9iB%2FSGBwC8UQDN7ObVSLWQuxHJ%2FdDTAAAAAAEMAAC8UQDN7ObVSLWQuxHJ%2FdDTAAE4BRpqAAABEgAQAIs8nFX%2B2wRHvWNkYLt8Lyo%3D&exvsurl=1&viewmodel=ItemAttachment",
                 "internetMessageHeaders": [
                     {
                         "name": "Received",
-                        "value": "from HE1EUR02HT004.eop-EUR02.prod.protection.outlook.com (2603:10b6:408:80::25) by BN6PR20MB1380.namprd20.prod.outlook.com with HTTPS via BN8PR15CA0048.NAMPRD15.PROD.OUTLOOK.COM; Tue, 6 Aug 2019 19:19:47 +0000"
+                        "value": "from example.com-example.com.example.com.com (2603:10b6:408:80::25) by example.com20.example.com.com with HTTPS via example.com15.example.com.COM; Tue, 6 Aug 2019 19:19:47 +0000"
                     },
                     {
                         "name": "Received",
-                        "value": "from HE1EUR02FT030.eop-EUR02.prod.protection.outlook.com (10.152.10.58) by HE1EUR02HT004.eop-EUR02.prod.protection.outlook.com (10.152.10.158) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.2136.14; Tue, 6 Aug 2019 19:19:43 +0000"
+                        "value": "from example.com-example.com.example.com.com (198.162.1.1) by example.com-example.com.example.com.com (198.162.1.1) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.2136.14; Tue, 6 Aug 2019 19:19:43 +0000"
                     },
                     {
                         "name": "Received",
-                        "value": "from NAM04-SN1-obe.outbound.protection.outlook.com (40.92.11.32) by HE1EUR02FT030.mail.protection.outlook.com (10.152.10.165) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.2136.14 via Frontend Transport; Tue, 6 Aug 2019 19:19:42 +0000"
+                        "value": "from example.com.example.com.com (198.162.1.1) by example.com.example.com.com (198.162.1.1) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.2136.14 via Frontend Transport; Tue, 6 Aug 2019 19:19:42 +0000"
                     },
                     {
                         "name": "Received",
-                        "value": "from CO1NAM04FT049.eop-NAM04.prod.protection.outlook.com (10.152.90.59) by CO1NAM04HT070.eop-NAM04.prod.protection.outlook.com (10.152.91.137) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.2136.14; Tue, 6 Aug 2019 19:19:40 +0000"
+                        "value": "from example.com-example.com.example.com.com (198.162.1.1) by example.com-example.com.example.com.com (198.162.1.1) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.2136.14; Tue, 6 Aug 2019 19:19:40 +0000"
                     },
                     {
                         "name": "Received",
-                        "value": "from BN6PR20MB1380.namprd20.prod.outlook.com (10.152.90.56) by CO1NAM04FT049.mail.protection.outlook.com (10.152.91.187) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.2136.14 via Frontend Transport; Tue, 6 Aug 2019 19:19:40 +0000"
+                        "value": "from example.com20.example.com.com (198.162.1.1) by example.com.example.com.com (198.162.1.1) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.2136.14 via Frontend Transport; Tue, 6 Aug 2019 19:19:40 +0000"
                     },
                     {
                         "name": "Received",
-                        "value": "from BN6PR20MB1380.namprd20.prod.outlook.com ([fe80::4de1:ae2d:34c4:6147]) by BN6PR20MB1380.namprd20.prod.outlook.com ([fe80::4de1:ae2d:34c4:6147%9]) with mapi id 15.20.2136.018; Tue, 6 Aug 2019 19:19:40 +0000"
+                        "value": "from example.com20.example.com.com ([fe80::4de1:ae2d:34c4:6147]) by example.com20.example.com.com ([fe80::4de1:ae2d:34c4:6147%9]) with mapi id 15.20.2136.018; Tue, 6 Aug 2019 19:19:40 +0000"
                     },
                     {
                         "name": "ARC-Seal",
-                        "value": "i=2; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=pass; b=Fca3eHsgv8G3d+S2aeImnaNN7Bci/W+JfnOAxQLPAvwqqQzX36N06aCE9lcUScJRzB+5UcN7tBMsWvSfwsSbcyFhdmR79qP2eHje3+mCyj2f+Ds/2c86HUJCN4eO5rUSYKK8WkvYByIac7+0emjf1qx2zYeOAsjXe/PDO1L9whxyomi0T7WtMg8SM/TUf2dT/nXR23PkvjgkstxhB6J9UWpDwf/ucaahxWkPqo6GWC+tgdtm5xhySZNtdj/l+iaIHZ2sylOjOogYNCBkhDv5N/3ESRkpn/E0ycwOK1dpqZHcSXOsruEuksb90T/JNAMDRYJu+olDxFDWoz8ECwrWdQ=="
+                        "value": "i=2; a=rsa-sha256; s=arcselector9901; d=example.com; cv=pass; b=Fca3eHsgv8G3d+S2aeImnaNN7Bci/W+JfnOAxQLPAvwqqQzX36N06aCE9lcUScJRzB+5UcN7tBMsWvSfwsSbcyFhdmR79qP2eHje3+mCyj2f+Ds/2c86HUJCN4eO5rUSYKK8WkvYByIac7+0emjf1qx2zYeOAsjXe/PDO1L9whxyomi0T7WtMg8SM/TUf2dT/nXR23PkvjgkstxhB6J9UWpDwf/ucaahxWkPqo6GWC+tgdtm5xhySZNtdj/l+iaIHZ2sylOjOogYNCBkhDv5N/3ESRkpn/E0ycwOK1dpqZHcSXOsruEuksb90T/JNAMDRYJu+olDxFDWoz8ECwrWdQ=="
                     },
                     {
                         "name": "ARC-Seal",
-                        "value": "i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none; b=d4iQQuDnu57eLvw4Oxga0wiZg19pUE0K84lMdT2wtKbDQlP6Sxn3nSrA5cMOMrDMpU9zTxhN5mG5OYDhQ75d/jlMDfWvBlhGBD4CQbdVAVTLIUl5X/BUEQAyERDPc5dY1nckHQk92pSDG+PpOOunFVndXDeXvXAGN/OmIhW01mUa8L7P8gWh+sO5L7p8BZQKcY3i2Ho0rcaHfn9Cb7rcggPl8t+u+6Urq09bAJ3FvHzjqAv/SzcuSl+1weEnHQYwijPRRXJgFhnbRyxinplSepa+bMzLkfECQPOv9m4mlbSOLdsUzir0xxsAfN9N8QLWRLMOiG0VsseSuslm7u8j5g=="
+                        "value": "i=1; a=rsa-sha256; s=arcselector9901; d=example.com; cv=none; b=d4iQQuDnu57eLvw4Oxga0wiZg19pUE0K84lMdT2wtKbDQlP6Sxn3nSrA5cMOMrDMpU9zTxhN5mG5OYDhQ75d/jlMDfWvBlhGBD4CQbdVAVTLIUl5X/BUEQAyERDPc5dY1nckHQk92pSDG+PpOOunFVndXDeXvXAGN/OmIhW01mUa8L7P8gWh+sO5L7p8BZQKcY3i2Ho0rcaHfn9Cb7rcggPl8t+u+6Urq09bAJ3FvHzjqAv/SzcuSl+1weEnHQYwijPRRXJgFhnbRyxinplSepa+bMzLkfECQPOv9m4mlbSOLdsUzir0xxsAfN9N8QLWRLMOiG0VsseSuslm7u8j5g=="
                     },
                     {
                         "name": "ARC-Message-Signature",
-                        "value": "i=2; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; s=arcselector9901; h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck; bh=JTO1zhdnutp+Ae7C+ON6R++F9K4gs4znUS44dv8a8Yc=; b=F/VsvQ8bxtxQB/HGs8bnxV+v7ozYhSg0kYYhN/5ep4xadJ2sPvoaWDX4do+LY7vuiNX8GXqHXFJ5TQcrc8XjPT8ggGDGmf8w4dGE1FrFBTVLmWqjH7WHeLHrOYGDp3udbpelXW4GXN4++qpPn032vomyPtaEAvTZ4B6dgVJ6vvWyp4kDjxjfjJofbktD41qf3M/j9LffkY/pbrqIlGHxWz89qMgRQPew3rwxgJ5pJpWKV6XsZ1fyrB1l5cQ44nUimcN896gKU2w/XOaK7hoMogJjUyB4/k2FT8625lvUCfgG15gL864Yup40hPvffJnBWrAQppKGLJf6gdK/vvyfkA=="
+                        "value": "i=2; a=rsa-sha256; c=relaxed/relaxed; d=example.com; s=arcselector9901; h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck; bh=JTO1zhdnutp+Ae7C+ON6R++F9K4gs4znUS44dv8a8Yc=; b=F/VsvQ8bxtxQB/HGs8bnxV+v7ozYhSg0kYYhN/5ep4xadJ2sPvoaWDX4do+LY7vuiNX8GXqHXFJ5TQcrc8XjPT8ggGDGmf8w4dGE1FrFBTVLmWqjH7WHeLHrOYGDp3udbpelXW4GXN4++qpPn032vomyPtaEAvTZ4B6dgVJ6vvWyp4kDjxjfjJofbktD41qf3M/j9LffkY/pbrqIlGHxWz89qMgRQPew3rwxgJ5pJpWKV6XsZ1fyrB1l5cQ44nUimcN896gKU2w/XOaK7hoMogJjUyB4/k2FT8625lvUCfgG15gL864Yup40hPvffJnBWrAQppKGLJf6gdK/vvyfkA=="
                     },
                     {
                         "name": "ARC-Message-Signature",
-                        "value": "i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; s=arcselector9901; h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck; bh=JTO1zhdnutp+Ae7C+ON6R++F9K4gs4znUS44dv8a8Yc=; b=WBXxMj+PxEcWUt5cSx5BoSm04zaqE/aT+dJPeOHWuWnQruEjaRzqadIKsNCn/s5FbCALQMExtSBKDFj5hiWVJvHojeBZBRrrLCgI46GnbsFgo3qHaO38dqWhnueWrnMrWMgi8YrgM5MXRPyh7LdMB/Ws0vtAYD35rM7/ChD3BBxdVUq8GIXSUnB9mGvBHAAhTTAEphY9xMD1Or1DRX91O1561OrfQBpZjtrkwME0Irpex+y4CgdC0aAFXg2H6H2B+fanRztsjG2iTF74VVMAeyYWf5Or5KWuyAl2dyWbvRaDBcstUql6yKfYwjhP0qEIr2f+/9eNaX55xgIRYb2nDA=="
+                        "value": "i=1; a=rsa-sha256; c=relaxed/relaxed; d=example.com; s=arcselector9901; h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck; bh=JTO1zhdnutp+Ae7C+ON6R++F9K4gs4znUS44dv8a8Yc=; b=WBXxMj+PxEcWUt5cSx5BoSm04zaqE/aT+dJPeOHWuWnQruEjaRzqadIKsNCn/s5FbCALQMExtSBKDFj5hiWVJvHojeBZBRrrLCgI46GnbsFgo3qHaO38dqWhnueWrnMrWMgi8YrgM5MXRPyh7LdMB/Ws0vtAYD35rM7/ChD3BBxdVUq8GIXSUnB9mGvBHAAhTTAEphY9xMD1Or1DRX91O1561OrfQBpZjtrkwME0Irpex+y4CgdC0aAFXg2H6H2B+fanRztsjG2iTF74VVMAeyYWf5Or5KWuyAl2dyWbvRaDBcstUql6yKfYwjhP0qEIr2f+/9eNaX55xgIRYb2nDA=="
                     },
                     {
                         "name": "ARC-Authentication-Results",
-                        "value": "i=2; mx.microsoft.com 1;spf=pass (sender ip is 40.92.11.32) smtp.rcpttodomain=hotmail.com smtp.mailfrom=hotmail.com;dmarc=pass (p=none sp=none pct=100) action=none header.from=hotmail.com;dkim=pass (signature was verified) header.d=hotmail.com;arc=pass (0 oda=0 ltdi=1)"
+                        "value": "i=2; mx.example.com 1;spf=pass (sender ip is 198.162.1.1) example.com=example.com example.com=example.com;dmarc=pass (p=none sp=none pct=100) action=none example.com=example.com;dkim=pass (signature was verified) header.d=example.com;arc=pass (0 oda=0 ltdi=1)"
                     },
                     {
                         "name": "ARC-Authentication-Results",
-                        "value": "i=1; mx.microsoft.com 1;spf=none;dmarc=none;dkim=none;arc=none"
+                        "value": "i=1; mx.example.com 1;spf=none;dmarc=none;dkim=none;arc=none"
                     },
                     {
                         "name": "Authentication-Results",
-                        "value": "spf=pass (sender IP is 40.92.11.32) smtp.mailfrom=hotmail.com; hotmail.com; dkim=pass (signature was verified) header.d=hotmail.com;hotmail.com; dmarc=pass action=none header.from=hotmail.com;"
+                        "value": "spf=pass (sender IP is 198.162.1.1) example.com=example.com; example.com; dkim=pass (signature was verified) header.d=example.com;example.com; dmarc=pass action=none example.com=example.com;"
                     },
                     {
                         "name": "Received-SPF",
-                        "value": "Pass (protection.outlook.com: domain of hotmail.com designates 40.92.11.32 as permitted sender) receiver=protection.outlook.com; client-ip=40.92.11.32; helo=NAM04-SN1-obe.outbound.protection.outlook.com;"
+                        "value": "Pass (example.com.com: domain of example.com designates 198.162.1.1 as permitted sender) receiver=example.com.com; client-ip=198.162.1.1; helo=example.com.example.com.com;"
                     },
                     {
                         "name": "X-IncomingTopHeaderMarker",
@@ -89,7 +89,7 @@
                     },
                     {
                         "name": "DKIM-Signature",
-                        "value": "v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com; s=selector1; h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck; bh=JTO1zhdnutp+Ae7C+ON6R++F9K4gs4znUS44dv8a8Yc=; b=GizyMKmocCAOVjOUrKvdewy0/OsnG7iRvzDIweRHjMv8AADpKpPb08AWCXwGOr3NI+4vPtagOjmz/hKijqhx7fQtkTQyQ9f8lnozXNTlSdhi2Z+g8ySDss9hJjllXtG9JtKaZYM9WLCc1HTW/ACjWg9y2tqPeH7mlkk9NgqPaimsYSpR/gSl2P0YUh1MaiNdxHYXlV2WNT18qhGXkVqH2cSz/lCqB3YRqAIcR/7HOXCY4V+jmqAj0rcUb14/NZ+5Fyg2Vfch6WQN16Tq3lOYj+kMSSQ+nHUWb0J14Kc5o7uuU0yz/9alq0HSRt69WHG3t3zyRMF5ikHhVqMg4cAo2Q=="
+                        "value": "v=1; a=rsa-sha256; c=relaxed/relaxed; d=example.com; s=selector1; h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck; bh=JTO1zhdnutp+Ae7C+ON6R++F9K4gs4znUS44dv8a8Yc=; b=GizyMKmocCAOVjOUrKvdewy0/OsnG7iRvzDIweRHjMv8AADpKpPb08AWCXwGOr3NI+4vPtagOjmz/hKijqhx7fQtkTQyQ9f8lnozXNTlSdhi2Z+g8ySDss9hJjllXtG9JtKaZYM9WLCc1HTW/ACjWg9y2tqPeH7mlkk9NgqPaimsYSpR/gSl2P0YUh1MaiNdxHYXlV2WNT18qhGXkVqH2cSz/lCqB3YRqAIcR/7HOXCY4V+jmqAj0rcUb14/NZ+5Fyg2Vfch6WQN16Tq3lOYj+kMSSQ+nHUWb0J14Kc5o7uuU0yz/9alq0HSRt69WHG3t3zyRMF5ikHhVqMg4cAo2Q=="
                     },
                     {
                         "name": "Subject",
@@ -109,7 +109,7 @@
                     },
                     {
                         "name": "Message-ID",
-                        "value": "<BN6PR20MB1380C6930D4FDE09755C4E3AF3D50@BN6PR20MB1380.namprd20.prod.outlook.com>"
+                        "value": "<user@example.com>"
                     },
                     {
                         "name": "Accept-Language",
@@ -177,7 +177,7 @@
                     },
                     {
                         "name": "Return-Path",
-                        "value": "chakan2@hotmail.com"
+                        "value": "user@example.com"
                     },
                     {
                         "name": "X-MS-Exchange-Organization-ExpirationStartTime",
@@ -209,11 +209,11 @@
                     },
                     {
                         "name": "X-MS-Exchange-Transport-CrossTenantHeadersStripped",
-                        "value": "HE1EUR02FT030.eop-EUR02.prod.protection.outlook.com"
+                        "value": "example.com-example.com.example.com.com"
                     },
                     {
                         "name": "X-MS-Exchange-Transport-CrossTenantHeadersPromoted",
-                        "value": "HE1EUR02FT030.eop-EUR02.prod.protection.outlook.com"
+                        "value": "example.com-example.com.example.com.com"
                     },
                     {
                         "name": "X-Forefront-Antispam-Report",
@@ -221,7 +221,7 @@
                     },
                     {
                         "name": "X-MS-Exchange-Organization-AuthSource",
-                        "value": "HE1EUR02FT030.eop-EUR02.prod.protection.outlook.com"
+                        "value": "example.com-example.com.example.com.com"
                     },
                     {
                         "name": "X-MS-Exchange-Organization-AuthAs",
@@ -245,11 +245,11 @@
                     },
                     {
                         "name": "X-Sender-IP",
-                        "value": "40.92.11.32"
+                        "value": "198.162.1.1"
                     },
                     {
                         "name": "X-SID-PRA",
-                        "value": "CHAKAN2@HOTMAIL.COM"
+                        "value": "user@example.com"
                     },
                     {
                         "name": "X-SID-Result",
@@ -261,7 +261,7 @@
                     },
                     {
                         "name": "X-OriginatorOrg",
-                        "value": "hotmail.com"
+                        "value": "example.com"
                     },
                     {
                         "name": "X-MS-Exchange-CrossTenant-OriginalArrivalTime",
@@ -322,21 +322,21 @@
                 },
                 "sender": {
                     "emailAddress": {
-                        "name": "Joey McAdams",
-                        "address": "chakan2@hotmail.com"
+                        "name": "Example User",
+                        "address": "user@example.com"
                     }
                 },
                 "from": {
                     "emailAddress": {
-                        "name": "Joey McAdams",
-                        "address": "chakan2@hotmail.com"
+                        "name": "Example User",
+                        "address": "user@example.com"
                     }
                 },
                 "toRecipients": [
                     {
                         "emailAddress": {
-                            "name": "Joey McAdams",
-                            "address": "chakan2@hotmail.com"
+                            "name": "Example User",
+                            "address": "user@example.com"
                         }
                     }
                 ],

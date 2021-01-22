@@ -1,62 +1,62 @@
-Received: from AM2PR04MB0931.eurprd04.prod.outlook.com (2603:10a6:207::11) by
- HE1PR04MB0937.eurprd04.prod.outlook.com with HTTPS via
- AM3PR04CA0127.EURPRD04.PROD.OUTLOOK.COM; Wed, 21 Feb 2018 14:05:06 +0000
-Received: from AM5PR04CA0031.eurprd04.prod.outlook.com (2603:10a6:206:1::44)
- by AM2PR04MB0931.eurprd04.prod.outlook.com (2a01:111:e400:8426::16) with
+Received: from example.com04.example.com.com (2603:10a6:207::11) by
+ example.com04.example.com.com with HTTPS via
+ example.com04.example.com.COM; Wed, 21 Feb 2018 14:05:06 +0000
+Received: from example.com04.example.com.com (2603:10a6:206:1::44)
+ by example.com04.example.com.com (2a01:111:e400:8426::16) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id 15.20.506.18; Wed, 21
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id 198.162.1.1; Wed, 21
  Feb 2018 14:05:05 +0000
-Received: from AM1FFO11FD008.protection.gbl (2a01:111:f400:7e00::153) by
- AM5PR04CA0031.outlook.office365.com (2603:10a6:206:1::44) with Microsoft SMTP
+Received: from example.com.gbl (2a01:111:f400:7e00::153) by
+ example.com.example.com (2603:10a6:206:1::44) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.20.506.18 via Frontend Transport; Wed, 21 Feb 2018 14:05:05 +0000
-Received: from fra-basf-emps-prod-08.fireeyecloud.com (149.13.95.49) by
- AM1FFO11FD008.mail.protection.outlook.com (10.174.64.70) with Microsoft SMTP
+ 198.162.1.1 via Frontend Transport; Wed, 21 Feb 2018 14:05:05 +0000
+Received: from example.com.com (198.162.1.1) by
+ example.com.example.com.com (198.162.1.1) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384) id
- 15.20.485.12 via Frontend Transport; Wed, 21 Feb 2018 14:05:05 +0000
-Received: by fra-basf-emps-prod-08.fireeyecloud.com (Postfix, from userid 600)
+ 198.162.1.1 via Frontend Transport; Wed, 21 Feb 2018 14:05:05 +0000
+Received: by example.com.com (Postfix, from userid 600)
 	id 3zmfPp1xPXz3vL1v; Wed, 21 Feb 2018 14:04:06 +0000 (UTC)
-Received: from EUR01-HE1-obe.outbound.protection.outlook.com (unknown [10.80.102.253])
+Received: from example.com.example.com.com (unknown [198.162.1.1])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by fra-basf-emps-prod-08.fireeyecloud.com (Postfix) with ESMTPS id 3zmfNZ5yJQz1DLSv
-	for <michael.gansert@basf.com>; Wed, 21 Feb 2018 14:03:58 +0000 (UTC)
-Received: from DB6PR0402CA0023.eurprd04.prod.outlook.com (2603:10a6:4:91::33)
- by VI1PR04MB0942.eurprd04.prod.outlook.com (2a01:111:e400:508b::26) with
+	by example.com.com (Postfix) with ESMTPS id 3zmfNZ5yJQz1DLSv
+	for <user@example.com>; Wed, 21 Feb 2018 14:03:58 +0000 (UTC)
+Received: from example.com04.example.com.com (2603:10a6:4:91::33)
+ by example.com04.example.com.com (2a01:111:e400:508b::26) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id 15.20.506.18; Wed, 21
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id 198.162.1.1; Wed, 21
  Feb 2018 14:03:56 +0000
-Received: from AM1FFO11FD021.protection.gbl (2a01:111:f400:7e00::160) by
- DB6PR0402CA0023.outlook.office365.com (2603:10a6:4:91::33) with Microsoft
+Received: from example.com.gbl (2a01:111:f400:7e00::160) by
+ example.com.example.com (2603:10a6:4:91::33) with Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.20.527.15 via Frontend Transport; Wed, 21 Feb 2018 14:03:56 +0000
-Received: from maild-ae.linkedin.com (108.174.3.181) by
- AM1FFO11FD021.mail.protection.outlook.com (10.174.64.210) with Microsoft SMTP
+ 198.162.1.1 via Frontend Transport; Wed, 21 Feb 2018 14:03:56 +0000
+Received: from example.com.com (198.162.1.1) by
+ example.com.example.com.com (198.162.1.1) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384) id
- 15.20.485.12 via Frontend Transport; Wed, 21 Feb 2018 14:03:55 +0000
-From: "invitations@linkedin.com" <invitations@linkedin.com>
-To: Michael Gansert <michael.gansert@basf.com>
+ 198.162.1.1 via Frontend Transport; Wed, 21 Feb 2018 14:03:55 +0000
+From: "user@example.com" <user@example.com>
+To: Example User <user@example.com>
 Subject: =?utf-8?B?R3LDvMOfZSB2b24gU3RlZmFuIEFwcGVs?=
 Thread-Topic: =?utf-8?B?R3LDvMOfZSB2b24gU3RlZmFuIEFwcGVs?=
 Thread-Index: AQHTqxz62jgiBZcfKUCfj2jAQdJAyQ==
 Date: Wed, 21 Feb 2018 14:03:54 +0000
-Message-ID: <1161823745.5692534.1519221834597.JavaMail.app@ltx1-app9480.prod.linkedin.com>
-List-Unsubscribe: <https://www.linkedin.com/e/v2?e=-767lgc-jdwvr707-b3&t=lun&midToken=AQFmrFVhGEd36Q&ek=first_guest_reminder_01&loid=AQFnjXACOY-LDAAAAWG4rYMrsZjipU6szpjgAfPGiLXQWpiAnUvwvX5HfjgiIFPXkB8pc3MzU5ivuewEMVMduDjYM0nNBJL0QH1FUYOk0FMysGE&eid=-767lgc-jdwvr707-b3>
+Message-ID: <user@example.com>
+List-Unsubscribe: <https://example.com.com/e/v2?e=-767lgc-jdwvr707-b3&t=lun&midToken=AQFmrFVhGEd36Q&ek=first_guest_reminder_01&loid=AQFnjXACOY-LDAAAAWG4rYMrsZjipU6szpjgAfPGiLXQWpiAnUvwvX5HfjgiIFPXkB8pc3MzU5ivuewEMVMduDjYM0nNBJL0QH1FUYOk0FMysGE&eid=-767lgc-jdwvr707-b3>
 Content-Language: de-DE
 X-MS-Exchange-Organization-AuthAs: Anonymous
-X-MS-Exchange-Organization-AuthSource: AM1FFO11FD008.protection.gbl
+X-MS-Exchange-Organization-AuthSource: example.com.gbl
 X-MS-Exchange-Organization-ComplianceLabelId: 8c5906b0-5012-4a25-ade0-05da3ec97a4d
 X-MS-Has-Attach:
 X-MS-Exchange-Organization-Network-Message-Id: 4d89827f-7db6-47a0-35f5-08d579341bf6
 X-MS-Exchange-Organization-SCL: -1
 X-MS-TNEF-Correlator:
 X-MS-Exchange-Organization-RecordReviewCfmType: 0
-received-spf: Pass (protection.outlook.com: domain of bounce.linkedin.com
- designates 108.174.3.181 as permitted sender)
- receiver=protection.outlook.com; client-ip=108.174.3.181;
- helo=maild-ae.linkedin.com;
-x-ms-exchange-organization-originalclientipaddress: 149.13.95.49
-x-ms-exchange-organization-originalserveripaddress: 10.174.64.70
+received-spf: Pass (example.com.com: domain of example.com.com
+ designates 198.162.1.1 as permitted sender)
+ receiver=example.com.com; client-ip=198.162.1.1;
+ helo=example.com.com;
+x-ms-exchange-organization-originalclientipaddress: 198.162.1.1
+x-ms-exchange-organization-originalserveripaddress: 198.162.1.1
 x-ms-publictraffictype: Email
 X-Microsoft-Exchange-Diagnostics: 1;HE1PR04MB0937;27:VdcTi6e3/RBc2jQcXI2Dx7BQconW+9jRiRFTgVkaesP/hP08edMpi54HA/SUFUcJ8twLXMh+piGK1oYsDeJeK+izIbqRtIGxXrnU6P6xZtzioWgnr+5n1kHKqvG1sktt
 X-Microsoft-Antispam-Mailbox-Delivery: ex:0;auth:0;dest:I;ENG:(400001000128)(400125000095)(750103)(520011016)(400001001318)(400125100095)(61617190)(944506137)(944626220)(400001002128)(400125200095);
