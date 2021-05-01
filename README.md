@@ -41,4 +41,5 @@ be on your way to contributing!
 
 ## Changelog
 
+* 2.0.0 - Change indicators to list instead one value
 * 1.0.0 - Initial release

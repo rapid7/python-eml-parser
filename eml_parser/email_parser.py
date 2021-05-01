@@ -59,7 +59,7 @@ class EmailParser(object):
         result.recipients = self.get_recipients(msg)
         result.body = self.get_body(msg)
         result.headers = self.get_headers(msg)
-        result.indicators = Indicators(result.body)
+        result.indicators = self.get_indicators(msg)
 
         (
             result.attached_files,
@@ -77,6 +77,14 @@ class EmailParser(object):
             result.has_attachments = True
 
         return result
+
+    def get_indicators(self, msg: message) -> [Indicators]:
+        indicators = []
+        for part in msg.walk():
+            if not part.is_multipart():
+                indicators.append(Indicators(self.get_body(part)))
+
+        return indicators
 
     @staticmethod
     def get_headers(msg: message) -> list:
