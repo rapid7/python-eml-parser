@@ -26,7 +26,7 @@ class EmailParser(object):
 
     def make_email_from_raw(self, email_message: message, mailbox_id: str) -> IconEmail:
         """
-        This is the gateway to converting a raw email string
+        This starts the rabbit hole of death. This is the gateway to converting a raw email string
         into an IconEmail
 
         :param logger: Logger object
@@ -59,7 +59,7 @@ class EmailParser(object):
         result.recipients = self.get_recipients(msg)
         result.body = self.get_body(msg)
         result.headers = self.get_headers(msg)
-        result.indicators = Indicators(result.body)
+        result.indicators = self.get_indicators(msg)
 
         (
             result.attached_files,
@@ -77,6 +77,14 @@ class EmailParser(object):
             result.has_attachments = True
 
         return result
+
+    def get_indicators(self, msg: message) -> [Indicators]:
+        indicators = []
+        for part in msg.walk():
+            if not part.is_multipart():
+                indicators.append(Indicators(self.get_body(part)))
+
+        return indicators
 
     @staticmethod
     def get_headers(msg: message) -> list:
@@ -181,7 +189,7 @@ class EmailParser(object):
     @staticmethod
     def prep_multipart_alt_body(msg):
         """
-        Takes a multipart/alternative part, extracts the payload, and decodes it if necessary.
+        Takes a multipart/alternative part, extracts the payload, and decodes it if necissary.
 
         :param msg: multipart/alternative message
         :return: body (string)
@@ -189,8 +197,8 @@ class EmailParser(object):
         payloads = msg.get_payload(decode=False)
 
         """
-        In a multi-part alternative email, the email will contain several payloads. The standard is the last payload
-        will be closest to what is actually sent in the list of payloads. That's the one the user will most likely want
+        In a mutli-part alternative email, the email will contain several payloads. The standard is the the last payload
+        will be closest to what is actually sent in the list of playloads. That's the one the user will most likely want
         to analyze. (The first payload in the list of payloads is typically just text with all attachments and style
         stripped out)
         """

@@ -13,14 +13,15 @@ class IconEmail(object):
     """
 
     def __init__(self, **kwargs):
+        body = kwargs.get("body", None)
         self.account = kwargs.get("account", None)
         self.recipients = kwargs.get("recipients", None)
         self.is_read = kwargs.get("is_read", None)
         self.id = kwargs.get("id", None)
         self.sender = kwargs.get("sender", None)
         self.subject = kwargs.get("subject", None)
-        self.body = kwargs.get("body", None)
-        self.indicators = Indicators(self.body) if self.body else None
+        self.body = body
+        self.indicators = [Indicators(body)] if body else []
         self.categories = kwargs.get("categories", None)
         self.date_received = kwargs.get("date_received", None)
         self.headers = kwargs.get("headers", None)
@@ -49,6 +50,11 @@ class IconEmail(object):
                     dict_obj[key] = dict_obj.get(key).isoformat()
                 if isinstance(dict_obj.get(key), Indicators):
                     dict_obj[key] = dict_obj.get(key).make_serializable()
+                if key == "indicators" and isinstance(dict_obj.get(key), list):
+                    serialized_indicators = []
+                    for indicator in dict_obj.get(key):
+                        serialized_indicators.append(indicator.make_serializable())
+                    dict_obj[key] = serialized_indicators
 
             return dict_obj
 

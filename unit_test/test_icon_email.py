@@ -33,7 +33,7 @@ class TestIconEmail(TestCase):
         self.assertEqual(email.is_read, None)
         self.assertEqual(email.sender, None)
         self.assertEqual(email.subject, None)
-        self.assertEqual(email.indicators, None)
+        self.assertEqual(email.indicators, [])
 
     def test_create_email(self):
         params = {
@@ -59,13 +59,17 @@ class TestIconEmail(TestCase):
         self.assertEqual(email.date_received, "Today")
         self.assertEqual(email.headers, [{"header1": "value1"}])
         self.assertEqual(email.has_attachments, False)
-        self.assertEqual(email.indicators.md5, "97214f63224bc1e9cc4da377aadce7c7")
         self.assertEqual(
-            email.indicators.sha1, "482cb0cfcbed6740a2bcb659c9ccc22a4d27b369"
+            [d.md5 for d in email.indicators],
+            ['97214f63224bc1e9cc4da377aadce7c7']
         )
         self.assertEqual(
-            email.indicators.sha256,
-            "2263d8dd95ccfe1ad45d732c6eaaf59b3345e6647331605cb15aae52002dff75",
+            [d.sha1 for d in email.indicators],
+            ['482cb0cfcbed6740a2bcb659c9ccc22a4d27b369']
+        )
+        self.assertEqual(
+            [d.sha256 for d in email.indicators],
+            ['2263d8dd95ccfe1ad45d732c6eaaf59b3345e6647331605cb15aae52002dff75']
         )
         self.assertEqual(email.attached_files, [])
         self.assertEqual(email.attached_emails, [])
@@ -82,6 +86,7 @@ class TestIconEmail(TestCase):
             "flattened_attached_emails": [],
             "flattened_attached_files": [],
             "has_attachments": False,
+            "indicators": []
         }
 
         self.assertEqual(actual, expected)
@@ -221,5 +226,4 @@ class TestIconEmail(TestCase):
 
         actual = icon_email.__hash__()
 
-        print(type(actual))
         self.assertIsInstance(actual, int)
