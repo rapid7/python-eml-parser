@@ -72,6 +72,55 @@ class TestIconEmail(TestCase):
         self.assertEqual(email.flattened_attached_emails, [])
         self.assertEqual(email.flattened_attached_files, [])
 
+    def test_create_email2(self):
+        params = {
+            "account": "test_account@test.com",
+            "recipients": "[test@test.com]",
+            "is_read": True,
+            "id": "test_id",
+            "sender": "someguy@test.com",
+            "body": "This is some text",
+            "categories": ["Foo", "Bar"],
+            "date_received": "Today",
+            "headers": [
+                {
+                    "name": "Authentication-Results",
+                    "value": "spf=pass (sender IP is 198.162.1.1) example.com=example.com; example.com.com; dkim=pass (signature was verified) header.d=example.com;example.com.com; dmarc=pass action=none example.com=example.com;compauth=pass reason=100"
+                }
+            ],
+        }
+
+        email = IconEmail(**params)
+        self.assertEqual(email.account, "test_account@test.com")
+        self.assertEqual(email.recipients, "[test@test.com]")
+        self.assertEqual(email.is_read, True)
+        self.assertEqual(email.id, "test_id")
+        self.assertEqual(email.sender, "someguy@test.com")
+        self.assertEqual(email.body, "This is some text")
+        self.assertEqual(email.categories, ["Foo", "Bar"])
+        self.assertEqual(email.date_received, "Today")
+        self.assertEqual(
+            email.headers,
+            [
+                {
+                    "name": "Authentication-Results",
+                    "value": "spf=pass (sender IP is 198.162.1.1) example.com=example.com; example.com.com; dkim=pass (signature was verified) header.d=example.com;example.com.com; dmarc=pass action=none example.com=example.com;compauth=pass reason=100"
+                }
+            ]
+        )
+        self.assertEqual(email.has_attachments, False)
+        self.assertEqual(email.indicators.md5, "97214f63224bc1e9cc4da377aadce7c7")
+        self.assertEqual(
+            email.indicators.sha1, "482cb0cfcbed6740a2bcb659c9ccc22a4d27b369"
+        )
+        self.assertEqual(
+            email.indicators.sha256,
+            "2263d8dd95ccfe1ad45d732c6eaaf59b3345e6647331605cb15aae52002dff75",
+        )
+        self.assertEqual(email.indicators.dkim, "dkim=pass (signature was verified) header.d=example.com")
+        self.assertEqual(email.indicators.dmarc, "dmarc=pass action=none example.com=example.com")
+        self.assertEqual(email.indicators.spf, "spf=pass (sender IP is 198.162.1.1) example.com=example.com")
+
     def test_make_serializable(self):
         icon_email = IconEmail()
         actual = icon_email.make_serializable()
