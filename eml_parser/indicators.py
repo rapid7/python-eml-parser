@@ -56,6 +56,7 @@ class Indicators(object):
                 name = header.get("name")
                 if name == "Authentication-Results":
                     value = header.get("value")
+                    break
 
         if value:
             split_header = value.split(";")
