@@ -59,7 +59,7 @@ class EmailParser(object):
         result.recipients = self.get_recipients(msg)
         result.body = self.get_body(msg)
         result.headers = self.get_headers(msg)
-        result.indicators = Indicators(result.body)
+        result.indicators = Indicators(result.body, result.headers)
 
         (
             result.attached_files,

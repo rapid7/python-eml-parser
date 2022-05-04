@@ -41,4 +41,5 @@ be on your way to contributing!
 
 ## Changelog
 
+* 1.1.0 - Parse dkim, spf and dmarc indicators from Authentication-Results header
 * 1.0.0 - Initial release

@@ -20,10 +20,10 @@ class IconEmail(object):
         self.sender = kwargs.get("sender", None)
         self.subject = kwargs.get("subject", None)
         self.body = kwargs.get("body", None)
-        self.indicators = Indicators(self.body) if self.body else None
+        self.headers = kwargs.get("headers", None)
+        self.indicators = Indicators(self.body, self.headers) if self.body else None
         self.categories = kwargs.get("categories", None)
         self.date_received = kwargs.get("date_received", None)
-        self.headers = kwargs.get("headers", None)
         self.attached_files = kwargs.get("attached_files", [])
         self.attached_emails = kwargs.get("attached_emails", [])
         self.has_attachments = kwargs.get("has_attachments", False)

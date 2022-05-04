@@ -23,6 +23,12 @@ GET_GOOGLE_SURVEY = f"{CURRENT_DIR}/payloads/API Security Survey (please take th
 
 GET_BAD_EMAIL1 = f"{CURRENT_DIR}/payloads/get_raw_attachment_test_no_content_type.txt"
 
+EMAIL_WITH_AUTH_RESULTS_HEADER_WITHOUT_DKIM = f"{CURRENT_DIR}/payloads/email_with_auth_results_header_without_dkim.txt"
+EMAIL_WITH_AUTH_RESULTS_HEADER_WITHOUT_DMARC = f"{CURRENT_DIR}/payloads/email_with_auth_results_header_without_dmarc.txt"
+EMAIL_WITH_AUTH_RESULTS_HEADER_WITHOUT_SPF = f"{CURRENT_DIR}/payloads/email_with_auth_results_header_without_spf.txt"
+EMAIL_WITH_EMPTY_AUTH_RESULTS_HEADER = f"{CURRENT_DIR}/payloads/email_with_empty_auth_results.txt"
+EMAIL_WITHOUT_AUTH_RESULTS = f"{CURRENT_DIR}/payloads/email_without_auth_results_header.txt"
+
 
 # Get a real payload from file
 def read_file_to_string(filename):
@@ -60,6 +66,9 @@ class TestEmailParser(TestCase):
             email.indicators.sha256,
             "226a485db0230d4bc95c892f29b7257fee1aefb9ed273ec4cc4abe134a6b8a6b",
         )
+        self.assertEqual(email.indicators.dkim, "dkim=pass (signature was verified) header.d=example.com")
+        self.assertEqual(email.indicators.dmarc, "dmarc=pass action=none example.com=example.com")
+        self.assertEqual(email.indicators.spf, "spf=pass (sender IP is 198.162.1.1) example.com=example.com")
 
         attached_email = email.attached_emails[0]
         self.assertEqual(attached_email.subject, "Level 2 subject")
@@ -129,6 +138,9 @@ class TestEmailParser(TestCase):
             attached_email.indicators.sha256,
             "b6ef02bc495b3710bd822a789e2b916c610b6fc78aab1f5a82bb2676fd6ad664",
         )
+        self.assertEqual(email.indicators.dkim, "dkim=pass (signature was verified) header.d=example.com")
+        self.assertEqual(email.indicators.dmarc, "dmarc=pass action=none example.com=example.com")
+        self.assertEqual(email.indicators.spf, "spf=pass (sender IP is 198.162.1.1) example.com=example.com")
 
         self.assertEqual(email.date_received, "Tue, 6 Aug 2019 19:19:40 +0000")
         self.assertEqual(len(email.headers), 75)
@@ -168,6 +180,9 @@ class TestEmailParser(TestCase):
             attachment.indicators.sha256,
             "c08eb82e5383760cad3a4b4863dfb871b4c4252eba039c64a90ffc818907de27",
         )
+        self.assertEqual(email.indicators.dkim, "dkim=pass (signature was verified) header.d=example.com")
+        self.assertEqual(email.indicators.dmarc, "dmarc=pass action=none example.com=example.com")
+        self.assertEqual(email.indicators.spf, "spf=pass (sender IP is 198.162.1.1) example.com=example.com")
 
     def test_parse_from_raw4(self):
         raw_email = read_file_to_string(GET_RAW_ATTACHMENT_PAYLOAD4)
@@ -200,6 +215,9 @@ Nothing here, just this text</div>
             email.indicators.sha256,
             "50b779af79f6493165c0b8de3e56c08e0cc3eec3c50e2f9f2ddfe80247b8e886",
         )
+        self.assertEqual(email.indicators.dkim, "dkim=pass (signature was verified) header.d=example.com")
+        self.assertEqual(email.indicators.dmarc, "dmarc=pass action=none example.com=example.com")
+        self.assertEqual(email.indicators.spf, "spf=pass (sender IP is 198.162.1.1) example.com=example.com")
         self.assertEqual(email.date_received, "Thu, 8 Aug 2019 21:19:37 +0000")
         self.assertEqual(len(email.headers), 76)
         self.assertEqual(email.is_read, False)
@@ -393,3 +411,68 @@ Nothing here, just this text</div>
 
         expected = '<p class="MsoNormal"><a href="http://example.com" title="http://proteexample.com.com/s/414KCXDXZofXVRNRZT6ai-n?domain=example.com">http://aexample.com</a><o:p></o:p></p>'
         self.assertTrue(expected in email.body)
+
+    def test_parse_auth_results_header(self):
+        raw_email = read_file_to_string(GET_EML_WITH_EML_ATTACHED)
+        email_parser = EmailParser(self.log)
+        email = email_parser.make_email_from_raw(
+            message_from_string(raw_email), TEST_MAILBOX_ID
+        )
+
+        self.assertEqual(email.indicators.dkim, "dkim=pass header.i=@example.com.com header.s=selector1-exampleorg-onmicrosoft-com header.b=QrDN9zQZ")
+        self.assertEqual(email.indicators.dmarc, None)
+        self.assertEqual(email.indicators.spf, "spf=pass (example.com: domain of user@example.com designates 198.162.1.1 as permitted sender) example.com=user@example.com")
+
+    def test_parse_auth_results_header_without_dkim(self):
+        raw_email = read_file_to_string(EMAIL_WITH_AUTH_RESULTS_HEADER_WITHOUT_DKIM)
+        email_parser = EmailParser(self.log)
+        email = email_parser.make_email_from_raw(
+            message_from_string(raw_email), TEST_MAILBOX_ID
+        )
+
+        self.assertEqual(email.indicators.dkim, None)
+        self.assertEqual(email.indicators.dmarc, "dmarc=pass action=none example.com=example.com")
+        self.assertEqual(email.indicators.spf, "spf=pass (sender IP is 198.162.1.1) example.com=example.com")
+
+    def test_parse_auth_results_header_without_dmarc(self):
+        raw_email = read_file_to_string(EMAIL_WITH_AUTH_RESULTS_HEADER_WITHOUT_DMARC)
+        email_parser = EmailParser(self.log)
+        email = email_parser.make_email_from_raw(
+            message_from_string(raw_email), TEST_MAILBOX_ID
+        )
+
+        self.assertEqual(email.indicators.dkim, "dkim=pass (signature was verified) header.d=example.com")
+        self.assertEqual(email.indicators.dmarc, None)
+        self.assertEqual(email.indicators.spf, "spf=pass (sender IP is 198.162.1.1) example.com=example.com")
+
+    def test_parse_auth_results_header_without_spf(self):
+        raw_email = read_file_to_string(EMAIL_WITH_AUTH_RESULTS_HEADER_WITHOUT_SPF)
+        email_parser = EmailParser(self.log)
+        email = email_parser.make_email_from_raw(
+            message_from_string(raw_email), TEST_MAILBOX_ID
+        )
+
+        self.assertEqual(email.indicators.dkim, "dkim=pass (signature was verified) header.d=example.com")
+        self.assertEqual(email.indicators.dmarc, "dmarc=pass action=none example.com=example.com")
+        self.assertEqual(email.indicators.spf, None)
+
+    def test_parse_auth_results_header_empty(self):
+        raw_email = read_file_to_string(EMAIL_WITH_EMPTY_AUTH_RESULTS_HEADER)
+        email_parser = EmailParser(self.log)
+        email = email_parser.make_email_from_raw(
+            message_from_string(raw_email), TEST_MAILBOX_ID
+        )
+
+        self.assertEqual(email.indicators.dkim, None)
+        self.assertEqual(email.indicators.dmarc, None)
+        self.assertEqual(email.indicators.spf, None)
+
+    def test_parse_without_auth_results_header(self):
+        raw_email = read_file_to_string(EMAIL_WITHOUT_AUTH_RESULTS)
+        email_parser = EmailParser(self.log)
+        email = email_parser.make_email_from_raw(
+            message_from_string(raw_email), TEST_MAILBOX_ID
+        )
+        self.assertEqual(email.indicators.dkim, None)
+        self.assertEqual(email.indicators.dmarc, None)
+        self.assertEqual(email.indicators.spf, None)
