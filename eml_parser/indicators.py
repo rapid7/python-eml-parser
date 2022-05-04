@@ -2,6 +2,7 @@ import hashlib
 import json
 
 import eml_parser.helper as helper
+from eml_parser.constants import HEADERS, INDICATORS
 
 
 class Indicators(object):
@@ -12,9 +13,9 @@ class Indicators(object):
         self.sha256 = hashlib.sha256(encoded_content).hexdigest()
 
         auth_types = self.parse_auth_results_header(headers)
-        self.dkim = auth_types.get("dkim", None)
-        self.dmarc = auth_types.get("dmarc", None)
-        self.spf = auth_types.get("spf", None)
+        self.dkim = auth_types.get(INDICATORS.get("dkim"), None)
+        self.dmarc = auth_types.get(INDICATORS.get("dmarc"), None)
+        self.spf = auth_types.get(INDICATORS.get("spf"), None)
 
     # May not need this
     def make_serializable(self) -> dict:
@@ -54,7 +55,7 @@ class Indicators(object):
         if headers:
             for header in headers:
                 name = header.get("name")
-                if name == "Authentication-Results":
+                if name == HEADERS.get("authentication_results"):
                     value = header.get("value")
                     break
 
@@ -63,10 +64,10 @@ class Indicators(object):
             for auth_type in split_header:
                 stripped_auth_type = auth_type.strip().replace("\n", "")
                 if stripped_auth_type.startswith("dkim"):
-                    auth_types["dkim"] = stripped_auth_type
+                    auth_types[INDICATORS.get("dkim")] = stripped_auth_type
                 elif stripped_auth_type.startswith("dmarc"):
-                    auth_types["dmarc"] = stripped_auth_type
+                    auth_types[INDICATORS.get("dmarc")] = stripped_auth_type
                 elif stripped_auth_type.startswith("spf"):
-                    auth_types["spf"] = stripped_auth_type
+                    auth_types[INDICATORS.get("spf")] = stripped_auth_type
 
         return auth_types
