@@ -5,7 +5,13 @@ from eml_parser.indicators import Indicators
 
 
 class IconFile(object):
-    def __init__(self, file_name: str = "", content_type: str = "", content: str = "", content_transfer_encoding: str = ""):
+    def __init__(
+        self,
+        file_name: str = "",
+        content_type: str = "",
+        content: str = "",
+        content_transfer_encoding: str = "",
+    ):
         self.name = file_name
         self.content = content
         self.content_type = content_type
@@ -42,5 +48,5 @@ class IconFile(object):
         )
 
     def __lt__(self, other):
-        """ Less than, allows class to be sorted"""
+        """Less than, allows class to be sorted"""
         return self.name < other.name

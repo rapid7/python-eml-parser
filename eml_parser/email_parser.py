@@ -13,6 +13,7 @@ from eml_parser.icon_file import IconFile
 from eml_parser.microsoft_newline_cleaner import remove_microsoft_newlines
 from eml_parser.indicators import Indicators
 
+
 class EmailParser(object):
     """
     Handles all the parsing for an email.
