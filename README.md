@@ -41,4 +41,5 @@ be on your way to contributing!
 
 ## Changelog
 
+* 2.0.0 - MD5, SHA1, and SHA256 Indicators for Base64 Content are now hashes of the decoded Base64 Content
 * 1.0.0 - Initial release

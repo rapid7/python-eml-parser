@@ -5,11 +5,11 @@ from eml_parser.indicators import Indicators
 
 
 class IconFile(object):
-    def __init__(self, file_name: str = "", content_type: str = "", content: str = ""):
+    def __init__(self, file_name: str = "", content_type: str = "", content: str = "", content_transfer_encoding: str = ""):
         self.name = file_name
         self.content = content
         self.content_type = content_type
-        self.indicators = Indicators(content)
+        self.indicators = Indicators(content, content_transfer_encoding)
 
     # May not need this
     def make_serializable(self) -> dict:

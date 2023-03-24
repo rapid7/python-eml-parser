@@ -7,7 +7,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="python_eml_parser",
-    version="1.0.0",
+    version="2.0.0",
     description="Rapid7 InsightConnect email parser for email plugins",
     long_description=long_description,
     long_description_content_type="text/markdown",

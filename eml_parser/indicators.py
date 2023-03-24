@@ -1,12 +1,15 @@
 import hashlib
 import json
-
 import eml_parser.helper as helper
+import base64
 
 
 class Indicators(object):
-    def __init__(self, content: str):
-        encoded_content = content.encode("UTF-8")
+    def __init__(self, content: str, content_transfer_encoding: str = ""):
+        if content_transfer_encoding.lower() == "base64":
+            encoded_content = base64.b64decode(content)
+        else:
+            encoded_content = content.encode("UTF-8")
         self.md5 = hashlib.md5(encoded_content).hexdigest()
         self.sha1 = hashlib.sha1(encoded_content).hexdigest()
         self.sha256 = hashlib.sha256(encoded_content).hexdigest()

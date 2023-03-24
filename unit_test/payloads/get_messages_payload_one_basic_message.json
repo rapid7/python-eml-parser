@@ -22,7 +22,7 @@
             "isReadReceiptRequested": false,
             "isRead": false,
             "isDraft": false,
-            "webLink": "https://example.comexample.com/owa/?ItemID=AAMkADI3Mzc1ZTg3LTIzYWEtNDNmNi1hZDQ5LTBiMjAzYzA3ZThhYwBGAAAAAAAxDvrPc8q6SqGLTJ9iB%2FSGBwC8UQDN7ObVSLWQuxHJ%2FdDTAAAAAAEKAAC8UQDN7ObVSLWQuxHJ%2FdDTAAE4BZLGAAA%3D&exvsurl=1&viewmodel=ReadMessageItem",
+            "webLink": "https://example.com.com/owa/?ItemID=AAMkADI3Mzc1ZTg3LTIzYWEtNDNmNi1hZDQ5LTBiMjAzYzA3ZThhYwBGAAAAAAAxDvrPc8q6SqGLTJ9iB%2FSGBwC8UQDN7ObVSLWQuxHJ%2FdDTAAAAAAEKAAC8UQDN7ObVSLWQuxHJ%2FdDTAAE4BZLGAAA%3D&exvsurl=1&viewmodel=ReadMessageItem",
             "inferenceClassification": "focused",
             "body": {
                 "contentType": "text",

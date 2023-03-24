@@ -23,9 +23,9 @@ Received: from example.com.example.com1.example.com (198.162.1.1) by
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
  15.20.2032.15 via Frontend Transport; Thu, 18 Jul 2019 12:24:38 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=example.com; s=s2048; t=1563452678; bh=TGatgKz/i01tp8qC32NV2+NjMXzoITKGUQMjnShZ6Jg=; h=Date:From:To:Subject:References:From:Subject; b=PdoXuxcU9GOIwDRHNYn9FTRQCxvxaselOi67WJIeLz5y1ZXQWA80IvSQHeS0Ln12tn+fk17Aulmg30bBw+UlJlDGesGZWBowQS8XtkqeG8WQfEFKQPuwiuzvQWNfd8ELNSh97nhdip7K1cLvQ1XfIZI8lHtyDST7XaEzmXOolKBfxB34CAyUjlA/RvUchtsM34+pmikm3YHz6uCZOULfQXOA/kwME3QIeYzcPFgHvGy8MzWB6RDrQa3JOs94bbsoJE7xMLkXQZNHuBgiX5Ik+1BlDgEUcGjkT+gjcZBMY0BxzHQwdbNnw9KxkgkKvEcpRvcEsjcPvX+kvwaJLxrLUg==
-X-YMail-OSG: example.comexample.com.mbi_example.com5PbPXC4
+X-YMail-OSG: example.com.example.com_example.com5PbPXC4
  example.com10wg4xl6OsZNG5lWtzYhDOf_QQCEINV0oroD
- BM_example.comexample.com0vzRAzzjWtxuM_J_dKysDBdolm9UInzW30dRq.1ljpW
+ BM_example.com.com0vzRAzzjWtxuM_J_dKysDBdolm9UInzW30dRq.1ljpW
  n9A6XAdtgnZS9mVPhvo3NQT9jOGJcKjPUPEB9URV1itW6H1uAoZTzJOFoZkliMbdmz6xUIqVhkLY
  Kl_3PPkpHEa71bqNJYHUpxHLeXHjjyaSA4jDctSXpXAqud9CKSVL1qHoUUsXBf5KDLZ7htymnM_q
  example.com41qUwJmOOQQyd8jd0CuxyuJDoKojrlZzO0iMLT4g0shqkDA8DCe4.6Gof7P32vA5dJ
@@ -38,7 +38,7 @@ X-YMail-OSG: example.comexample.com.mbi_example.com5PbPXC4
  RPA2EaOCe9kbUef7VwylaJLCElHOgbym6RlcJMsqfM1FskouwwoOKMvgYsHGr7GhxwR.32z57SDg
  example.com_pxZyxFySmC8JU2Bhmuehjl6agnvOTwpphzbaDDuxpZgU
  5DK3ns8pIGu1yCIxzvR8qUXk9alLg2cix52mpW6_l5SMtuy98RjQXOrj3QKeUawnudjuyjOsfUF7
- 4UmqyLzY_.82JY379_jmlhcTrKgA.example.com.I9gw_D7UiIPbBonaPe3xkhszctH
+ 4UmqyLzY_.82JY379_example.com.com.I9gw_D7UiIPbBonaPe3xkhszctH
  VZp0Za4VmTduYpC__kGdrpwctXSGsw9qB60V8lWejFtP.3YikAF1L8rLWWu4rA2Whlff8dtq4DhL
  je6ToVRF2UTUE_mQ-
 Received: from example.com.example.com1.example.com by example.com.example.com1.example.com with HTTP; Thu, 18 Jul 2019 12:24:38 +0000

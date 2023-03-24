@@ -1,7 +1,6 @@
 from eml_parser.icon_file import IconFile
 from unittest import TestCase
 
-
 # This class tests icon file
 class TestIconFile(TestCase):
     def setUp(self) -> None:

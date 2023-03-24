@@ -25,7 +25,7 @@
                 "isReadReceiptRequested": false,
                 "isRead": true,
                 "isDraft": false,
-                "webLink": "https://example.comexample.com/owa/?AttachmentItemID=AAMkADI3Mzc1ZTg3LTIzYWEtNDNmNi1hZDQ5LTBiMjAzYzA3ZThhYwBGAAAAAAAxDvrPc8q6SqGLTJ9iB%2FSGBwC8UQDN7ObVSLWQuxHJ%2FdDTAAAAAAEMAAC8UQDN7ObVSLWQuxHJ%2FdDTAAE4BRpqAAABEgAQAIs8nFX%2B2wRHvWNkYLt8Lyo%3D&exvsurl=1&viewmodel=ItemAttachment",
+                "webLink": "https://example.com.com/owa/?AttachmentItemID=AAMkADI3Mzc1ZTg3LTIzYWEtNDNmNi1hZDQ5LTBiMjAzYzA3ZThhYwBGAAAAAAAxDvrPc8q6SqGLTJ9iB%2FSGBwC8UQDN7ObVSLWQuxHJ%2FdDTAAAAAAEMAAC8UQDN7ObVSLWQuxHJ%2FdDTAAE4BRpqAAABEgAQAIs8nFX%2B2wRHvWNkYLt8Lyo%3D&exvsurl=1&viewmodel=ItemAttachment",
                 "internetMessageHeaders": [
                     {
                         "name": "Received",
