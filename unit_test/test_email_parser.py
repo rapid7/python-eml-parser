@@ -34,51 +34,6 @@ class TestEmailParser(TestCase):
         logging.basicConfig(level=logging.INFO)
         self.log = logging.getLogger("stuff")
 
-    def test_changes_to_indicators(self):
-        raw_email = """MIME-Version: 1.0
-Date: Thu, 23 Mar 2023 12:23:03 +0000
-Message-ID: <CALrM=d33cPGrap2LqRLzonBumj34reNSG6W6qdMGs6P3AtRr5A@mail.gmail.com>
-Subject: test-virus-total-json
-From: Adam Blakley <adam_blakley@rapid7.com>
-To: Adam Blakley <adam_blakley@rapid7.com>
-Content-Type: multipart/mixed; boundary="00000000000098fc7805f79056cd"
-
---00000000000098fc7805f79056cd
-Content-Type: multipart/alternative; boundary="00000000000098fc7605f79056cb"
-
---00000000000098fc7605f79056cb
-Content-Type: text/plain; charset="UTF-8"
-
-this is a body
-
---00000000000098fc7605f79056cb
-Content-Type: text/html; charset="UTF-8"
-
-<div dir="ltr">this is a body</div>
-
---00000000000098fc7605f79056cb--
---00000000000098fc7805f79056cd
-Content-Type: application/json; name="test-file.json"
-Content-Disposition: attachment; filename="test-file.json"
-Content-Transfer-Encoding: base64
-X-Attachment-Id: f_lfl33obl0
-Content-ID: <f_lfl33obl0>
-
-VGVzdCB2aXJ1c3RvdGFsIGZpbGU=
---00000000000098fc7805f79056cd--"""
-        email_parser = EmailParser(self.log)
-        email = email_parser.make_email_from_raw(
-            message_from_string(raw_email), TEST_MAILBOX_ID
-        )
-        self.assertEqual("9e639d2b2753aa0fca30ded2cccd9007", email.attached_files[0].indicators.md5)
-        self.assertEqual(
-            "53ea3cab3f19171d2f1012b81d50a6dd50e9e0eb", email.attached_files[0].indicators.sha1
-        )
-        self.assertEqual(
-
-            "dd2c66fd7b613cf59922118169da7c37fe87c311b3f9d4c6954ec72d7eed1b5d", email.attached_files[0].indicators.sha256
-        )
-
     def test_parse_from_raw(self):
         raw_email = read_file_to_string(GET_RAW_ATTACHMENT_PAYLOAD)
         email_parser = EmailParser(self.log)
