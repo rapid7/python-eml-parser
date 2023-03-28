@@ -330,6 +330,7 @@ class EmailParser(object):
                 file_name=filename,
                 content_type=part.get_content_type(),
                 content=content,
+                content_transfer_encoding=content_transfer_encoding,
             )
 
             #################

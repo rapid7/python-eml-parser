@@ -3,7 +3,6 @@ from unittest import TestCase
 import logging
 import os
 from email import message_from_string
-
 TEST_MAILBOX_ID = "somedude@hotmail.com"
 
 CURRENT_DIR = os.path.dirname(__file__)
@@ -85,14 +84,14 @@ class TestEmailParser(TestCase):
         self.assertEqual(attached_file.content_type, "image/png")
         self.assertEqual(attached_file.name, "example.com")
         self.assertEqual(
-            attached_file.indicators.md5, "539cefc749ed1d78e3c821307f7c1b0a"
+            attached_file.indicators.md5, "4e6b332381785e918147874620c9a778"
         )
         self.assertEqual(
-            attached_file.indicators.sha1, "9a95c01f15c461708733dac2b3fbe10901801582"
+            attached_file.indicators.sha1, "843feb4b836778969c6370dc0a6afba409a09f34"
         )
         self.assertEqual(
             attached_file.indicators.sha256,
-            "ac92883cdc6cda0735f9c3f968e6103f8dd93f705cc077dce70924eda523a916",
+            "a8ed7fe07252c245e2cf3ae606f3051ea14e47840b5883f6bdc1cafd88bf4871",
         )
 
     def test_parse_from_raw2(self):
@@ -160,13 +159,13 @@ class TestEmailParser(TestCase):
         expected_content = "VGhpcyBpcyBhIHRlc3QgYXR0YWNobWVudA0KDQpJdCBoYXMgc29tZSB0ZXh0IGluIGl0LiANCg0KYWFkcm9pZC5uZXQNCg=="
         self.assertEqual(attachment.content, expected_content)
         self.assertEqual(attachment.name, "test_example.com")
-        self.assertEqual(attachment.indicators.md5, "593aa3b46e3902094303b7ef1349d9ff")
+        self.assertEqual(attachment.indicators.md5, "17ee38189af19fa3c7047bdab0042cae")
         self.assertEqual(
-            attachment.indicators.sha1, "d1181c07e87d73803bf5786b37e8f03a176290a2"
+            attachment.indicators.sha1, "54df9bfd77f891c8181c1105bef9247c61d56e0a"
         )
         self.assertEqual(
             attachment.indicators.sha256,
-            "c08eb82e5383760cad3a4b4863dfb871b4c4252eba039c64a90ffc818907de27",
+            "a1485e471988b56478ca36c592638f225bb9c0f171e83148cfdd996ab099262c",
         )
 
     def test_parse_from_raw4(self):
@@ -285,14 +284,14 @@ Nothing here, just this text</div>
 
         attached_file = email.attached_files[0]
         self.assertEqual(
-            attached_file.indicators.md5, "2fca7949ad1004cefe685b81c3889e1c"
+            attached_file.indicators.md5, "7e7fbad36024562ff3e0f04b191463ad"
         )
         self.assertEqual(
-            attached_file.indicators.sha1, "b7e20bc9d4eb40adb1c4f103821bd461deab9d3f"
+            attached_file.indicators.sha1, "7e9c25b3bd8537d7dde9602633835137a2e4f1d0"
         )
         self.assertEqual(
             attached_file.indicators.sha256,
-            "8477aeb65fe7985cc82bc8f231ebfc519b8178d1050a9cee7f1b450e6c370240",
+            "f1c3e8c51308fdd82b6da7e7691f0fecf05a76cdafb014091ebe0aaab0b0cc47",
         )
 
     def test_single_recipient(self):

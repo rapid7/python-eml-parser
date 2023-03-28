@@ -118,7 +118,7 @@ class IconEmail(object):
     # are used to remove duplicates in the flattened lists.
 
     def __eq__(self, other):
-        """ Check for equality """
+        """Check for equality"""
         return (
             self.id == other.id
             and self.subject == other.subject
@@ -131,7 +131,7 @@ class IconEmail(object):
         )
 
     def __hash__(self):
-        """ Return a unique hash """
+        """Return a unique hash"""
 
         # 'Tue, 13 Aug 2019 12:56:31 -0500'
         return hash(
@@ -156,5 +156,5 @@ class IconEmail(object):
         )
 
     def __lt__(self, other):
-        """ Less than, allows class to be sorted"""
+        """Less than, allows class to be sorted"""
         return self.subject < other.subject

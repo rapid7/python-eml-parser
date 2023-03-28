@@ -994,7 +994,7 @@ Subject: [POTENTIAL PHISH] MESINC
 
 -----BEGIN REPORTER AGENT-----
 Reporter agent: Outlook|4.0.2|Microsoft Windows NT 10.0.14393.0 (x64)|Outlo=
-ok 198.162.1.11
+ok 198.162.1.1
 IP Address: 198.162.1.1
 Computer Name: example.com.com
 -----END REPORTER AGENT-----
@@ -1188,7 +1188,7 @@ X-BESS-ID: 1564602837-893001-7568-658-1
 X-BESS-VER: 2019.3_20190731.1910
 X-BESS-Apparent-Source-IP: 198.162.1.1
 X-BESS-Outbound-Spam-Score: 1.67
-X-BESS-Outbound-Spam-Report: Code version 3.2, rules version 198.162.1.1698 [=
+X-BESS-Outbound-Spam-Report: Code version 3.2, rules version 198.162.1.1 [=
 from
         example.com-example.com.example.com.com]
         Rule breakdown below
@@ -1374,7 +1374,7 @@ US &amp; Canada)<br>
 <div>
 <p><font face=3D"Cambria">-----BEGIN REPORTER AGENT-----</font> <br>
 <font face=3D"Cambria">Reporter agent: Outlook|4.0.2|Microsoft Windows NT 1=
-0.0.14393.0 (x64)|Outlook 198.162.1.11</font>
+0.0.14393.0 (x64)|Outlook 198.162.1.1</font>
 <br>
 <font face=3D"Cambria">IP Address: 198.162.1.1</font> <br>
 <font face=3D"Cambria">Computer Name: example.com.com</fon=
@@ -1447,7 +1447,7 @@ DHE_RSA_WITH_AES_256_GCM_SHA384) id</font>
 on.example.com</font>
 <br>
 <font face=3D"Cambria">&nbsp;(2a01:111:f400:7e51::201) by BL0PR0102CA0072.o=
-example.comexample.com</font>
+example.com.com</font>
 <br>
 <font face=3D"Cambria">&nbsp;(2603:10b6:208:25::49) with Microsoft SMTP Ser=
 ver (version=3DTLS1_2,</font>
@@ -1686,7 +1686,7 @@ M5PR22MB0730</font>
 <font face=3D"Cambria">X-BESS-Apparent-Source-IP: 198.162.1.1</font> <br>
 <font face=3D"Cambria">X-BESS-Outbound-Spam-Score: 1.67</font> <br>
 <font face=3D"Cambria">X-BESS-Outbound-Spam-Report: Code version 3.2, rules=
- version 198.162.1.1698 [from
+ version 198.162.1.1 [from
 </font><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font face=3D"Cambria">cloudscan=
 example.com-example.com.example.com.com]</font>
@@ -2806,7 +2806,7 @@ p></p>
 <td colspan=3D"3" style=3D"padding:0cm 0cm 18.75pt 0cm">
 <p class=3D"MsoNormal" style=3D"line-height:16.5pt"><span style=3D"font-siz=
 e:13.5pt;font-family:Helvetica;color:#002947">Example User (jman@exam=
-ple.com) has sent you a file:<o:p></o:p></span></p>
+example.com) has sent you a file:<o:p></o:p></span></p>
 </td>
 </tr>
 <tr>
