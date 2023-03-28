@@ -31,7 +31,6 @@ def read_file_to_string(filename):
 
 class TestEmailParser(TestCase):
     def setUp(self) -> None:
-        logging.basicConfig(level=logging.INFO)
         self.log = logging.getLogger("stuff")
 
     def test_parse_from_raw(self):
