@@ -1,0 +1,15 @@
+---
+info:
+  title: Python Eml Parser
+  description: Python library for creating usable objects out of eml files.
+  x-cortex-git:
+    github:
+      alias: r7org
+      repository: rapid7/python-eml-parser
+  x-cortex-tag: python-eml-parser
+  x-cortex-type: service
+  x-cortex-domain-parent:
+  - soar
+openapi: 3.0.1
+servers:
+- url: "/"
