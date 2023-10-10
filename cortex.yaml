@@ -8,8 +8,8 @@ info:
       repository: rapid7/python-eml-parser
   x-cortex-tag: python-eml-parser
   x-cortex-type: service
-  x-cortex-domain-parent:
-  - soar
+  x-cortex-domain-parents:
+  - tag: soar
 openapi: 3.0.1
 servers:
 - url: "/"
