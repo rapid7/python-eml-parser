@@ -9,7 +9,7 @@ info:
   x-cortex-tag: python-eml-parser
   x-cortex-type: service
   x-cortex-domain-parents:
-  - soar
+  - tag: soar
 openapi: 3.0.1
 servers:
 - url: "/"
