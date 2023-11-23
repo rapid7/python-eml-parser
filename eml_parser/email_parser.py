@@ -51,7 +51,7 @@ class EmailParser(object):
         result = IconEmail()
         result.account = mailbox_id
         result.date_received = msg["Date"]
-        result.sender = get_emails_as_string(msg["From"])
+        result.sender = get_emails_as_string(msg.get("From", ""))
         result.subject = str(
             make_header(decode_header(msg["Subject"]))
         )  # This will decode mime words
